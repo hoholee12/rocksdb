@@ -1,0 +1,11 @@
+Linux 4.4.0-142-generic (jeongho-desktop) 	2021년 08월 26일 	_x86_64_	(8 CPU)
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.48    0.00    0.27    0.36    0.00   98.89
+
+Device:            tps    kB_read/s    kB_wrtn/s    kB_read    kB_wrtn
+sda               3.70         1.15       165.92    1036481  149537952
+sdb               0.00         0.01       272.88       9189  245942628
+sdc               0.01         0.02       512.78      14797  462157716
+nvme0n1         349.07      1950.75      7004.63 1758167168 6313111248
+

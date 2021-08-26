@@ -5,6 +5,7 @@ if [[ $1 != "" ]]; then
 	size=$1
 fi
 
+echo $size
 ./formatdrive_partition.sh $(($size*1060))
 
 #mnt

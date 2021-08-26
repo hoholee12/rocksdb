@@ -20,8 +20,8 @@ sudo time ./db_bench \
  -statistics \
  -db=/home/jeongho/mnt \
  -key_size=48 \
- -use_direct_io_for_flush_and_compaction=false \
- -use_direct_reads=false \
+ -use_direct_io_for_flush_and_compaction=true \
+ -use_direct_reads=true \
  $movewal \
 
 echo before run...
@@ -37,8 +37,8 @@ sudo time ./db_bench \
  -use_existing_db=true \
  -db=/home/jeongho/mnt \
  -key_size=48 \
- -use_direct_io_for_flush_and_compaction=false \
- -use_direct_reads=false \
+ -use_direct_io_for_flush_and_compaction=true \
+ -use_direct_reads=true \
  $movewal \
  
 echo after run...

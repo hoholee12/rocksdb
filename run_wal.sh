@@ -16,44 +16,44 @@ mkdir results 2>/dev/null
 for x in $(seq 1 $repeat); do
 	echo testing ext4...
 
-	./formatdrive_ext4.sh $dataset_size
-	# move wal to mnt2
-	iostat > results/results_ext4_waloff_iostat_begin_"$x".txt
-	sudo ./check_mem.sh > results/results_ext4_waloff_memcheck_"$x".txt &
-	memcheck=$!
-	sudo ./run_wal2.sh $dataset true &> results/results_ext4_waloff_"$x".txt
-	sudo kill -9 $memcheck
-	iostat > results/results_ext4_waloff_iostat_end_"$x".txt
-
 	#./formatdrive_ext4.sh $dataset_size
-	# dont move
-	#iostat > results/results_ext4_walon_iostat_begin_"$x".txt
-	#sudo ./check_mem.sh > results/results_ext4_walon_memcheck_"$x".txt &
+	# move wal to mnt2
+	#iostat > results/results_ext4_waloff_iostat_begin_"$x".txt
+	#sudo ./check_mem.sh > results/results_ext4_waloff_memcheck_"$x".txt &
 	#memcheck=$!
-	#sudo ./run_wal2.sh $dataset false &> results/results_ext4_walon_"$x".txt
+	#sudo ./run_wal2.sh $dataset true &> results/results_ext4_waloff_"$x".txt
 	#sudo kill -9 $memcheck
-	#iostat > results/results_ext4_walon_iostat_end_"$x".txt
+	#iostat > results/results_ext4_waloff_iostat_end_"$x".txt
+
+	./formatdrive_ext4.sh
+	# dont move
+	iostat > results/results_ext4_walon_iostat_begin_"$x".txt
+	sudo ./check_mem.sh > results/results_ext4_walon_memcheck_"$x".txt &
+	memcheck=$!
+	sudo ./run_wal2.sh $dataset false &> results/results_ext4_walon_"$x".txt
+	sudo kill -9 $memcheck
+	iostat > results/results_ext4_walon_iostat_end_"$x".txt
 
 
 	echo testing f2fs...
 
-	./formatdrive_f2fs.sh $dataset_size
-	# move wal to mnt2
-	iostat > results/results_f2fs_waloff_iostat_begin_"$x".txt
-	sudo ./check_mem.sh > results/results_f2fs_waloff_memcheck_"$x".txt &
-	memcheck=$!
-	sudo ./run_wal2.sh $dataset true &> results/results_f2fs_waloff_"$x".txt
-	sudo kill -9 $memcheck
-	iostat > results/results_f2fs_waloff_iostat_end_"$x".txt
-
 	#./formatdrive_f2fs.sh $dataset_size
-	# dont move
-	#iostat > results/results_f2fs_walon_iostat_begin_"$x".txt
-	#sudo ./check_mem.sh > results/results_f2fs_walon_memcheck_"$x".txt &
+	# move wal to mnt2
+	#iostat > results/results_f2fs_waloff_iostat_begin_"$x".txt
+	#sudo ./check_mem.sh > results/results_f2fs_waloff_memcheck_"$x".txt &
 	#memcheck=$!
-	#sudo ./run_wal2.sh $dataset false &> results/results_f2fs_walon_"$x".txt
+	#sudo ./run_wal2.sh $dataset true &> results/results_f2fs_waloff_"$x".txt
 	#sudo kill -9 $memcheck
-	#iostat > results/results_f2fs_walon_iostat_end_"$x".txt
+	#iostat > results/results_f2fs_waloff_iostat_end_"$x".txt
+
+	./formatdrive_f2fs.sh
+	# dont move
+	iostat > results/results_f2fs_walon_iostat_begin_"$x".txt
+	sudo ./check_mem.sh > results/results_f2fs_walon_memcheck_"$x".txt &
+	memcheck=$!
+	sudo ./run_wal2.sh $dataset false &> results/results_f2fs_walon_"$x".txt
+	sudo kill -9 $memcheck
+	iostat > results/results_f2fs_walon_iostat_end_"$x".txt
 
 
 	echo "$x"th repeat complete.
