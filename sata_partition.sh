@@ -3,6 +3,8 @@ size=100000
 if [[ $1 != "" ]]; then
 	size=$1
 fi
+sudo fuser -ck ~/mnt
+sudo fuser -ck ~/mnt2
 sudo umount ~/mnt
 sudo umount ~/mnt2
 sudo parted /dev/sdb rm 1 -s
