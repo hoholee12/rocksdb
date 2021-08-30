@@ -16,7 +16,7 @@ mkdir results 2>/dev/null
 for x in $(seq 1 $repeat); do
 	echo testing ext4...
 
-	#./formatdrive_ext4.sh $dataset_size
+	#./nvme_ext4.sh $dataset_size
 	# move wal to mnt2
 	#iostat > results/results_ext4_waloff_iostat_begin_"$x".txt
 	#sudo ./check_mem.sh > results/results_ext4_waloff_memcheck_"$x".txt &
@@ -25,7 +25,7 @@ for x in $(seq 1 $repeat); do
 	#sudo kill -9 $memcheck
 	#iostat > results/results_ext4_waloff_iostat_end_"$x".txt
 
-	./formatdrive_ext4.sh
+	./nvme_ext4.sh
 	# dont move
 	iostat > results/results_ext4_walon_iostat_begin_"$x".txt
 	sudo ./check_mem.sh > results/results_ext4_walon_memcheck_"$x".txt &
@@ -37,7 +37,7 @@ for x in $(seq 1 $repeat); do
 
 	echo testing f2fs...
 
-	#./formatdrive_f2fs.sh $dataset_size
+	#./nvme_f2fs.sh $dataset_size
 	# move wal to mnt2
 	#iostat > results/results_f2fs_waloff_iostat_begin_"$x".txt
 	#sudo ./check_mem.sh > results/results_f2fs_waloff_memcheck_"$x".txt &
@@ -46,7 +46,7 @@ for x in $(seq 1 $repeat); do
 	#sudo kill -9 $memcheck
 	#iostat > results/results_f2fs_waloff_iostat_end_"$x".txt
 
-	./formatdrive_f2fs.sh
+	./nvme_f2fs.sh
 	# dont move
 	iostat > results/results_f2fs_walon_iostat_begin_"$x".txt
 	sudo ./check_mem.sh > results/results_f2fs_walon_memcheck_"$x".txt &

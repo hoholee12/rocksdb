@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-size=128
+size=100
 if [[ $1 != "" ]]; then
         size=$1
 fi
 
-./formatdrive_partition.sh $(($size*1000))
+./nvme_partition.sh $(($size*1000))
 
 
 #mnt

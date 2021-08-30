@@ -1,23 +1,23 @@
 #!/bin/bash
 
-size=128
+size=100
 if [[ $1 != "" ]]; then
 	size=$1
 fi
 
 echo $size
-./formatdrive_partition.sh $(($size*1060))
+./sata_partition.sh $(($size*1060))
 
 #mnt
 umount ~/mnt 2>/dev/null
-mkfs.f2fs /dev/nvme0n1p1 -f -o 5
-mount -t f2fs /dev/nvme0n1p1 ~/mnt
+mkfs.f2fs /dev/sdb1 -f -o 5
+mount -t f2fs /dev/sdb1 ~/mnt
 chown jeongho:jeongho ~/mnt
 
 #mnt2
 umount ~/mnt2 2>/dev/null
-mkfs.f2fs /dev/nvme0n1p2 -f -o 5
-mount -t f2fs /dev/nvme0n1p2 ~/mnt2
+mkfs.f2fs /dev/sdb2 -f -o 5
+mount -t f2fs /dev/sdb2 ~/mnt2
 chown jeongho:jeongho ~/mnt2
 
 df -T | grep mnt

@@ -1,5 +1,5 @@
 #!/bin/bash
-size=128000
+size=100000
 if [[ $1 != "" ]]; then
 	size=$1
 fi
