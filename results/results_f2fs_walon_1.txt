@@ -1,22 +1,0 @@
-uniform workload
-dataset 29020048
-RocksDB:    version 6.24
-Date:       Thu Aug 26 20:31:23 2021
-CPU:        8 * Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
-CPUCache:   8192 KB
-long op: 75699 micros                              ... finished 100 ops                              ... finished 200 ops                              ... finished 300 ops                              ... finished 400 ops                              ... finished 500 ops                              ... finished 600 ops                              ... finished 700 ops                              ... finished 800 ops                              ... finished 900 ops                              ... finished 1000 ops                              ... finished 1500 ops                              Command terminated by signal 2
-0.00user 0.11system 0:00.12elapsed 95%CPU (0avgtext+0avgdata 10508maxresident)k
-0inputs+1672outputs (0major+1430minor)pagefaults 0swaps
-before run...
-/dev/nvme0n1p1 f2fs       4139008   373396   3728748  10% /home/jeongho/mnt
-/dev/nvme0n1p2 f2fs       4137984   296968   3803128   8% /home/jeongho/mnt2
-RocksDB:    version 6.24
-Date:       Thu Aug 26 20:31:23 2021
-CPU:        8 * Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
-CPUCache:   8192 KB
-long op: 76077 micros                              ... finished 100 ops                              ... finished 200 ops                              ... finished 300 ops                              ... finished 400 ops                              ... finished 500 ops                              ... finished 600 ops                              ... finished 700 ops                              ... finished 800 ops                              ... finished 900 ops                              ... finished 1000 ops                              ... finished 1500 ops                              ... finished 2000 ops                              ... finished 2500 ops                              ... finished 3000 ops                              ... finished 3500 ops                              ... finished 4000 ops                              ... finished 4500 ops                              ... finished 5000 ops                              ... finished 6000 ops                              ... finished 7000 ops                              ... finished 8000 ops                              ... finished 9000 ops                              ... finished 10000 ops                              Command terminated by signal 2
-0.07user 0.20system 0:00.29elapsed 95%CPU (0avgtext+0avgdata 12816maxresident)k
-960inputs+5456outputs (0major+2096minor)pagefaults 0swaps
-after run...
-/dev/nvme0n1p1 f2fs       4139008   373660   3728484  10% /home/jeongho/mnt
-/dev/nvme0n1p2 f2fs       4137984   296968   3803128   8% /home/jeongho/mnt2
