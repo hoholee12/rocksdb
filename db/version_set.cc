@@ -1490,6 +1490,7 @@ void Version::GetColumnFamilyMetaData(ColumnFamilyMetaData* cf_meta) {
         file_path = ioptions->cf_paths.back().path;
       }
       const uint64_t file_number = file->fd.GetNumber();
+      
       files.emplace_back(
           MakeTableFileName("", file_number), file_number, file_path,
           static_cast<size_t>(file->fd.GetFileSize()), file->fd.smallest_seqno,

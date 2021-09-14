@@ -20,8 +20,9 @@
 
 namespace ROCKSDB_NAMESPACE {
 
-static const std::string kRocksDbTFileExt = "sst";
-static const std::string kLevelDbTFileExt = "ldb";
+static const std::string kRocksDbTFileExt = "sst_l0";
+static const std::string kRocksDbTFileExt1 = "sst_l1";
+static const std::string kLevelDbTFileExt = "sst_l1";
 static const std::string kRocksDBBlobFileExt = "blob";
 
 // Given a path, flatten the path name by replacing all chars not in
@@ -103,11 +104,17 @@ std::string ArchivedLogFileName(const std::string& name, uint64_t number) {
   return MakeFileName(name + "/" + ARCHIVAL_DIR, number, "log");
 }
 
-std::string MakeTableFileName(const std::string& path, uint64_t number) {
+int flushMode = 0;
+
+//this is where file really writes
+std::string MakeTableFileName(const std::string& path, uint64_t number, int flush_mode) {
+  if(flush_mode) return MakeFileName(path, number, kRocksDbTFileExt1.c_str());
   return MakeFileName(path, number, kRocksDbTFileExt.c_str());
 }
 
-std::string MakeTableFileName(uint64_t number) {
+//called on compaction
+std::string MakeTableFileName(uint64_t number, int flush_mode) {
+  if(flush_mode) return MakeFileName(number, kRocksDbTFileExt1.c_str());
   return MakeFileName(number, kRocksDbTFileExt.c_str());
 }
 
@@ -131,8 +138,10 @@ uint64_t TableFileNameToNumber(const std::string& name) {
   return number;
 }
 
+
 std::string TableFileName(const std::vector<DbPath>& db_paths, uint64_t number,
-                          uint32_t path_id) {
+                          uint32_t path_id, int flush_mode) {
+
   assert(number > 0);
   std::string path;
   if (path_id >= db_paths.size()) {
@@ -140,7 +149,7 @@ std::string TableFileName(const std::vector<DbPath>& db_paths, uint64_t number,
   } else {
     path = db_paths[path_id].path;
   }
-  return MakeTableFileName(path, number);
+  return MakeTableFileName(path, number, flush_mode);
 }
 
 void FormatFileNumber(uint64_t number, uint32_t path_id, char* out_buf,
@@ -359,6 +368,7 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
     } else if (archive_dir_found) {
       return false; // Archive dir can contain only log files
     } else if (suffix == Slice(kRocksDbTFileExt) ||
+                suffix == Slice(kRocksDbTFileExt1) ||       //separate l0 and l1+ files for f2fs
                suffix == Slice(kLevelDbTFileExt)) {
       *type = kTableFile;
     } else if (suffix == Slice(kRocksDBBlobFileExt)) {

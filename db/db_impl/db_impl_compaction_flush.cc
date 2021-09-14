@@ -733,6 +733,9 @@ Status DBImpl::AtomicFlushMemTablesToOutputFiles(
 void DBImpl::NotifyOnFlushBegin(ColumnFamilyData* cfd, FileMetaData* file_meta,
                                 const MutableCFOptions& mutable_cf_options,
                                 int job_id) {
+
+
+                                  
 #ifndef ROCKSDB_LITE
   if (immutable_db_options_.listeners.size() == 0U) {
     return;
@@ -1098,6 +1101,8 @@ Status DBImpl::CompactFiles(const CompactionOptions& compact_options,
                             const int output_level, const int output_path_id,
                             std::vector<std::string>* const output_file_names,
                             CompactionJobInfo* compaction_job_info) {
+
+                              
 #ifdef ROCKSDB_LITE
   (void)compact_options;
   (void)column_family;
@@ -1180,6 +1185,10 @@ Status DBImpl::CompactFilesImpl(
     std::vector<std::string>* const output_file_names, const int output_level,
     int output_path_id, JobContext* job_context, LogBuffer* log_buffer,
     CompactionJobInfo* compaction_job_info) {
+
+
+
+
   mutex_.AssertHeld();
 
   if (shutting_down_.load(std::memory_order_acquire)) {

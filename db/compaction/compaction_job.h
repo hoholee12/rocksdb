@@ -223,7 +223,7 @@ class CompactionJob {
 
   // Get table file name in where it's outputting to, which should also be in
   // `output_directory_`.
-  virtual std::string GetTableFileName(uint64_t file_number);
+  virtual std::string GetTableFileName(uint64_t file_number, int flush_mode = 0);
 };
 
 // CompactionServiceInput is used the pass compaction information between two
@@ -349,7 +349,7 @@ class CompactionServiceCompactionJob : private CompactionJob {
 
  private:
   // Get table file name in output_path
-  std::string GetTableFileName(uint64_t file_number) override;
+  std::string GetTableFileName(uint64_t file_number, int flush_mode = 0) override;
   // Specific the compaction output path, otherwise it uses default DB path
   const std::string output_path_;
 
