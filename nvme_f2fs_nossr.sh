@@ -5,8 +5,8 @@
 #mnt
 umount ~/mnt 2>/dev/null
 sleep 1
-mkfs.f2fs /dev/nvme0n1p1 -f -e 'sst'
-mount -t f2fs /dev/nvme0n1p1 ~/mnt -o mode=lfs
+mkfs.f2fs /dev/nvme0n1p1 -f
+mount -t f2fs /dev/nvme0n1p1 ~/mnt -o mode=adaptive
 chown jeongho:jeongho ~/mnt
 
 df -T | grep mnt

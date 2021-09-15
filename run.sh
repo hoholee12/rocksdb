@@ -20,7 +20,7 @@ echo testing ssr...
 ddcount=0
 mkdir /home/jeongho/mnt/stuffing
 while true; do
-dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s$ddcount bs=1M count=3072 >/dev/null 2>&1
+dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s$ddcount bs=1M count=$(($dataset_size*1024)) >/dev/null 2>&1
 if [[ $? != 0 ]]; then rm -rf /home/jeongho/mnt/stuffing/s0; break; fi
 ddcount=$(($ddcount+1))
 done
@@ -43,7 +43,7 @@ echo testing nossr...
 ddcount=0
 mkdir /home/jeongho/mnt/stuffing
 while true; do
-dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s$ddcount bs=1M count=3072 >/dev/null 2>&1
+dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s$ddcount bs=1M count=$(($dataset_size*1024)) >/dev/null 2>&1
 if [[ $? != 0 ]]; then rm -rf /home/jeongho/mnt/stuffing/s0; break; fi
 ddcount=$(($ddcount+1))
 done
