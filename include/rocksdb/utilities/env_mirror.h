@@ -92,6 +92,7 @@ class EnvMirror : public EnvWrapper {
 #pragma warning(pop)
 #endif
   Status DeleteFile(const std::string& f) override {
+    //printf("i am deleted from env_mirror.h 1\n");
     Status as = a_->DeleteFile(f);
     Status bs = b_->DeleteFile(f);
     assert(as == bs);

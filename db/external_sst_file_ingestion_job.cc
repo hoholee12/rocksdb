@@ -307,6 +307,7 @@ Status ExternalSstFileIngestionJob::Prepare(
       if (f.internal_file_path.empty()) {
         continue;
       }
+      //printf("i am deleted from external_sst_file_ingestion_job.cc 1\n");
       Status s = fs_->DeleteFile(f.internal_file_path, io_opts, nullptr);
       if (!s.ok()) {
         ROCKS_LOG_WARN(db_options_.info_log,
@@ -506,6 +507,7 @@ void ExternalSstFileIngestionJob::Cleanup(const Status& status) {
       if (f.internal_file_path.empty()) {
         continue;
       }
+      //printf("i am deleted from external_sst_file_ingestion_job.cc 2\n");
       Status s = fs_->DeleteFile(f.internal_file_path, io_opts, nullptr);
       if (!s.ok()) {
         ROCKS_LOG_WARN(db_options_.info_log,
@@ -518,6 +520,7 @@ void ExternalSstFileIngestionJob::Cleanup(const Status& status) {
   } else if (status.ok() && ingestion_options_.move_files) {
     // The files were moved and added successfully, remove original file links
     for (IngestedFileInfo& f : files_to_ingest_) {
+      //printf("i am deleted from external_sst_file_ingestion_job.cc 3\n");
       Status s = fs_->DeleteFile(f.external_file_path, io_opts, nullptr);
       if (!s.ok()) {
         ROCKS_LOG_WARN(

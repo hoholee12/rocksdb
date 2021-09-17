@@ -66,8 +66,19 @@ Status DeleteScheduler::DeleteFile(const std::string& file_path,
           sst_file_manager_->GetTotalSize() * max_trash_db_ratio_.load())) {
     // Rate limiting is disabled or trash size makes up more than
     // max_trash_db_ratio_ (default 25%) of the total DB size
+    
     TEST_SYNC_POINT("DeleteScheduler::DeleteFile");
     Status s = fs_->DeleteFile(file_path, IOOptions(), nullptr);
+
+    std::string bad_file;
+    printf("mymsg %s DELETE\n", file_path.c_str());
+    if (s.IsPathNotFound()) {
+      printf("can't delete!!\n");
+      bad_file = Rocks2LevelTableFileName(file_path);
+      s = fs_->DeleteFile(bad_file, IOOptions(), nullptr);
+      printf("mymsg %s DELETE again\n", bad_file.c_str());
+    }
+    
     if (s.ok()) {
       s = sst_file_manager_->OnDeleteFile(file_path);
       ROCKS_LOG_INFO(info_log_,
@@ -90,6 +101,7 @@ Status DeleteScheduler::DeleteFile(const std::string& file_path,
   if (!s.ok()) {
     ROCKS_LOG_ERROR(info_log_, "Failed to mark %s as trash -- %s",
                     file_path.c_str(), s.ToString().c_str());
+                        //printf("i am deleted from delete_scheduler.cc 2\n");
     s = fs_->DeleteFile(file_path, IOOptions(), nullptr);
     if (s.ok()) {
       s = sst_file_manager_->OnDeleteFile(file_path);
@@ -159,6 +171,7 @@ Status DeleteScheduler::CleanupDirectory(Env* env, SstFileManagerImpl* sfm,
       file_delete = sfm->ScheduleFileDeletion(trash_file, path);
     } else {
       // Delete the file immediately
+          //printf("i am deleted from delete_scheduler.cc 3\n");
       file_delete = env->DeleteFile(trash_file);
     }
 
@@ -350,6 +363,7 @@ Status DeleteScheduler::DeleteTrashFile(const std::string& path_in_trash,
     }
 
     if (need_full_delete) {
+          //printf("i am deleted from delete_scheduler.cc 4\n");
       s = fs_->DeleteFile(path_in_trash, IOOptions(), nullptr);
       if (!dir_to_sync.empty()) {
         std::unique_ptr<FSDirectory> dir_obj;

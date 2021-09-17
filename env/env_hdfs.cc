@@ -544,6 +544,7 @@ Status HdfsEnv::CreateDirIfMissing(const std::string& name) {
 };
 
 Status HdfsEnv::DeleteDir(const std::string& name) {
+  //printf("i am deleted from env_hdfs.cc 1\n");
   return DeleteFile(name);
 };
 

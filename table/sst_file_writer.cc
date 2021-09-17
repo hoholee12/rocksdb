@@ -333,6 +333,7 @@ Status SstFileWriter::Finish(ExternalSstFileInfo* file_info) {
         r->file_writer->GetFileChecksumFuncName();
   }
   if (!s.ok()) {
+    //printf("i am deleted from sst_file_writer.cc 1\n");
     r->ioptions.env->DeleteFile(r->file_info.file_path);
   }
 

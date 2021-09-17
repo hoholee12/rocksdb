@@ -333,6 +333,7 @@ void DBImpl::DeleteObsoleteFileImpl(int job_id, const std::string& fname,
         DeleteDBFile(&immutable_db_options_, fname, path_to_sync,
                      /*force_bg=*/false, /*force_fg=*/!wal_in_db_path_);
   } else {
+    //printf("i am deleted from db_impl_files.cc 1\n");
     file_deletion_status = env_->DeleteFile(fname);
   }
   TEST_SYNC_POINT_CALLBACK("DBImpl::DeleteObsoleteFileImpl:AfterDeletion",
@@ -610,6 +611,7 @@ void DBImpl::PurgeObsoleteFiles(JobContext& state, bool schedule_only) {
       ROCKS_LOG_INFO(immutable_db_options_.info_log,
                      "[JOB %d] Delete info log file %s\n", state.job_id,
                      full_path_to_delete.c_str());
+                     //printf("i am deleted from db_impl_files.cc 2\n");
       Status s = env_->DeleteFile(full_path_to_delete);
       if (!s.ok()) {
         if (env_->FileExists(full_path_to_delete).IsNotFound()) {
@@ -961,6 +963,7 @@ Status DBImpl::DeleteUnreferencedSstFiles() {
 
   mutex_.Unlock();
   for (const auto& fname : files_to_delete) {
+    //printf("i am deleted from db_impl_files.cc 3\n");
     s = env_->DeleteFile(fname);
     if (!s.ok()) {
       break;

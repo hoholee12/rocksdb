@@ -435,6 +435,7 @@ class StackableDB : public DB {
   // until its removal. Any user is encouraged to read the implementation
   // carefully and migrate away from it when possible.
   virtual Status DeleteFile(std::string name) override {
+    //printf("i am deleted from stackable_db.h 1\n");
     return db_->DeleteFile(name);
   }
 

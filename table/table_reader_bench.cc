@@ -251,6 +251,7 @@ void TableReaderBenchmark(Options& opts, EnvOptions& env_options,
       measured_by_nanosecond ? "nanosecond" : "microsecond",
       hist.ToString().c_str());
   if (!through_db) {
+    //printf("i am deleted from table_reader_bench.cc 1\n");
     env->DeleteFile(file_name);
   } else {
     delete db;

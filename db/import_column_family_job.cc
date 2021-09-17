@@ -116,6 +116,7 @@ Status ImportColumnFamilyJob::Prepare(uint64_t next_file_number,
       if (f.internal_file_path.empty()) {
         break;
       }
+      //printf("i am deleted from import_column_family_job.cc 1\n");
       const auto s =
           fs_->DeleteFile(f.internal_file_path, IOOptions(), nullptr);
       if (!s.ok()) {
@@ -171,6 +172,7 @@ void ImportColumnFamilyJob::Cleanup(const Status& status) {
   if (!status.ok()) {
     // We failed to add files to the database remove all the files we copied.
     for (const auto& f : files_to_import_) {
+      //printf("i am deleted from import_column_family_job.cc 2\n");
       const auto s =
           fs_->DeleteFile(f.internal_file_path, IOOptions(), nullptr);
       if (!s.ok()) {
@@ -182,6 +184,7 @@ void ImportColumnFamilyJob::Cleanup(const Status& status) {
   } else if (status.ok() && import_options_.move_files) {
     // The files were moved and added successfully, remove original file links
     for (IngestedFileInfo& f : files_to_import_) {
+      //printf("i am deleted from import_column_family_job.cc 3\n");
       const auto s =
           fs_->DeleteFile(f.external_file_path, IOOptions(), nullptr);
       if (!s.ok()) {

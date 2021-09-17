@@ -87,6 +87,7 @@ class CompositeEnv : public Env {
   Status DeleteFile(const std::string& f) override {
     IOOptions io_opts;
     IODebugContext dbg;
+    //printf("i am deleted from composite_env_wrapper.cc 1\n");
     return file_system_->DeleteFile(f, io_opts, &dbg);
   }
   Status Truncate(const std::string& fname, size_t size) override {

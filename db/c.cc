@@ -1439,6 +1439,7 @@ void rocksdb_approximate_sizes_cf(
 void rocksdb_delete_file(
     rocksdb_t* db,
     const char* name) {
+      //printf("i am deleted from c.cc 1\n");
   db->rep->DeleteFile(name);
 }
 

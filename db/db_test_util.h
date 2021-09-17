@@ -485,6 +485,7 @@ class SpecialEnv : public EnvWrapper {
 
     Status s = target()->NewWritableFile(f, r, optimized);
     if (s.ok()) {
+      printf("i am HERE\n");
       if (strstr(f.c_str(), ".sst") != nullptr) {
         r->reset(new SSTableFile(this, std::move(*r)));
       } else if (strstr(f.c_str(), "MANIFEST") != nullptr) {

@@ -1602,6 +1602,7 @@ class ReportFileOpEnv : public EnvWrapper {
   }
 
   Status DeleteFile(const std::string& fname) override {
+    //printf("i am deleted from db_bench_tool.cc 1\n");
     Status s = target()->DeleteFile(fname);
     if (s.ok()) {
       counters()->delete_counter_.fetch_add(1, std::memory_order_relaxed);
@@ -3025,6 +3026,7 @@ class Benchmark {
     FLAGS_env->GetChildren(FLAGS_db, &files);
     for (size_t i = 0; i < files.size(); i++) {
       if (Slice(files[i]).starts_with("heap-")) {
+        //printf("i am deleted from db_bench_tool.cc 2\n");
         FLAGS_env->DeleteFile(FLAGS_db + "/" + files[i]);
       }
     }

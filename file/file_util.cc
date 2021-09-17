@@ -100,6 +100,7 @@ Status DeleteDBFile(const ImmutableDBOptions* db_options,
   if (sfm && !force_fg) {
     return sfm->ScheduleFileDeletion(fname, dir_to_sync, force_bg);
   } else {
+        //printf("i am deleted from file_util.cc 1\n");
     return db_options->env->DeleteFile(fname);
   }
 #else
@@ -108,6 +109,7 @@ Status DeleteDBFile(const ImmutableDBOptions* db_options,
   (void)force_fg;
   // SstFileManager is not supported in ROCKSDB_LITE
   // Delete file immediately
+  //printf("i am deleted from file_util.cc 2\n");
   return db_options->env->DeleteFile(fname);
 #endif
 }
@@ -226,6 +228,7 @@ Status DestroyDir(Env* env, const std::string& dir) {
         if (is_dir) {
           s = DestroyDir(env, path);
         } else {
+          //printf("i am deleted from file_util.cc 3\n");
           s = env->DeleteFile(path);
         }
       } else if (s.IsNotSupported()) {

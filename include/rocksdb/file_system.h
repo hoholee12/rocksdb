@@ -1212,6 +1212,7 @@ class FileSystemWrapper : public FileSystem {
   }
   IOStatus DeleteFile(const std::string& f, const IOOptions& options,
                       IODebugContext* dbg) override {
+                        //printf("i am deleted from sst_file_system.h 1\n");
     return target_->DeleteFile(f, options, dbg);
   }
   IOStatus Truncate(const std::string& fname, size_t size,

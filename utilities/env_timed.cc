@@ -91,6 +91,7 @@ class TimedFileSystem : public FileSystemWrapper {
   IOStatus DeleteFile(const std::string& fname, const IOOptions& options,
                       IODebugContext* dbg) override {
     PERF_TIMER_GUARD(env_delete_file_nanos);
+    //printf("i am deleted from env_timed.cc 1\n");
     return FileSystemWrapper::DeleteFile(fname, options, dbg);
   }
 

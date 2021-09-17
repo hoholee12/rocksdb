@@ -1012,7 +1012,7 @@ std::unique_ptr<FlushJobInfo> FlushJob::GetFlushJobInfo() const {
 
   const uint64_t file_number = meta_.fd.GetNumber();
   info->file_path =
-      MakeTableFileName(cfd_->ioptions()->cf_paths[0].path, file_number); //separate l0 and l1+ files for f2fs
+      MakeTableFileName(cfd_->ioptions()->cf_paths[0].path, file_number);
   info->file_number = file_number;
   info->oldest_blob_file_number = meta_.oldest_blob_file_number;
   info->thread_id = db_options_.env->GetThreadID();

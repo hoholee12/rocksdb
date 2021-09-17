@@ -46,6 +46,7 @@ BlobFile::BlobFile(const BlobDBImpl* p, const std::string& bdir, uint64_t fn,
 BlobFile::~BlobFile() {
   if (obsolete_) {
     std::string pn(PathName());
+    //printf("i am deleted from blob_file.cc 1\n");
     Status s = Env::Default()->DeleteFile(PathName());
     if (!s.ok()) {
       // ROCKS_LOG_INFO(db_options_.info_log,

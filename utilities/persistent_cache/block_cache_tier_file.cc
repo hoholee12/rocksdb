@@ -54,6 +54,7 @@ Status BlockCacheFile::Delete(uint64_t* size) {
   if (!status.ok()) {
     return status;
   }
+  //printf("i am deleted from block_cache_tier_file.cc 1\n");
   return env_->DeleteFile(Path());
 }
 

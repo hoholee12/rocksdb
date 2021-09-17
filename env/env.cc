@@ -423,6 +423,7 @@ class LegacyFileSystemWrapper : public FileSystem {
   }
   IOStatus DeleteFile(const std::string& f, const IOOptions& /*options*/,
                       IODebugContext* /*dbg*/) override {
+                        //printf("i am deleted from env.cc 1\n");
     return status_to_io_status(target_->DeleteFile(f));
   }
   IOStatus Truncate(const std::string& fname, size_t size,

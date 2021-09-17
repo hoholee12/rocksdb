@@ -71,6 +71,7 @@ StressTest::StressTest()
     db_stress_env->GetChildren(FLAGS_db, &files);
     for (unsigned int i = 0; i < files.size(); i++) {
       if (Slice(files[i]).starts_with("heap-")) {
+        printf("i am deleted from db_stress_test_base.cc 1\n");
         db_stress_env->DeleteFile(FLAGS_db + "/" + files[i]);
       }
     }

@@ -169,6 +169,7 @@ DBOptions SanitizeOptions(const std::string& dbname, const DBOptions& src,
                                           std::string(".log.trash").length()) !=
           std::string::npos) {
         std::string trash_file = wal_dir + "/" + filename;
+        //printf("i am deleted from db_impl_open.cc 1\n");
         result.env->DeleteFile(trash_file).PermitUncheckedError();
       }
     }
@@ -298,6 +299,7 @@ Status DBImpl::NewDB(std::vector<std::string>* new_filenames) {
   ROCKS_LOG_INFO(immutable_db_options_.info_log, "Creating manifest 1 \n");
   const std::string manifest = DescriptorFileName(dbname_, 1);
   {
+    //printf("i am deleted from db_impl_open.cc 2\n");
     if (fs_->FileExists(manifest, IOOptions(), nullptr).ok()) {
       fs_->DeleteFile(manifest, IOOptions(), nullptr).PermitUncheckedError();
     }
@@ -331,6 +333,7 @@ Status DBImpl::NewDB(std::vector<std::string>* new_filenames) {
           manifest.substr(manifest.find_last_of("/\\") + 1));
     }
   } else {
+    //printf("i am deleted from db_impl_open.cc 3\n");
     fs_->DeleteFile(manifest, IOOptions(), nullptr).PermitUncheckedError();
   }
   return s;

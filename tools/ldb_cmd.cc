@@ -3835,6 +3835,7 @@ void UnsafeRemoveSstFileCommand::DoCommand() {
   if (s.ok()) {
     VersionEdit edit;
     edit.SetColumnFamily(cfd->GetID());
+    //printf("i am deleted from ldb_cmd.cc 1\n");
     edit.DeleteFile(level, sst_file_number_);
     // Use `mutex` to imitate a locked DB mutex when calling `LogAndApply()`.
     InstrumentedMutex mutex;

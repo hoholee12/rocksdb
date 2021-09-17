@@ -26,6 +26,7 @@ class DbStressEnvWrapper : public EnvWrapper {
         f.find("checkpoint") != std::string::npos ||
         f.find(".backup") != std::string::npos ||
         f.find(".restore") != std::string::npos) {
+          printf("i am deleted from db_stress_env_wrapper.cc 1\n");
       return target()->DeleteFile(f);
     }
     // Rename the file instead of deletion to keep the history, and

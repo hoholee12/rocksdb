@@ -471,6 +471,7 @@ bool IsDirectIOSupported(Env* env, const std::string& dir) {
     s = env->NewWritableFile(tmp, &file, env_options);
   }
   if (s.ok()) {
+    //printf("i am deleted from testutil.cc 1\n");
     s = env->DeleteFile(tmp);
   }
   return s.ok();
@@ -491,6 +492,7 @@ bool IsPrefetchSupported(const std::shared_ptr<FileSystem>& fs,
       supported = !(file->Prefetch(0, data.size(), IOOptions(), nullptr)
                         .IsNotSupported());
     }
+    //printf("i am deleted from testutil.cc 2\n");
     s = fs->DeleteFile(tmp, IOOptions(), nullptr);
   }
   return s.ok() && supported;

@@ -225,6 +225,7 @@ Status SstFileDumper::CalculateCompressedTableSize(
   *compressed_table_size = table_builder->FileSize();
   assert(num_data_blocks != nullptr);
   *num_data_blocks = table_builder->GetTableProperties().num_data_blocks;
+  //printf("i am deleted from sst_file_dumper.cc 1\n");
   return env->DeleteFile(testFileName);
 }
 

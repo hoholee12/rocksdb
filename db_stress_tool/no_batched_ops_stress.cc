@@ -760,6 +760,7 @@ class NonBatchedOpsStressTest : public StressTest {
     if (db_stress_env->FileExists(sst_filename).ok()) {
       // Maybe we terminated abnormally before, so cleanup to give this file
       // ingestion a clean slate
+      printf("i am deleted from no_batched_ops_stress.cc 1\n");
       s = db_stress_env->DeleteFile(sst_filename);
     }
 

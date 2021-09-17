@@ -131,6 +131,7 @@ IOStatus FileSystemTracingWrapper::DeleteFile(const std::string& fname,
                                               IODebugContext* dbg) {
   StopWatchNano timer(clock_);
   timer.Start();
+  //printf("i am deleted from file_system_tracer.cc 1\n");
   IOStatus s = target()->DeleteFile(fname, options, dbg);
   uint64_t elapsed = timer.ElapsedNanos();
   IOTraceRecord io_record(clock_->NowNanos(), TraceType::kIOTracer,

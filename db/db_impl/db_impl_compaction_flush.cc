@@ -1555,6 +1555,7 @@ Status DBImpl::ReFitLevel(ColumnFamilyData* cfd, int level, int target_level) {
     VersionEdit edit;
     edit.SetColumnFamily(cfd->GetID());
     for (const auto& f : vstorage->LevelFiles(level)) {
+      //printf("i am deleted from db_impl_compaction_flush.cc 3\n");
       edit.DeleteFile(level, f->fd.GetNumber());
       edit.AddFile(to_level, f->fd.GetNumber(), f->fd.GetPathId(),
                    f->fd.GetFileSize(), f->smallest, f->largest,
@@ -3062,6 +3063,7 @@ Status DBImpl::BackgroundCompaction(bool* made_progress,
                             compaction_job_stats, job_context->job_id);
 
     for (const auto& f : *c->inputs(0)) {
+      //printf("i am deleted from db_impl_compaction_flush.cc 1\n");
       c->edit()->DeleteFile(c->level(), f->fd.GetNumber());
     }
     status = versions_->LogAndApply(c->column_family_data(),
@@ -3102,6 +3104,7 @@ Status DBImpl::BackgroundCompaction(bool* made_progress,
       }
       for (size_t i = 0; i < c->num_input_files(l); i++) {
         FileMetaData* f = c->input(l, i);
+        //printf("i am deleted from db_impl_compaction_flush.cc 2\n");
         c->edit()->DeleteFile(c->level(l), f->fd.GetNumber());
         c->edit()->AddFile(c->output_level(), f->fd.GetNumber(),
                            f->fd.GetPathId(), f->fd.GetFileSize(), f->smallest,

@@ -3628,6 +3628,7 @@ Status DBImpl::DeleteFile(std::string name) {
                       name.c_str());
       return Status::NotSupported("Delete only supported for archived logs");
     }
+    //printf("i am deleted from db_impl.cc 1\n");
     Status status = wal_manager_.DeleteFile(name, number);
     if (!status.ok()) {
       ROCKS_LOG_ERROR(immutable_db_options_.info_log,
@@ -3687,6 +3688,7 @@ Status DBImpl::DeleteFile(std::string name) {
       return Status::InvalidArgument("File in level 0, but not oldest");
     }
     edit.SetColumnFamily(cfd->GetID());
+    //printf("i am deleted from db_impl.cc 2\n");
     edit.DeleteFile(level, number);
     status = versions_->LogAndApply(cfd, *cfd->GetLatestMutableCFOptions(),
                                     &edit, &mutex_, directories_.GetDbDir());
@@ -3762,6 +3764,7 @@ Status DBImpl::DeleteFilesInRanges(ColumnFamilyHandle* column_family,
             continue;
           }
           edit.SetColumnFamily(cfd->GetID());
+          //printf("i am deleted from db_impl.cc 3\n");
           edit.DeleteFile(i, level_file->fd.GetNumber());
           deleted_files.insert(level_file);
           level_file->being_compacted = true;
@@ -3853,6 +3856,9 @@ Status DBImpl::CheckConsistency() {
   std::string corruption_messages;
 
   if (immutable_db_options_.skip_checking_sst_file_sizes_on_db_open) {
+
+    printf("Rocks2level is called on db_impl.cc 1\n");
+
     // Instead of calling GetFileSize() for each expected file, call
     // GetChildren() for the DB directory and check that all expected files
     // are listed, without checking their sizes.
@@ -3889,6 +3895,7 @@ Status DBImpl::CheckConsistency() {
       }
     }
   } else {
+printf("Rocks2level is called on db_impl.cc 2\n");
     for (const auto& md : metadata) {
       // md.name has a leading "/".
       std::string file_path = md.db_path + md.name;
@@ -4070,6 +4077,7 @@ Status DestroyDB(const std::string& dbname, const Options& options,
           del = DeleteDBFile(&soptions, path_to_delete, dbname,
                              /*force_bg=*/false, /*force_fg=*/!wal_in_db_path);
         } else {
+          //printf("i am deleted from db_impl.cc 4\n");
           del = env->DeleteFile(path_to_delete);
         }
         if (!del.ok() && result.ok()) {
@@ -4153,6 +4161,7 @@ Status DestroyDB(const std::string& dbname, const Options& options,
 
     // Ignore error since state is already gone
     env->UnlockFile(lock).PermitUncheckedError();
+    //printf("i am deleted from db_impl.cc 5\n");
     env->DeleteFile(lockname).PermitUncheckedError();
 
     // sst_file_manager holds a ref to the logger. Make sure the logger is
@@ -4243,6 +4252,7 @@ void DeleteOptionsFilesHelper(const std::map<uint64_t, std::string>& filenames,
   }
   for (auto iter = std::next(filenames.begin(), num_files_to_keep);
        iter != filenames.end(); ++iter) {
+         //printf("i am deleted from db_impl.cc 6\n");
     if (!env->DeleteFile(iter->second).ok()) {
       ROCKS_LOG_WARN(info_log, "Unable to delete options file %s",
                      iter->second.c_str());

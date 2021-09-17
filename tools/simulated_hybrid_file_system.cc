@@ -103,6 +103,7 @@ IOStatus SimulatedHybridFileSystem::DeleteFile(const std::string& fname,
     const std::lock_guard<std::mutex> lock(mutex_);
     warm_file_set_.erase(fname);
   }
+  //printf("i am deleted from simulated_hybrid_file_system.cc 1\n");
   return target()->DeleteFile(fname, options, dbg);
 }
 

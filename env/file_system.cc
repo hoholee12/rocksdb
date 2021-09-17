@@ -114,6 +114,7 @@ IOStatus WriteStringToFile(FileSystem* fs, const Slice& data,
     s = file->Sync(IOOptions(), nullptr);
   }
   if (!s.ok()) {
+    //printf("i am deleted from file_system.cc 1\n");
     fs->DeleteFile(fname, IOOptions(), nullptr);
   }
   return s;

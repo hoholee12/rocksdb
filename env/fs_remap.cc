@@ -159,6 +159,7 @@ IOStatus RemapFileSystem::DeleteFile(const std::string& fname,
   if (!status_and_enc_path.first.ok()) {
     return status_and_enc_path.first;
   }
+  //printf("i am deleted from fs_remap.cc 1\n");
   return FileSystemWrapper::DeleteFile(status_and_enc_path.second, options,
                                        dbg);
 }

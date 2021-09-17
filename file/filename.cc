@@ -20,9 +20,10 @@
 
 namespace ROCKSDB_NAMESPACE {
 
-static const std::string kRocksDbTFileExt = "sst_l0";
-static const std::string kRocksDbTFileExt1 = "sst_l1";
-static const std::string kLevelDbTFileExt = "sst_l1";
+//some code uses size() to replace a string.. all of these strings here must be same 3 characters.
+static const std::string kRocksDbTFileExt_l0 = "sl0";
+static const std::string kRocksDbTFileExt = "sst";
+static const std::string kLevelDbTFileExt = "ldb";
 static const std::string kRocksDBBlobFileExt = "blob";
 
 // Given a path, flatten the path name by replacing all chars not in
@@ -108,20 +109,39 @@ int flushMode = 0;
 
 //this is where file really writes
 std::string MakeTableFileName(const std::string& path, uint64_t number, int flush_mode) {
-  if(flush_mode) return MakeFileName(path, number, kRocksDbTFileExt1.c_str());
-  return MakeFileName(path, number, kRocksDbTFileExt.c_str());
+  if(flush_mode){
+    //printf("MakeTableFileName: %s/%06lu.%s\n", path.c_str(), number, kRocksDbTFileExt.c_str());
+    return MakeFileName(path, number, kRocksDbTFileExt.c_str());
+  }
+  else{
+    //printf("MakeTableFileName: %s/%06lu.%s\n", path.c_str(), number, kRocksDbTFileExt_l0.c_str());
+    return MakeFileName(path, number, kRocksDbTFileExt_l0.c_str());
+  }
 }
 
 //called on compaction
 std::string MakeTableFileName(uint64_t number, int flush_mode) {
-  if(flush_mode) return MakeFileName(number, kRocksDbTFileExt1.c_str());
-  return MakeFileName(number, kRocksDbTFileExt.c_str());
+  if(flush_mode){
+    //printf("MakeTableFileName: %06lu.%s\n", number, kRocksDbTFileExt.c_str());
+    return MakeFileName(number, kRocksDbTFileExt.c_str());
+  }
+  else{
+    //printf("MakeTableFileName: %06lu.%s\n", number, kRocksDbTFileExt_l0.c_str());
+    return MakeFileName(number, kRocksDbTFileExt_l0.c_str());
+  }
 }
 
 std::string Rocks2LevelTableFileName(const std::string& fullname) {
+  
   assert(fullname.size() > kRocksDbTFileExt.size() + 1);
   if (fullname.size() <= kRocksDbTFileExt.size() + 1) {
     return "";
+  }
+  switch(fullname.at(fullname.size() - 1)){
+  case '0': return fullname.substr(0, fullname.size() - kRocksDbTFileExt_l0.size()) +
+         kRocksDbTFileExt;
+  case 't': return fullname.substr(0, fullname.size() - kRocksDbTFileExt.size()) +
+         kRocksDbTFileExt_l0;
   }
   return fullname.substr(0, fullname.size() - kRocksDbTFileExt.size()) +
          kLevelDbTFileExt;
@@ -368,7 +388,7 @@ bool ParseFileName(const std::string& fname, uint64_t* number,
     } else if (archive_dir_found) {
       return false; // Archive dir can contain only log files
     } else if (suffix == Slice(kRocksDbTFileExt) ||
-                suffix == Slice(kRocksDbTFileExt1) ||       //separate l0 and l1+ files for f2fs
+                suffix == Slice(kRocksDbTFileExt_l0) ||       //separate l0 and l1+ files for f2fs
                suffix == Slice(kLevelDbTFileExt)) {
       *type = kTableFile;
     } else if (suffix == Slice(kRocksDBBlobFileExt)) {
@@ -405,6 +425,7 @@ IOStatus SetCurrentFile(FileSystem* fs, const std::string& dbname,
       s = directory_to_fsync->Fsync(IOOptions(), nullptr);
     }
   } else {
+    //printf("i am deleted from filename.cc 1\n");
     fs->DeleteFile(tmp, IOOptions(), nullptr)
         .PermitUncheckedError();  // NOTE: PermitUncheckedError is acceptable
                                   // here as we are already handling an error
@@ -430,6 +451,7 @@ Status SetIdentityFile(Env* env, const std::string& dbname,
     s = env->RenameFile(tmp, IdentityFileName(dbname));
   }
   if (!s.ok()) {
+    //printf("i am deleted from filename.cc 2\n");
     env->DeleteFile(tmp).PermitUncheckedError();
   }
   return s;

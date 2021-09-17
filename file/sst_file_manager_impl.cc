@@ -418,6 +418,7 @@ Status SstFileManagerImpl::ScheduleFileDeletion(
     const bool force_bg) {
   TEST_SYNC_POINT_CALLBACK("SstFileManagerImpl::ScheduleFileDeletion",
                            const_cast<std::string*>(&file_path));
+                           ////printf("i am deleted from sst_file_manager_impl.cc 1: %s\n", file_path.c_str());
   return delete_scheduler_.DeleteFile(file_path, path_to_sync,
                                       force_bg);
 }

@@ -103,6 +103,7 @@ Status BlockCacheTier::CleanupCacheFolder(const std::string& folder) {
     if (IsCacheFile(file)) {
       // cache file
       Info(opt_.log, "Removing file %s.", file.c_str());
+      //printf("i am deleted from block_cache_tier.cc 1\n");
       status = opt_.env->DeleteFile(folder + "/" + file);
       if (!status.ok()) {
         Error(opt_.log, "Error deleting file %s. %s", file.c_str(),

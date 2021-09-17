@@ -223,6 +223,7 @@ struct CompactionJob::SubcompactionState {
                          grandparents[grandparent_index]->largest.Encode()) >
                0) {
       if (seen_key) {
+        //printf("im getting a filesize 1\n");
         overlapped_bytes += grandparents[grandparent_index]->fd.GetFileSize();
       }
       assert(grandparent_index + 1 >= grandparents.size() ||
@@ -784,7 +785,7 @@ Status CompactionJob::Run() {
       
       auto fn =
           TableFileName(state.compaction->immutable_options()->cf_paths,
-                        output.meta.fd.GetNumber(), output.meta.fd.GetPathId(), 1);
+                        output.meta.fd.GetNumber(), output.meta.fd.GetPathId());
       tp[fn] = output.table_properties;
     }
   }
@@ -952,7 +953,7 @@ void CompactionJob::ProcessKeyValueCompactionWithCompactionService(
   for (const auto& files_per_level : inputs) {
     for (const auto& file : files_per_level.files) {
       compaction_input.input_files.emplace_back(
-          MakeTableFileName(file->fd.GetNumber()), 1);
+          MakeTableFileName(file->fd.GetNumber()));
     }
   }
   compaction_input.column_family.name =
@@ -1049,7 +1050,7 @@ void CompactionJob::ProcessKeyValueCompactionWithCompactionService(
     uint64_t file_num = versions_->NewFileNumber();
     auto src_file = compaction_result.output_path + "/" + file.file_name;
     auto tgt_file = TableFileName(compaction->immutable_options()->cf_paths,
-                                  file_num, compaction->output_path_id(), 1);
+                                  file_num, compaction->output_path_id());
     s = fs_->RenameFile(src_file, tgt_file, IOOptions(), nullptr);
     if (!s.ok()) {
       sub_compact->status = s;
@@ -1058,6 +1059,7 @@ void CompactionJob::ProcessKeyValueCompactionWithCompactionService(
 
     FileMetaData meta;
     uint64_t file_size;
+    //printf("im getting a filesize 2\n");
     s = fs_->GetFileSize(tgt_file, IOOptions(), &file_size, nullptr);
     if (!s.ok()) {
       sub_compact->status = s;
@@ -1759,10 +1761,11 @@ Status CompactionJob::FinishCompactionOutputFile(
     // the sub_compact output nothing.
     std::string fname =
         TableFileName(sub_compact->compaction->immutable_options()->cf_paths,
-                      meta->fd.GetNumber(), meta->fd.GetPathId(), 1);
+                      meta->fd.GetNumber(), meta->fd.GetPathId());
 
     // TODO(AR) it is not clear if there are any larger implications if
     // DeleteFile fails here
+    //printf("i am deleted from compaction_job.cc 1\n");
     Status ds = env_->DeleteFile(fname);
     if (!ds.ok()) {
       ROCKS_LOG_WARN(
@@ -1795,7 +1798,7 @@ Status CompactionJob::FinishCompactionOutputFile(
   FileDescriptor output_fd;
   uint64_t oldest_blob_file_number = kInvalidBlobFileNumber;
   if (meta != nullptr) {
-    fname = GetTableFileName(meta->fd.GetNumber(), 1);
+    fname = GetTableFileName(meta->fd.GetNumber());
     output_fd = meta->fd;
     oldest_blob_file_number = meta->oldest_blob_file_number;
   } else {
@@ -2127,6 +2130,7 @@ void CompactionJob::UpdateCompactionInputStatsHelper(int* num_files,
 
   for (size_t i = 0; i < num_input_files; ++i) {
     const auto* file_meta = compaction->input(input_level, i);
+    //printf("im getting a filesize 3\n");
     *bytes_read += file_meta->fd.GetFileSize();
     compaction_stats_.num_input_records +=
         static_cast<uint64_t>(file_meta->num_entries);
@@ -2203,6 +2207,7 @@ void CompactionJob::LogCompaction() {
 }
 
 std::string CompactionJob::GetTableFileName(uint64_t file_number, int flush_mode) {
+  flush_mode = 1;
   return TableFileName(compact_->compaction->immutable_options()->cf_paths,
                        file_number, compact_->compaction->output_path_id(), flush_mode);
 }
@@ -2210,6 +2215,7 @@ std::string CompactionJob::GetTableFileName(uint64_t file_number, int flush_mode
 #ifndef ROCKSDB_LITE
 std::string CompactionServiceCompactionJob::GetTableFileName(
     uint64_t file_number, int flush_mode) {
+  flush_mode = 1;
   return MakeTableFileName(output_path_, file_number, flush_mode);
 }
 
@@ -2318,7 +2324,7 @@ Status CompactionServiceCompactionJob::Run() {
   for (const auto& output_file : sub_compact->outputs) {
     auto& meta = output_file.meta;
     compaction_result_->output_files.emplace_back(
-        MakeTableFileName(meta.fd.GetNumber(), 1), meta.fd.smallest_seqno,
+        MakeTableFileName(meta.fd.GetNumber()), meta.fd.smallest_seqno,
         meta.fd.largest_seqno, meta.smallest.Encode().ToString(),
         meta.largest.Encode().ToString(), meta.oldest_ancester_time,
         meta.file_creation_time, output_file.validator.GetHash(),

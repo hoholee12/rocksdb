@@ -561,6 +561,7 @@ IOStatus FaultInjectionTestFS::DeleteFile(const std::string& f,
       return in_s;
     }
   }
+  //printf("i am deleted from fault_injection_fs.cc 1\n");
   IOStatus io_s = FileSystemWrapper::DeleteFile(f, options, dbg);
   if (io_s.ok()) {
     UntrackFile(f);
@@ -696,6 +697,7 @@ IOStatus FaultInjectionTestFS::DeleteFilesCreatedAfterLastDirSync(
   for (auto& pair : map_copy) {
     for (auto& file_pair : pair.second) {
       if (file_pair.second == kNewFileNoOverwrite) {
+        //printf("i am deleted from fault_injection_fs.cc 2\n");
         IOStatus io_s =
             DeleteFile(pair.first + "/" + file_pair.first, options, dbg);
         if (!io_s.ok()) {

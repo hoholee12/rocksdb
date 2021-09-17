@@ -57,6 +57,7 @@ Status Truncate(Env* env, const std::string& filename, uint64_t length) {
       } else {
         fprintf(stderr, "Cannot rename file %s to %s: %s\n", tmp_name.c_str(),
                 filename.c_str(), s.ToString().c_str());
+                //printf("i am deleted from fault_injection_env.cc 1\n");
         env->DeleteFile(tmp_name);
       }
     }
@@ -361,6 +362,7 @@ Status FaultInjectionTestEnv::DeleteFile(const std::string& f) {
   if (!IsFilesystemActive()) {
     return GetError();
   }
+  //printf("i am deleted from fault_injection_env.cc 2\n");
   Status s = EnvWrapper::DeleteFile(f);
   if (s.ok()) {
     UntrackFile(f);
@@ -464,6 +466,7 @@ Status FaultInjectionTestEnv::DeleteFilesCreatedAfterLastDirSync() {
 
   for (auto& pair : map_copy) {
     for (std::string name : pair.second) {
+      //printf("i am deleted from fault_injection_env.cc 3\n");
       Status s = DeleteFile(pair.first + "/" + name);
       if (!s.ok()) {
         return s;

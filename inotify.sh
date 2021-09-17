@@ -8,4 +8,4 @@ if [[ $1 == "" ]]; then
 	loc=/home/jeongho/mnt
 fi
 
-inotifywait -m $loc -e create -e delete | while read dir action file; do echo $file $dir $action; done
+inotifywait -m $loc -e create -e delete | while read dir action file; do echo $dir$file $action; done

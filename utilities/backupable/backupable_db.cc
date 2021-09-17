@@ -1544,6 +1544,7 @@ Status BackupEngineImpl::DeleteBackupNoGC(BackupID backup_id) {
   std::vector<std::string> to_delete;
   for (auto& itr : backuped_file_infos_) {
     if (itr.second->refs == 0) {
+      //printf("i am deleted from backupable_db.cc 1\n");
       Status s = backup_env_->DeleteFile(GetAbsolutePath(itr.first));
       ROCKS_LOG_INFO(options_.info_log, "Deleting %s -- %s", itr.first.c_str(),
                      s.ToString().c_str());
@@ -2122,6 +2123,7 @@ Status BackupEngineImpl::AddBackupFileWorkItem(
           fname.c_str());
       need_to_copy = true;
       // Defer any failure reporting to when we try to write the file
+      //printf("i am deleted from backupable_db.cc 2\n");
       backup_env_->DeleteFile(final_dest_path).PermitUncheckedError();
     } else {
       // file exists and referenced
@@ -2318,6 +2320,7 @@ void BackupEngineImpl::DeleteChildren(const std::string& dir,
       // don't delete this file
       continue;
     }
+    //printf("i am deleted from backupable_db.cc 3\n");
     db_env_->DeleteFile(dir + "/" + f).PermitUncheckedError();  // ignore errors
   }
 }
@@ -2388,6 +2391,7 @@ Status BackupEngineImpl::GarbageCollect() {
           child_itr->second->refs == 0) {
         // this might be a directory, but DeleteFile will just fail in that
         // case, so we're good
+        //printf("i am deleted from backupable_db.cc 4\n");
         Status s = backup_env_->DeleteFile(GetAbsolutePath(rel_fname));
         ROCKS_LOG_INFO(options_.info_log, "Deleting %s -- %s",
                        rel_fname.c_str(), s.ToString().c_str());
@@ -2426,6 +2430,7 @@ Status BackupEngineImpl::GarbageCollect() {
     std::vector<std::string> subchildren;
     if (backup_env_->GetChildren(full_private_path, &subchildren).ok()) {
       for (auto& subchild : subchildren) {
+        //printf("i am deleted from backupable_db.cc 5\n");
         Status s = backup_env_->DeleteFile(full_private_path + subchild);
         ROCKS_LOG_INFO(options_.info_log, "Deleting %s -- %s",
                        (full_private_path + subchild).c_str(),
@@ -2518,6 +2523,7 @@ Status BackupEngineImpl::BackupMeta::Delete(bool delete_meta) {
   if (delete_meta) {
     s = env_->FileExists(meta_filename_);
     if (s.ok()) {
+      //printf("i am deleted from backupable_db.cc 6\n");
       s = env_->DeleteFile(meta_filename_);
     } else if (s.IsNotFound()) {
       s = Status::OK();  // nothing to delete

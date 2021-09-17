@@ -3040,6 +3040,7 @@ void Java_org_rocksdb_RocksDB_deleteFile(
     // exception occurred
     return;
   }
+  //printf("i am deleted from rocksjni.cc 1\n");
   db->DeleteFile(name);
 }
 

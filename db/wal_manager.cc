@@ -37,6 +37,7 @@ namespace ROCKSDB_NAMESPACE {
 #ifndef ROCKSDB_LITE
 
 Status WalManager::DeleteFile(const std::string& fname, uint64_t number) {
+  //printf("i am deleted from wal_manager.cc 1\n");
   auto s = env_->DeleteFile(wal_dir_ + "/" + fname);
   if (s.ok()) {
     MutexLock l(&read_first_record_cache_mutex_);

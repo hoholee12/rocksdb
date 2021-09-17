@@ -40,6 +40,8 @@ SstFileReader::SstFileReader(const Options& options) : rep_(new Rep(options)) {}
 SstFileReader::~SstFileReader() {}
 
 Status SstFileReader::Open(const std::string& file_path) {
+
+  
   auto r = rep_.get();
   Status s;
   uint64_t file_size = 0;

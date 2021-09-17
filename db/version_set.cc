@@ -4376,6 +4376,8 @@ Status VersionSet::ProcessManifestWrites(
                      "Deleting manifest %" PRIu64 " current manifest %" PRIu64
                      "\n",
                      pending_manifest_file_number_, manifest_file_number_);
+
+                     //printf("i am deleted from version_set.cc 1\n");
       Status manifest_del_status = env_->DeleteFile(
           DescriptorFileName(dbname_, pending_manifest_file_number_));
       if (!manifest_del_status.ok()) {
