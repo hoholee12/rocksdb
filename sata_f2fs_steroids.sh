@@ -1,12 +1,16 @@
 #!/bin/bash
 
-./nvme_partition.sh
+./sata_partition.sh
 
 #mnt
+if [[ "$(fuser -cu ~/mnt 2>&1 | wc -c)" -le 15 ]]; then
+	fuser -ck ~/mnt
+fi
 umount ~/mnt 2>/dev/null
 sleep 1
-mkfs.f2fs /dev/nvme0n1p1 -f
-mount -t f2fs /dev/nvme0n1p1 ~/mnt -o mode=lfs
+#-E is for hot list, -e is for cold list, others are all warm.
+mkfs.f2fs /dev/sdb1 -f -E buf,log,sst -o 0
+mount -t f2fs /dev/sdb1 ~/mnt -o mode=adaptive
 chown jeongho:jeongho ~/mnt
 
 df -T | grep mnt

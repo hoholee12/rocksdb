@@ -1,2078 +1,0 @@
-uniform workload
-dataset 29020048
-RocksDB:    version 6.24
-Date:       Fri Sep 17 14:44:55 2021
-CPU:        8 * Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
-CPUCache:   8192 KB
-... finished 100 ops                              ... finished 200 ops                              ... finished 300 ops                              ... finished 400 ops                              ... finished 500 ops                              ... finished 600 ops                              ... finished 700 ops                              ... finished 800 ops                              long op: 76267 micros                              ... finished 900 ops                              ... finished 1000 ops                              ... finished 1500 ops                              ... finished 2000 ops                              long op: 67327 micros                              ... finished 2500 ops                              ... finished 3000 ops                              ... finished 3500 ops                              long op: 70702 micros                              ... finished 4000 ops                              ... finished 4500 ops                              ... finished 5000 ops                              ... finished 6000 ops                              long op: 53130 micros                              ... finished 7000 ops                              ... finished 8000 ops                              ... finished 9000 ops                              ... finished 10000 ops                              long op: 25818 micros                              long op: 24838 micros                              ... finished 15000 ops                              long op: 24945 micros                              long op: 26777 micros                              ... finished 20000 ops                              long op: 22071 micros                              long op: 25931 micros                              long op: 27360 micros                              long op: 26459 micros                              ... finished 25000 ops                              ... finished 30000 ops                              ... finished 35000 ops                              ... finished 40000 ops                              long op: 25741 micros                              ... finished 45000 ops                              ... finished 50000 ops                              long op: 23903 micros                              long op: 25921 micros                              ... finished 60000 ops                              long op: 24192 micros                              Initializing RocksDB Options from the specified file
-Initializing RocksDB Options from command-line flags
-
-current level: 0
-
-current level: 0
-
-current level: 0
-mymsg /home/jeongho/mnt/000284.sl0 CREATE
-
-current level: 0
-
-current level: 0
-mymsg /home/jeongho/mnt/000293.sl0 CREATE
-
-current level: 0
-mymsg /home/jeongho/mnt/000279.sl0 CREATE
-mymsg /home/jeongho/mnt/000288.sl0 CREATE
-mymsg /home/jeongho/mnt/000270.sl0 CREATE
-mymsg /home/jeongho/mnt/000275.sl0 CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000281.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000277.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000276.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000280.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000272.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000289.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000286.sst CREATE
-
-current level: 2
-
-current level: 2
-mymsg /home/jeongho/mnt/000285.sst CREATE
-mymsg /home/jeongho/mnt/000271.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000187.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000188.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000242.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000254.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000226.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000246.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000282.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000245.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000250.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000267.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000251.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000268.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000247.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000264.sst CREATE
-Rocks2level is called on db_impl.cc 2
-
-current level: 0
-mymsg /home/jeongho/mnt/000297.sl0 CREATE
-mymsg /home/jeongho/mnt/000292.log DELETE
-Keys:       48 bytes each (+ 0 bytes user-defined timestamp)
-Values:     100 bytes each (50 bytes after compression)
-Entries:    29020048
-Prefix:    0 bytes
-Keys per prefix:    0
-RawSize:    4096.0 MB (estimated)
-FileSize:   2712.2 MB (estimated)
-Write rate: 0 bytes/second
-Read rate: 0 ops/second
-Compression: Snappy
-Compression sampling rate: 0
-Memtablerep: skip_list
-Perf Level: 1
-------------------------------------------------
-DB path: [/home/jeongho/mnt]
-
-current level: 1
-mymsg /home/jeongho/mnt/000302.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000303.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000304.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000305.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000306.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000307.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000308.sst CREATE
-mymsg /home/jeongho/mnt/000297.sl0 DELETE
-mymsg /home/jeongho/mnt/000293.sl0 DELETE
-mymsg /home/jeongho/mnt/000288.sl0 DELETE
-mymsg /home/jeongho/mnt/000284.sl0 DELETE
-mymsg /home/jeongho/mnt/000281.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000281.sst DELETE again
-mymsg /home/jeongho/mnt/000280.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000280.sst DELETE again
-mymsg /home/jeongho/mnt/000279.sl0 DELETE
-mymsg /home/jeongho/mnt/000277.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000277.sst DELETE again
-mymsg /home/jeongho/mnt/000276.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000276.sst DELETE again
-mymsg /home/jeongho/mnt/000275.sl0 DELETE
-mymsg /home/jeongho/mnt/000272.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000272.sst DELETE again
-mymsg /home/jeongho/mnt/000270.sl0 DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000309.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000310.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000311.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000312.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000313.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000314.sst CREATE
-mymsg /home/jeongho/mnt/000306.sl0 DELETE
-can't d... finished 70000 ops                              long op: 25993 micros                              long op: 26037 micros                              ... finished 80000 ops                              long op: 27406 micros                              long op: 23941 micros                              ... finished 90000 ops                              long op: 22593 micros                              long op: 26089 micros                              ... finished 100000 ops                              ... finished 150000 ops                              ... finished 200000 ops                              ... finished 250000 ops                              ... finished 300000 ops                              ... finished 350000 ops                              ... finished 400000 ops                              ... finished 450000 ops                              ... finished 500000 ops                              ... finished 600000 ops                              ... finished 700000 ops                              ... finished 800000 ops                              ... finished 900000 ops                              ... finished 1000000 ops                              ... finished 1100000 ops                              ... finished 1200000 ops                              ... finished 1300000 ops                              ... finished 1400000 ops                              ... finished 1500000 ops                              ... finished 1600000 ops                              ... finished 1700000 ops                              ... finished 1800000 ops                              ... finished 1900000 ops                              ... finished 2000000 ops                              ... finished 2100000 ops                              ... finished 2200000 ops                              ... finished 2300000 ops                              ... finished 2400000 ops                              ... finished 2500000 ops                              ... finished 2600000 ops                              ... finished 2700000 ops                              ... finished 2800000 ops                              ... finished 2900000 ops                              ... finished 3000000 ops                              ... finished 3100000 ops                              elete!!
-mymsg /home/jeongho/mnt/000306.sst DELETE again
-mymsg /home/jeongho/mnt/000188.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000188.sst DELETE again
-mymsg /home/jeongho/mnt/000187.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000187.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000315.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000316.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000317.sst CREATE
-mymsg /home/jeongho/mnt/000311.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000311.sst DELETE again
-mymsg /home/jeongho/mnt/000307.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000307.sst DELETE again
-mymsg /home/jeongho/mnt/000304.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000304.sst DELETE again
-mymsg /home/jeongho/mnt/000289.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000289.sst DELETE again
-mymsg /home/jeongho/mnt/000247.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000247.sst DELETE again
-mymsg /home/jeongho/mnt/000245.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000245.sst DELETE again
-mymsg /home/jeongho/mnt/000242.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000242.sst DELETE again
-mymsg /home/jeongho/mnt/000226.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000226.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000319.sl0 CREATE
-mymsg /home/jeongho/mnt/000299.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000321.sl0 CREATE
-mymsg /home/jeongho/mnt/000318.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000323.sl0 CREATE
-mymsg /home/jeongho/mnt/000320.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000325.sl0 CREATE
-mymsg /home/jeongho/mnt/000322.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000326.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000327.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000328.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000329.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000330.sst CREATE
-mymsg /home/jeongho/mnt/000325.sl0 DELETE
-mymsg /home/jeongho/mnt/000323.sl0 DELETE
-mymsg /home/jeongho/mnt/000321.sl0 DELETE
-mymsg /home/jeongho/mnt/000319.sl0 DELETE
-mymsg /home/jeongho/mnt/000308.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000308.sst DELETE again
-mymsg /home/jeongho/mnt/000305.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000305.sst DELETE again
-mymsg /home/jeongho/mnt/000303.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000303.sst DELETE again
-mymsg /home/jeongho/mnt/000302.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000302.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000331.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000332.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000333.sst CREATE
-mymsg /home/jeongho/mnt/000327.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000327.sst DELETE again
-mymsg /home/jeongho/mnt/000285.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000285.sst DELETE again
-mymsg /home/jeongho/mnt/000282.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000282.sst DELETE again
-mymsg /home/jeongho/mnt/000271.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000271.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000335.sl0 CREATE
-mymsg /home/jeongho/mnt/000324.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000337.sl0 CREATE
-mymsg /home/jeongho/mnt/000334.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000339.sl0 CREATE
-mymsg /home/jeongho/mnt/000336.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000341.sl0 CREATE
-mymsg /home/jeongho/mnt/000338.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000342.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000343.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000344.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000345.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000346.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000347.sst CREATE
-mymsg /home/jeongho/mnt/000341.sl0 DELETE
-mymsg /home/jeongho/mnt/000339.sl0 DELETE
-mymsg /home/jeongho/mnt/000337.sl0 DELETE
-mymsg /home/jeongho/... finished 3200000 ops                              ... finished 3300000 ops                              ... finished 3400000 ops                              ... finished 3500000 ops                              ... finished 3600000 ops                              ... finished 3700000 ops                              ... finished 3800000 ops                              ... finished 3900000 ops                              ... finished 4000000 ops                              ... finished 4100000 ops                              ... finished 4200000 ops                              ... finished 4300000 ops                              ... finished 4400000 ops                              ... finished 4500000 ops                              ... finished 4600000 ops                              ... finished 4700000 ops                              ... finished 4800000 ops                              mnt/000335.sl0 DELETE
-mymsg /home/jeongho/mnt/000330.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000330.sst DELETE again
-mymsg /home/jeongho/mnt/000329.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000329.sst DELETE again
-mymsg /home/jeongho/mnt/000328.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000328.sst DELETE again
-mymsg /home/jeongho/mnt/000326.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000326.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000348.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000349.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000350.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000351.sst CREATE
-mymsg /home/jeongho/mnt/000342.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000342.sst DELETE again
-mymsg /home/jeongho/mnt/000268.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000268.sst DELETE again
-mymsg /home/jeongho/mnt/000267.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000267.sst DELETE again
-mymsg /home/jeongho/mnt/000264.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000264.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000356.sl0 CREATE
-mymsg /home/jeongho/mnt/000340.log DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000352.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000353.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000354.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000357.sst CREATE
-mymsg /home/jeongho/mnt/000345.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000345.sst DELETE again
-mymsg /home/jeongho/mnt/000309.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000309.sst DELETE again
-mymsg /home/jeongho/mnt/000254.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000254.sst DELETE again
-mymsg /home/jeongho/mnt/000251.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000251.sst DELETE again
-mymsg /home/jeongho/mnt/000250.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000250.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000359.sl0 CREATE
-mymsg /home/jeongho/mnt/000355.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000361.sl0 CREATE
-mymsg /home/jeongho/mnt/000358.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000363.sl0 CREATE
-mymsg /home/jeongho/mnt/000360.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000364.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000365.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000366.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000367.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000368.sst CREATE
-mymsg /home/jeongho/mnt/000363.sl0 DELETE
-mymsg /home/jeongho/mnt/000361.sl0 DELETE
-mymsg /home/jeongho/mnt/000359.sl0 DELETE
-mymsg /home/jeongho/mnt/000356.sl0 DELETE
-mymsg /home/jeongho/mnt/000347.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000347.sst DELETE again
-mymsg /home/jeongho/mnt/000346.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000346.sst DELETE again
-mymsg /home/jeongho/mnt/000344.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000344.sst DELETE again
-mymsg /home/jeongho/mnt/000343.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000343.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000369.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000370.sst CREATE
-mymsg /home/jeongho/mnt/000368.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000368.sst DELETE again
-mymsg /home/jeongho/mnt/000317.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000317.sst DELETE again
-mymsg /home/jeongho/mnt/000246.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000246.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000371.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000372.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000373.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000374.sst CREATE
-mymsg /home/jeongho/mnt/000365.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000365.sst DELETE again
-mymsg /home/jeongho/mnt/000333.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000333.sst DELETE again
-mymsg /home/jeongho/mnt/000313.sl0 DELETE
-can't ... finished 4900000 ops                              ... finished 5000000 ops                              ... finished 5100000 ops                              ... finished 5200000 ops                              ... finished 5300000 ops                              ... finished 5400000 ops                              ... finished 5500000 ops                              ... finished 5600000 ops                              ... finished 5700000 ops                              ... finished 5800000 ops                              ... finished 5900000 ops                              ... finished 6000000 ops                              ... finished 6100000 ops                              ... finished 6200000 ops                              ... finished 6300000 ops                              ... finished 6400000 ops                              ... finished 6500000 ops                              ... finished 6600000 ops                              ... finished 6700000 ops                              ... finished 6800000 ops                              ... finished 6900000 ops                              ... finished 7000000 ops                              ... finished 7100000 ops                              ... finished 7200000 ops                              ... finished 7300000 ops                              ... finished 7400000 ops                              ... finished 7500000 ops                              ... finished 7600000 ops                              ... finished 7700000 ops                              ... finished 7800000 ops                              delete!!
-mymsg /home/jeongho/mnt/000313.sst DELETE again
-mymsg /home/jeongho/mnt/000312.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000312.sst DELETE again
-mymsg /home/jeongho/mnt/000286.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000286.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000376.sl0 CREATE
-mymsg /home/jeongho/mnt/000362.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000378.sl0 CREATE
-mymsg /home/jeongho/mnt/000375.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000380.sl0 CREATE
-mymsg /home/jeongho/mnt/000377.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000382.sl0 CREATE
-mymsg /home/jeongho/mnt/000379.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000383.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000384.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000385.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000386.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000387.sst CREATE
-mymsg /home/jeongho/mnt/000382.sl0 DELETE
-mymsg /home/jeongho/mnt/000380.sl0 DELETE
-mymsg /home/jeongho/mnt/000378.sl0 DELETE
-mymsg /home/jeongho/mnt/000376.sl0 DELETE
-mymsg /home/jeongho/mnt/000367.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000367.sst DELETE again
-mymsg /home/jeongho/mnt/000366.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000366.sst DELETE again
-mymsg /home/jeongho/mnt/000364.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000364.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000388.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000389.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000390.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000391.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000392.sst CREATE
-mymsg /home/jeongho/mnt/000385.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000385.sst DELETE again
-mymsg /home/jeongho/mnt/000354.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000354.sst DELETE again
-mymsg /home/jeongho/mnt/000353.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000353.sst DELETE again
-mymsg /home/jeongho/mnt/000352.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000352.sst DELETE again
-mymsg /home/jeongho/mnt/000314.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000314.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000394.sl0 CREATE
-mymsg /home/jeongho/mnt/000381.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000396.sl0 CREATE
-mymsg /home/jeongho/mnt/000393.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000398.sl0 CREATE
-mymsg /home/jeongho/mnt/000395.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000400.sl0 CREATE
-mymsg /home/jeongho/mnt/000397.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000401.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000402.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000403.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000404.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000405.sst CREATE
-mymsg /home/jeongho/mnt/000400.sl0 DELETE
-mymsg /home/jeongho/mnt/000398.sl0 DELETE
-mymsg /home/jeongho/mnt/000396.sl0 DELETE
-mymsg /home/jeongho/mnt/000394.sl0 DELETE
-mymsg /home/jeongho/mnt/000387.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000387.sst DELETE again
-mymsg /home/jeongho/mnt/000386.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000386.sst DELETE again
-mymsg /home/jeongho/mnt/000384.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000384.sst DELETE again
-mymsg /home/jeongho/mnt/000383.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000383.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000406.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000407.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000408.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000409.sst CREATE
-mymsg /home/jeongho/mnt/000401.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000401.sst DELETE again
-mymsg /home/jeongho/mnt/000351.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000351.sst DELETE again
-mymsg /home/jeongho/mnt/000350.sl0 DELETE
-can't delete!!
-mymsg /hom... finished 7900000 ops                              ... finished 8000000 ops                              ... finished 8100000 ops                              ... finished 8200000 ops                              ... finished 8300000 ops                              ... finished 8400000 ops                              ... finished 8500000 ops                              ... finished 8600000 ops                              ... finished 8700000 ops                              ... finished 8800000 ops                              ... finished 8900000 ops                              ... finished 9000000 ops                              ... finished 9100000 ops                              ... finished 9200000 ops                              ... finished 9300000 ops                              ... finished 9400000 ops                              ... finished 9500000 ops                              ... finished 9600000 ops                              ... finished 9700000 ops                              ... finished 9800000 ops                              ... finished 9900000 ops                              ... finished 10000000 ops                              ... finished 10100000 ops                              ... finished 10200000 ops                              ... finished 10300000 ops                              ... finished 10400000 ops                              ... finished 10500000 ops                              ... finished 10600000 ops                              e/jeongho/mnt/000350.sst DELETE again
-mymsg /home/jeongho/mnt/000349.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000349.sst DELETE again
-mymsg /home/jeongho/mnt/000348.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000348.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000411.sl0 CREATE
-mymsg /home/jeongho/mnt/000399.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000413.sl0 CREATE
-mymsg /home/jeongho/mnt/000410.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000415.sl0 CREATE
-mymsg /home/jeongho/mnt/000412.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000417.sl0 CREATE
-mymsg /home/jeongho/mnt/000414.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000418.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000419.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000420.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000421.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000422.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000423.sst CREATE
-mymsg /home/jeongho/mnt/000417.sl0 DELETE
-mymsg /home/jeongho/mnt/000415.sl0 DELETE
-mymsg /home/jeongho/mnt/000413.sl0 DELETE
-mymsg /home/jeongho/mnt/000411.sl0 DELETE
-mymsg /home/jeongho/mnt/000405.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000405.sst DELETE again
-mymsg /home/jeongho/mnt/000404.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000404.sst DELETE again
-mymsg /home/jeongho/mnt/000403.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000403.sst DELETE again
-mymsg /home/jeongho/mnt/000402.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000402.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000424.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000425.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000426.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000427.sst CREATE
-mymsg /home/jeongho/mnt/000422.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000422.sst DELETE again
-mymsg /home/jeongho/mnt/000369.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000369.sst DELETE again
-mymsg /home/jeongho/mnt/000316.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000316.sst DELETE again
-mymsg /home/jeongho/mnt/000315.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000315.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000432.sl0 CREATE
-mymsg /home/jeongho/mnt/000416.log DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000428.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000429.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000430.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000433.sst CREATE
-mymsg /home/jeongho/mnt/000424.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000424.sst DELETE again
-mymsg /home/jeongho/mnt/000421.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000421.sst DELETE again
-mymsg /home/jeongho/mnt/000392.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000392.sst DELETE again
-mymsg /home/jeongho/mnt/000391.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000391.sst DELETE again
-mymsg /home/jeongho/mnt/000357.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000357.sst DELETE again
-mymsg /home/jeongho/mnt/000310.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000310.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000435.sl0 CREATE
-mymsg /home/jeongho/mnt/000431.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000437.sl0 CREATE
-mymsg /home/jeongho/mnt/000434.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000439.sl0 CREATE
-mymsg /home/jeongho/mnt/000436.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000440.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000441.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000442.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000443.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000444.sst CREATE
-mymsg /home/jeongho/mnt/000439.sl0 DELETE
-mymsg /home/jeongho/mnt/000437.sl0 DELETE
-mymsg /home/jeongho/mnt/000435.sl0 DELETE
-mymsg /home/jeongho/mnt/000432.sl0 DELETE
-mymsg /home/jeongho/mnt/000423.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/00042... finished 10700000 ops                              ... finished 10800000 ops                              ... finished 10900000 ops                              ... finished 11000000 ops                              ... finished 11100000 ops                              ... finished 11200000 ops                              ... finished 11300000 ops                              ... finished 11400000 ops                              ... finished 11500000 ops                              ... finished 11600000 ops                              ... finished 11700000 ops                              ... finished 11800000 ops                              ... finished 11900000 ops                              ... finished 12000000 ops                              ... finished 12100000 ops                              ... finished 12200000 ops                              ... finished 12300000 ops                              ... finished 12400000 ops                              ... finished 12500000 ops                              ... finished 12600000 ops                              ... finished 12700000 ops                              ... finished 12800000 ops                              ... finished 12900000 ops                              ... finished 13000000 ops                              ... finished 13100000 ops                              ... finished 13200000 ops                              ... finished 13300000 ops                              ... finished 13400000 ops                              ... finished 13500000 ops                              ... finished 13600000 ops                              ... finished 13700000 ops                              3.sst DELETE again
-mymsg /home/jeongho/mnt/000420.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000420.sst DELETE again
-mymsg /home/jeongho/mnt/000419.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000419.sst DELETE again
-mymsg /home/jeongho/mnt/000418.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000418.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000445.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000446.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000447.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000448.sst CREATE
-mymsg /home/jeongho/mnt/000442.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000442.sst DELETE again
-mymsg /home/jeongho/mnt/000388.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000388.sst DELETE again
-mymsg /home/jeongho/mnt/000374.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000374.sst DELETE again
-mymsg /home/jeongho/mnt/000373.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000373.sst DELETE again
-mymsg /home/jeongho/mnt/000372.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000372.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000450.sl0 CREATE
-mymsg /home/jeongho/mnt/000438.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000452.sl0 CREATE
-mymsg /home/jeongho/mnt/000449.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000454.sl0 CREATE
-mymsg /home/jeongho/mnt/000451.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000456.sl0 CREATE
-mymsg /home/jeongho/mnt/000453.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000457.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000458.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000459.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000460.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000461.sst CREATE
-mymsg /home/jeongho/mnt/000456.sl0 DELETE
-mymsg /home/jeongho/mnt/000454.sl0 DELETE
-mymsg /home/jeongho/mnt/000452.sl0 DELETE
-mymsg /home/jeongho/mnt/000450.sl0 DELETE
-mymsg /home/jeongho/mnt/000444.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000444.sst DELETE again
-mymsg /home/jeongho/mnt/000443.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000443.sst DELETE again
-mymsg /home/jeongho/mnt/000441.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000441.sst DELETE again
-mymsg /home/jeongho/mnt/000440.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000440.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000462.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000463.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000464.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000465.sst CREATE
-mymsg /home/jeongho/mnt/000458.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000458.sst DELETE again
-mymsg /home/jeongho/mnt/000371.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000371.sst DELETE again
-mymsg /home/jeongho/mnt/000332.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000332.sst DELETE again
-mymsg /home/jeongho/mnt/000331.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000331.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000467.sl0 CREATE
-mymsg /home/jeongho/mnt/000455.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000469.sl0 CREATE
-mymsg /home/jeongho/mnt/000466.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000471.sl0 CREATE
-mymsg /home/jeongho/mnt/000468.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000473.sl0 CREATE
-mymsg /home/jeongho/mnt/000470.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000474.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000475.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000476.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000477.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000478.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000479.sst CREATE
-mymsg /home/jeongho/mnt/000473.sl0 DELETE
-mymsg /home/jeongho/mnt/000471.sl0 DELETE
-mymsg /home/jeongho/mnt/000469.sl0 DELETE
-mymsg /home/jeongho/mnt/000467.sl0 DELETE
-mymsg /home/jeongho/mnt/000461.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000461.sst DELETE again
-... finished 13800000 ops                              ... finished 13900000 ops                              ... finished 14000000 ops                              ... finished 14100000 ops                              ... finished 14200000 ops                              ... finished 14300000 ops                              ... finished 14400000 ops                              ... finished 14500000 ops                              ... finished 14600000 ops                              ... finished 14700000 ops                              ... finished 14800000 ops                              ... finished 14900000 ops                              ... finished 15000000 ops                              ... finished 15100000 ops                              ... finished 15200000 ops                              ... finished 15300000 ops                              ... finished 15400000 ops                              mymsg /home/jeongho/mnt/000460.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000460.sst DELETE again
-mymsg /home/jeongho/mnt/000459.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000459.sst DELETE again
-mymsg /home/jeongho/mnt/000457.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000457.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000480.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000481.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000482.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000483.sst CREATE
-mymsg /home/jeongho/mnt/000474.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000474.sst DELETE again
-mymsg /home/jeongho/mnt/000409.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000409.sst DELETE again
-mymsg /home/jeongho/mnt/000408.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000408.sst DELETE again
-mymsg /home/jeongho/mnt/000407.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000407.sst DELETE again
-mymsg /home/jeongho/mnt/000406.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000406.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000488.sl0 CREATE
-mymsg /home/jeongho/mnt/000472.log DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000484.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000485.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000486.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000489.sst CREATE
-mymsg /home/jeongho/mnt/000477.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000477.sst DELETE again
-mymsg /home/jeongho/mnt/000429.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000429.sst DELETE again
-mymsg /home/jeongho/mnt/000428.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000428.sst DELETE again
-mymsg /home/jeongho/mnt/000390.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000390.sst DELETE again
-mymsg /home/jeongho/mnt/000389.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000389.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000491.sl0 CREATE
-mymsg /home/jeongho/mnt/000487.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000493.sl0 CREATE
-mymsg /home/jeongho/mnt/000490.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000495.sl0 CREATE
-mymsg /home/jeongho/mnt/000492.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000496.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000497.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000498.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000499.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000500.sst CREATE
-mymsg /home/jeongho/mnt/000495.sl0 DELETE
-mymsg /home/jeongho/mnt/000493.sl0 DELETE
-mymsg /home/jeongho/mnt/000491.sl0 DELETE
-mymsg /home/jeongho/mnt/000488.sl0 DELETE
-mymsg /home/jeongho/mnt/000479.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000479.sst DELETE again
-mymsg /home/jeongho/mnt/000478.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000478.sst DELETE again
-mymsg /home/jeongho/mnt/000476.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000476.sst DELETE again
-mymsg /home/jeongho/mnt/000475.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000475.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000501.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000502.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000503.sst CREATE
-mymsg /home/jeongho/mnt/000500.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000500.sst DELETE again
-mymsg /home/jeongho/mnt/000427.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000427.sst DELETE again
-mymsg /home/jeongho/mnt/000426.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000426.sst DELETE again
-mymsg /home/jeongho/mnt/000425.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000425.sst DELETE again
-mymsg /home/jeongho/mnt/000370.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000370.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000504.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000505.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000506.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000507.sst CREATE
-
-current l... finished 15500000 ops                              ... finished 15600000 ops                              ... finished 15700000 ops                              ... finished 15800000 ops                              ... finished 15900000 ops                              ... finished 16000000 ops                              ... finished 16100000 ops                              ... finished 16200000 ops                              ... finished 16300000 ops                              ... finished 16400000 ops                              ... finished 16500000 ops                              ... finished 16600000 ops                              ... finished 16700000 ops                              ... finished 16800000 ops                              ... finished 16900000 ops                              ... finished 17000000 ops                              ... finished 17100000 ops                              ... finished 17200000 ops                              ... finished 17300000 ops                              ... finished 17400000 ops                              ... finished 17500000 ops                              ... finished 17600000 ops                              ... finished 17700000 ops                              ... finished 17800000 ops                              ... finished 17900000 ops                              ... finished 18000000 ops                              ... finished 18100000 ops                              ... finished 18200000 ops                              ... finished 18300000 ops                              evel: 2
-mymsg /home/jeongho/mnt/000510.sst CREATE
-
-current level: 0
-mymsg /home/jeongho/mnt/000509.sl0 CREATE
-mymsg /home/jeongho/mnt/000497.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000497.sst DELETE again
-mymsg /home/jeongho/mnt/000494.log DELETE
-mymsg /home/jeongho/mnt/000465.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000465.sst DELETE again
-mymsg /home/jeongho/mnt/000464.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000464.sst DELETE again
-mymsg /home/jeongho/mnt/000447.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000447.sst DELETE again
-mymsg /home/jeongho/mnt/000446.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000446.sst DELETE again
-mymsg /home/jeongho/mnt/000445.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000445.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000512.sl0 CREATE
-mymsg /home/jeongho/mnt/000508.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000514.sl0 CREATE
-mymsg /home/jeongho/mnt/000511.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000516.sl0 CREATE
-mymsg /home/jeongho/mnt/000513.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000517.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000518.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000519.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000520.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000521.sst CREATE
-mymsg /home/jeongho/mnt/000516.sl0 DELETE
-mymsg /home/jeongho/mnt/000514.sl0 DELETE
-mymsg /home/jeongho/mnt/000512.sl0 DELETE
-mymsg /home/jeongho/mnt/000509.sl0 DELETE
-mymsg /home/jeongho/mnt/000499.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000499.sst DELETE again
-mymsg /home/jeongho/mnt/000498.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000498.sst DELETE again
-mymsg /home/jeongho/mnt/000496.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000496.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000522.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000523.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000524.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000525.sst CREATE
-mymsg /home/jeongho/mnt/000519.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000519.sst DELETE again
-mymsg /home/jeongho/mnt/000486.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000486.sst DELETE again
-mymsg /home/jeongho/mnt/000485.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000485.sst DELETE again
-mymsg /home/jeongho/mnt/000484.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000484.sst DELETE again
-mymsg /home/jeongho/mnt/000448.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000448.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000527.sl0 CREATE
-mymsg /home/jeongho/mnt/000515.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000529.sl0 CREATE
-mymsg /home/jeongho/mnt/000526.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000531.sl0 CREATE
-mymsg /home/jeongho/mnt/000528.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000533.sl0 CREATE
-mymsg /home/jeongho/mnt/000530.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000534.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000535.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000536.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000537.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000538.sst CREATE
-mymsg /home/jeongho/mnt/000533.sl0 DELETE
-mymsg /home/jeongho/mnt/000531.sl0 DELETE
-mymsg /home/jeongho/mnt/000529.sl0 DELETE
-mymsg /home/jeongho/mnt/000527.sl0 DELETE
-mymsg /home/jeongho/mnt/000521.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000521.sst DELETE again
-mymsg /home/jeongho/mnt/000520.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000520.sst DELETE again
-mymsg /home/jeongho/mnt/000518.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000518.sst DELETE again
-mymsg /home/jeongho/mnt/000517.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000517.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000539.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000540.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/00... finished 18400000 ops                              ... finished 18500000 ops                              ... finished 18600000 ops                              ... finished 18700000 ops                              ... finished 18800000 ops                              ... finished 18900000 ops                              ... finished 19000000 ops                              ... finished 19100000 ops                              ... finished 19200000 ops                              ... finished 19300000 ops                              ... finished 19400000 ops                              ... finished 19500000 ops                              ... finished 19600000 ops                              ... finished 19700000 ops                              ... finished 19800000 ops                              ... finished 19900000 ops                              ... finished 20000000 ops                              ... finished 20100000 ops                              ... finished 20200000 ops                              ... finished 20300000 ops                              ... finished 20400000 ops                              ... finished 20500000 ops                              ... finished 20600000 ops                              ... finished 20700000 ops                              ... finished 20800000 ops                              ... finished 20900000 ops                              ... finished 21000000 ops                              ... finished 21100000 ops                              ... finished 21200000 ops                              0541.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000542.sst CREATE
-mymsg /home/jeongho/mnt/000537.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000537.sst DELETE again
-mymsg /home/jeongho/mnt/000525.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000525.sst DELETE again
-mymsg /home/jeongho/mnt/000489.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000489.sst DELETE again
-mymsg /home/jeongho/mnt/000433.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000433.sst DELETE again
-mymsg /home/jeongho/mnt/000430.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000430.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000544.sl0 CREATE
-mymsg /home/jeongho/mnt/000532.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000546.sl0 CREATE
-mymsg /home/jeongho/mnt/000543.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000548.sl0 CREATE
-mymsg /home/jeongho/mnt/000545.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000550.sl0 CREATE
-mymsg /home/jeongho/mnt/000547.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000551.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000552.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000553.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000554.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000555.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000556.sst CREATE
-mymsg /home/jeongho/mnt/000550.sl0 DELETE
-mymsg /home/jeongho/mnt/000548.sl0 DELETE
-mymsg /home/jeongho/mnt/000546.sl0 DELETE
-mymsg /home/jeongho/mnt/000544.sl0 DELETE
-mymsg /home/jeongho/mnt/000538.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000538.sst DELETE again
-mymsg /home/jeongho/mnt/000536.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000536.sst DELETE again
-mymsg /home/jeongho/mnt/000535.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000535.sst DELETE again
-mymsg /home/jeongho/mnt/000534.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000534.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000557.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000558.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000559.sst CREATE
-mymsg /home/jeongho/mnt/000552.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000552.sst DELETE again
-mymsg /home/jeongho/mnt/000483.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000483.sst DELETE again
-mymsg /home/jeongho/mnt/000463.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000463.sst DELETE again
-mymsg /home/jeongho/mnt/000462.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000462.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000565.sl0 CREATE
-mymsg /home/jeongho/mnt/000549.log DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000560.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000561.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000562.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000563.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000566.sst CREATE
-mymsg /home/jeongho/mnt/000557.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000557.sst DELETE again
-mymsg /home/jeongho/mnt/000551.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000551.sst DELETE again
-mymsg /home/jeongho/mnt/000482.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000482.sst DELETE again
-mymsg /home/jeongho/mnt/000481.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000481.sst DELETE again
-mymsg /home/jeongho/mnt/000480.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000480.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000568.sl0 CREATE
-mymsg /home/jeongho/mnt/000564.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000570.sl0 CREATE
-mymsg /home/jeongho/mnt/000567.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000572.sl0 CREATE
-mymsg /home/jeongho/mnt/000569.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000573.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000574.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000575.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000576.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000577.sst CREATE
-mymsg ... finished 21300000 ops                              ... finished 21400000 ops                              ... finished 21500000 ops                              ... finished 21600000 ops                              ... finished 21700000 ops                              ... finished 21800000 ops                              ... finished 21900000 ops                              ... finished 22000000 ops                              ... finished 22100000 ops                              ... finished 22200000 ops                              ... finished 22300000 ops                              ... finished 22400000 ops                              ... finished 22500000 ops                              ... finished 22600000 ops                              ... finished 22700000 ops                              ... finished 22800000 ops                              ... finished 22900000 ops                              ... finished 23000000 ops                              ... finished 23100000 ops                              ... finished 23200000 ops                              ... finished 23300000 ops                              ... finished 23400000 ops                              /home/jeongho/mnt/000572.sl0 DELETE
-mymsg /home/jeongho/mnt/000570.sl0 DELETE
-mymsg /home/jeongho/mnt/000568.sl0 DELETE
-mymsg /home/jeongho/mnt/000565.sl0 DELETE
-mymsg /home/jeongho/mnt/000556.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000556.sst DELETE again
-mymsg /home/jeongho/mnt/000555.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000555.sst DELETE again
-mymsg /home/jeongho/mnt/000554.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000554.sst DELETE again
-mymsg /home/jeongho/mnt/000553.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000553.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000578.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000579.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000580.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000581.sst CREATE
-mymsg /home/jeongho/mnt/000574.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000574.sst DELETE again
-mymsg /home/jeongho/mnt/000507.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000507.sst DELETE again
-mymsg /home/jeongho/mnt/000506.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000506.sst DELETE again
-mymsg /home/jeongho/mnt/000505.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000505.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000583.sl0 CREATE
-mymsg /home/jeongho/mnt/000571.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000585.sl0 CREATE
-mymsg /home/jeongho/mnt/000582.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000587.sl0 CREATE
-mymsg /home/jeongho/mnt/000584.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000589.sl0 CREATE
-mymsg /home/jeongho/mnt/000586.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000590.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000591.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000592.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000593.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000594.sst CREATE
-mymsg /home/jeongho/mnt/000589.sl0 DELETE
-mymsg /home/jeongho/mnt/000587.sl0 DELETE
-mymsg /home/jeongho/mnt/000585.sl0 DELETE
-mymsg /home/jeongho/mnt/000583.sl0 DELETE
-mymsg /home/jeongho/mnt/000577.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000577.sst DELETE again
-mymsg /home/jeongho/mnt/000576.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000576.sst DELETE again
-mymsg /home/jeongho/mnt/000575.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000575.sst DELETE again
-mymsg /home/jeongho/mnt/000573.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000573.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000595.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000596.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000597.sst CREATE
-mymsg /home/jeongho/mnt/000594.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000594.sst DELETE again
-mymsg /home/jeongho/mnt/000503.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000503.sst DELETE again
-mymsg /home/jeongho/mnt/000502.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000502.sst DELETE again
-mymsg /home/jeongho/mnt/000501.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000501.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000603.sl0 CREATE
-mymsg /home/jeongho/mnt/000588.log DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000598.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000599.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000600.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000601.sst CREATE
-mymsg /home/jeongho/mnt/000592.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000592.sst DELETE again
-mymsg /home/jeongho/mnt/000539.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000539.sst DELETE again
-mymsg /home/jeongho/mnt/000524.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000524.sst DELETE again
-mymsg /home/jeongho/mnt/000523.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000523.sst DELETE again
-mymsg /home/jeongho/mnt/000522.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000522.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000605.sl0 CREATE
-mymsg /home/jeongho/mnt/000602.... finished 23500000 ops                              ... finished 23600000 ops                              ... finished 23700000 ops                              ... finished 23800000 ops                              ... finished 23900000 ops                              ... finished 24000000 ops                              ... finished 24100000 ops                              ... finished 24200000 ops                              ... finished 24300000 ops                              ... finished 24400000 ops                              ... finished 24500000 ops                              ... finished 24600000 ops                              ... finished 24700000 ops                              ... finished 24800000 ops                              ... finished 24900000 ops                              ... finished 25000000 ops                              ... finished 25100000 ops                              ... finished 25200000 ops                              ... finished 25300000 ops                              ... finished 25400000 ops                              ... finished 25500000 ops                              ... finished 25600000 ops                              ... finished 25700000 ops                              ... finished 25800000 ops                              ... finished 25900000 ops                              ... finished 26000000 ops                              ... finished 26100000 ops                              ... finished 26200000 ops                              ... finished 26300000 ops                              ... finished 26400000 ops                              log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000607.sl0 CREATE
-mymsg /home/jeongho/mnt/000604.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000609.sl0 CREATE
-mymsg /home/jeongho/mnt/000606.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000610.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000611.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000612.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000613.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000614.sst CREATE
-mymsg /home/jeongho/mnt/000609.sl0 DELETE
-mymsg /home/jeongho/mnt/000607.sl0 DELETE
-mymsg /home/jeongho/mnt/000605.sl0 DELETE
-mymsg /home/jeongho/mnt/000603.sl0 DELETE
-mymsg /home/jeongho/mnt/000593.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000593.sst DELETE again
-mymsg /home/jeongho/mnt/000591.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000591.sst DELETE again
-mymsg /home/jeongho/mnt/000590.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000590.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000615.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000616.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000617.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000618.sst CREATE
-mymsg /home/jeongho/mnt/000613.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000613.sst DELETE again
-mymsg /home/jeongho/mnt/000601.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000601.sst DELETE again
-mymsg /home/jeongho/mnt/000542.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000542.sst DELETE again
-mymsg /home/jeongho/mnt/000541.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000541.sst DELETE again
-mymsg /home/jeongho/mnt/000540.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000540.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000620.sl0 CREATE
-mymsg /home/jeongho/mnt/000608.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000622.sl0 CREATE
-mymsg /home/jeongho/mnt/000619.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000624.sl0 CREATE
-mymsg /home/jeongho/mnt/000621.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000626.sl0 CREATE
-mymsg /home/jeongho/mnt/000623.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000627.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000628.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000629.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000630.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000631.sst CREATE
-mymsg /home/jeongho/mnt/000626.sl0 DELETE
-mymsg /home/jeongho/mnt/000624.sl0 DELETE
-mymsg /home/jeongho/mnt/000622.sl0 DELETE
-mymsg /home/jeongho/mnt/000620.sl0 DELETE
-mymsg /home/jeongho/mnt/000614.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000614.sst DELETE again
-mymsg /home/jeongho/mnt/000612.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000612.sst DELETE again
-mymsg /home/jeongho/mnt/000611.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000611.sst DELETE again
-mymsg /home/jeongho/mnt/000610.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000610.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000632.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000633.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000634.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000635.sst CREATE
-mymsg /home/jeongho/mnt/000628.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000628.sst DELETE again
-mymsg /home/jeongho/mnt/000566.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000566.sst DELETE again
-mymsg /home/jeongho/mnt/000563.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000563.sst DELETE again
-mymsg /home/jeongho/mnt/000559.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000559.sst DELETE again
-mymsg /home/jeongho/mnt/000558.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000558.sst DELETE again
-mymsg /home/jeongho/mnt/000504.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000504.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000637.sl0 CREATE
-mymsg /home/jeongho/mnt/000625.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000639.sl0 CREATE
-mymsg... finished 26500000 ops                              ... finished 26600000 ops                              ... finished 26700000 ops                              ... finished 26800000 ops                              ... finished 26900000 ops                              ... finished 27000000 ops                              ... finished 27100000 ops                              ... finished 27200000 ops                              ... finished 27300000 ops                              ... finished 27400000 ops                              ... finished 27500000 ops                              ... finished 27600000 ops                              ... finished 27700000 ops                              ... finished 27800000 ops                              ... finished 27900000 ops                              ... finished 28000000 ops                              ... finished 28100000 ops                              ... finished 28200000 ops                              ... finished 28300000 ops                              ... finished 28400000 ops                              ... finished 28500000 ops                              ... finished 28600000 ops                              ... finished 28700000 ops                              ... finished 28800000 ops                              ... finished 28900000 ops                               /home/jeongho/mnt/000636.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000641.sl0 CREATE
-mymsg /home/jeongho/mnt/000638.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000643.sl0 CREATE
-mymsg /home/jeongho/mnt/000640.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000644.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000645.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000646.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000647.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000648.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000649.sst CREATE
-mymsg /home/jeongho/mnt/000643.sl0 DELETE
-mymsg /home/jeongho/mnt/000641.sl0 DELETE
-mymsg /home/jeongho/mnt/000639.sl0 DELETE
-mymsg /home/jeongho/mnt/000637.sl0 DELETE
-mymsg /home/jeongho/mnt/000631.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000631.sst DELETE again
-mymsg /home/jeongho/mnt/000630.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000630.sst DELETE again
-mymsg /home/jeongho/mnt/000629.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000629.sst DELETE again
-mymsg /home/jeongho/mnt/000627.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000627.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000650.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000651.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000652.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000653.sst CREATE
-mymsg /home/jeongho/mnt/000644.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000644.sst DELETE again
-mymsg /home/jeongho/mnt/000562.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000562.sst DELETE again
-mymsg /home/jeongho/mnt/000561.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000561.sst DELETE again
-mymsg /home/jeongho/mnt/000560.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000560.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000658.sl0 CREATE
-mymsg /home/jeongho/mnt/000642.log DELETE
-
-current level: 2
-mymsg /home/jeongho/mnt/000654.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000655.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000656.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000659.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000660.sst CREATE
-mymsg /home/jeongho/mnt/000647.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000647.sst DELETE again
-mymsg /home/jeongho/mnt/000615.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000615.sst DELETE again
-mymsg /home/jeongho/mnt/000600.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000600.sst DELETE again
-mymsg /home/jeongho/mnt/000599.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000599.sst DELETE again
-mymsg /home/jeongho/mnt/000598.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000598.sst DELETE again
-
-current level: 0
-mymsg /home/jeongho/mnt/000662.sl0 CREATE
-mymsg /home/jeongho/mnt/000657.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000664.sl0 CREATE
-mymsg /home/jeongho/mnt/000661.log DELETE
-
-current level: 0
-mymsg /home/jeongho/mnt/000666.sl0 CREATE
-mymsg /home/jeongho/mnt/000663.log DELETE
-
-current level: 1
-mymsg /home/jeongho/mnt/000667.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000668.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000669.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000670.sst CREATE
-
-current level: 1
-mymsg /home/jeongho/mnt/000671.sst CREATE
-mymsg /home/jeongho/mnt/000666.sl0 DELETE
-mymsg /home/jeongho/mnt/000664.sl0 DELETE
-mymsg /home/jeongho/mnt/000662.sl0 DELETE
-mymsg /home/jeongho/mnt/000658.sl0 DELETE
-mymsg /home/jeongho/mnt/000649.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000649.sst DELETE again
-mymsg /home/jeongho/mnt/000648.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000648.sst DELETE again
-mymsg /home/jeongho/mnt/000646.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000646.sst DELETE again
-mymsg /home/jeongho/mnt/000645.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000645.sst DELETE again
-
-current level: 2
-mymsg /home/jeongho/mnt/000672.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000673.sst CREATE
-
-curre... finished 29000000 ops                              nt level: 2
-mymsg /home/jeongho/mnt/000674.sst CREATE
-
-current level: 2
-mymsg /home/jeongho/mnt/000675.sst CREATE
-mymsg /home/jeongho/mnt/000668.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000668.sst DELETE again
-mymsg /home/jeongho/mnt/000635.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000635.sst DELETE again
-mymsg /home/jeongho/mnt/000634.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000634.sst DELETE again
-mymsg /home/jeongho/mnt/000579.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000579.sst DELETE again
-mymsg /home/jeongho/mnt/000578.sl0 DELETE
-can't delete!!
-mymsg /home/jeongho/mnt/000578.sst DELETE again
-updaterandom :      20.447 micros/op 48906 ops/sec;   13.8 MB/s ( updates:29020048 found:29020048)
-Microseconds per update:
-Count: 29020048 Average: 20.4473  StdDev: 38.18
-Min: 3  Median: 18.9085  Max: 76267
-Percentiles: P50: 18.91 P75: 23.88 P99: 41.23 P99.9: 156.70 P99.99: 362.40
-------------------------------------------------------
-(       2,       3 ]     1172   0.004%   0.004% 
-(       3,       4 ]    55154   0.190%   0.194% 
-(       4,       6 ]   135342   0.466%   0.660% 
-(       6,      10 ]   818072   2.819%   3.479% #
-(      10,      15 ]  5941168  20.473%  23.952% ####
-(      15,      22 ] 13538147  46.651%  70.603% #########
-(      22,      34 ]  8152075  28.091%  98.694% ######
-(      34,      51 ]   208575   0.719%  99.413% 
-(      51,      76 ]    39743   0.137%  99.550% 
-(      76,     110 ]    39877   0.137%  99.687% 
-(     110,     170 ]    79274   0.273%  99.961% 
-(     170,     250 ]     7308   0.025%  99.986% 
-(     250,     380 ]     1433   0.005%  99.991% 
-(     380,     580 ]      610   0.002%  99.993% 
-(     580,     870 ]     1261   0.004%  99.997% 
-(     870,    1300 ]      547   0.002%  99.999% 
-(    1300,    1900 ]       58   0.000%  99.999% 
-(    1900,    2900 ]       89   0.000% 100.000% 
-(    2900,    4400 ]       49   0.000% 100.000% 
-(    4400,    6600 ]       30   0.000% 100.000% 
-(    6600,    9900 ]       15   0.000% 100.000% 
-(    9900,   14000 ]       11   0.000% 100.000% 
-(   14000,   22000 ]       16   0.000% 100.000% 
-(   22000,   33000 ]       18   0.000% 100.000% 
-(   50000,   75000 ]        3   0.000% 100.000% 
-(   75000,  110000 ]        1   0.000% 100.000% 
-
-STATISTICS:
-rocksdb.block.cache.miss COUNT : 104388799
-rocksdb.block.cache.hit COUNT : 1979411
-rocksdb.block.cache.add COUNT : 95975815
-rocksdb.block.cache.add.failures COUNT : 0
-rocksdb.block.cache.index.miss COUNT : 0
-rocksdb.block.cache.index.hit COUNT : 0
-rocksdb.block.cache.index.add COUNT : 0
-rocksdb.block.cache.index.bytes.insert COUNT : 0
-rocksdb.block.cache.index.bytes.evict COUNT : 0
-rocksdb.block.cache.filter.miss COUNT : 0
-rocksdb.block.cache.filter.hit COUNT : 0
-rocksdb.block.cache.filter.add COUNT : 0
-rocksdb.block.cache.filter.bytes.insert COUNT : 0
-rocksdb.block.cache.filter.bytes.evict COUNT : 0
-rocksdb.block.cache.data.miss COUNT : 104388799
-rocksdb.block.cache.data.hit COUNT : 1979411
-rocksdb.block.cache.data.add COUNT : 95975815
-rocksdb.block.cache.data.bytes.insert COUNT : 390045517984
-rocksdb.block.cache.bytes.read COUNT : 8044324976
-rocksdb.block.cache.bytes.write COUNT : 390045517984
-rocksdb.bloom.filter.useful COUNT : 0
-rocksdb.bloom.filter.full.positive COUNT : 0
-rocksdb.bloom.filter.full.true.positive COUNT : 0
-rocksdb.bloom.filter.micros COUNT : 0
-rocksdb.persistent.cache.hit COUNT : 0
-rocksdb.persistent.cache.miss COUNT : 0
-rocksdb.sim.block.cache.hit COUNT : 0
-rocksdb.sim.block.cache.miss COUNT : 0
-rocksdb.memtable.hit COUNT : 197254
-rocksdb.memtable.miss COUNT : 28822794
-rocksdb.l0.hit COUNT : 643192
-rocksdb.l1.hit COUNT : 3282154
-rocksdb.l2andup.hit COUNT : 24897448
-rocksdb.compaction.key.drop.new COUNT : 28584490
-rocksdb.compaction.key.drop.obsolete COUNT : 0
-rocksdb.compaction.key.drop.range_del COUNT : 0
-rocksdb.compaction.key.drop.user COUNT : 0
-rocksdb.compaction.range_del.drop.obsolete COUNT : 0
-rocksdb.compaction.optimized.del.drop.obsolete COUNT : 0
-rocksdb.compaction.cancelled COUNT : 0
-rocksdb.number.keys.written COUNT : 29020048
-rocksdb.number.keys.read COUNT : 29020048
-rocksdb.number.keys.updated COUNT : 0
-rocksdb.bytes.written COUNT : 4730267824
-rocksdb.bytes.read COUNT : 2902004800
-rocksdb.number.db.seek COUNT : 0
-rocksdb.number.db.next COUNT : 0
-rocksdb.number.db.prev COUNT : 0
-rocksdb.number.db.seek.found COUNT : 0
-rocksdb.number.db.next.found COUNT : 0
-rocksdb.number.db.prev.found COUNT : 0
-rocksdb.db.iter.bytes.read COUNT : 0
-rocksdb.no.file.closes COUNT : 0
-rocksdb.no.file.opens COUNT : 328
-rocksdb.no.file.errors COUNT : 0
-rocksdb.l0.slowdown.micros COUNT : 0
-rocksdb.memtable.compaction.micros COUNT : 0
-rocksdb.l0.num.files.stall.micros COUNT : 0
-rocksdb.stall.micros COUNT : 0
-rocksdb.db.mutex.wait.micros COUNT : 0
-rocksdb.rate.limit.delay.millis COUNT : 0
-rocksdb.num.iterators COUNT : 0
-rocksdb.number.multiget.get COUNT : 0
-rocksdb.number.multiget.keys.read COUNT : 0
-rocksdb.number.multiget.bytes.read COUNT : 0
-rocksdb.number.deletes.filtered COUNT : 0
-rocksdb.number.merge.failures COUNT : 0
-rocksdb.bloom.filter.prefix.checked COUNT : 0
-rocksdb.bloom.filter.prefix.useful COUNT : 0
-rocksdb.number.reseeks.iteration COUNT : 0
-rocksdb.getupdatessince.calls COUNT : 0
-rocksdb.block.cachecompressed.miss COUNT : 0
-rocksdb.block.cachecompressed.hit COUNT : 0
-rocksdb.block.cachecompressed.add COUNT : 0
-rocksdb.block.cachecompressed.add.failures COUNT : 0
-rocksdb.wal.synced COUNT : 0
-rocksdb.wal.bytes COUNT : 4730267824
-rocksdb.write.self COUNT : 29020048
-rocksdb.write.other COUNT : 0
-rocksdb.write.timeout COUNT : 0
-rocksdb.write.wal COUNT : 29020048
-rocksdb.compact.read.bytes COUNT : 14864033197
-rocksdb.compact.write.bytes COUNT : 12954878967
-rocksdb.flush.write.bytes COUNT : 2001101775
-rocksdb.compact.read.marked.bytes COUNT : 0
-rocksdb.compact.read.periodic.bytes COUNT : 0
-rocksdb.compact.read.ttl.bytes COUNT : 0
-rocksdb.compact.write.marked.bytes COUNT : 0
-rocksdb.compact.write.periodic.bytes COUNT : 0
-rocksdb.compact.write.ttl.bytes COUNT : 0
-rocksdb.number.direct.load.table.properties COUNT : 0
-rocksdb.number.superversion_acquires COUNT : 203
-rocksdb.number.superversion_releases COUNT : 34
-rocksdb.number.superversion_cleanups COUNT : 34
-rocksdb.number.block.compressed COUNT : 8465527
-rocksdb.number.block.decompressed COUNT : 104389123
-rocksdb.number.block.not_compressed COUNT : 4
-rocksdb.merge.operation.time.nanos COUNT : 0
-rocksdb.filter.operation.time.nanos COUNT : 0
-rocksdb.row.cache.hit COUNT : 0
-rocksdb.row.cache.miss COUNT : 0
-rocksdb.read.amp.estimate.useful.bytes COUNT : 0
-rocksdb.read.amp.total.read.bytes COUNT : 0
-rocksdb.number.rate_limiter.drains COUNT : 0
-rocksdb.number.iter.skip COUNT : 0
-rocksdb.blobdb.num.put COUNT : 0
-rocksdb.blobdb.num.write COUNT : 0
-rocksdb.blobdb.num.get COUNT : 0
-rocksdb.blobdb.num.multiget COUNT : 0
-rocksdb.blobdb.num.seek COUNT : 0
-rocksdb.blobdb.num.next COUNT : 0
-rocksdb.blobdb.num.prev COUNT : 0
-rocksdb.blobdb.num.keys.written COUNT : 0
-rocksdb.blobdb.num.keys.read COUNT : 0
-rocksdb.blobdb.bytes.written COUNT : 0
-rocksdb.blobdb.bytes.read COUNT : 0
-rocksdb.blobdb.write.inlined COUNT : 0
-rocksdb.blobdb.write.inlined.ttl COUNT : 0
-rocksdb.blobdb.write.blob COUNT : 0
-rocksdb.blobdb.write.blob.ttl COUNT : 0
-rocksdb.blobdb.blob.file.bytes.written COUNT : 0
-rocksdb.blobdb.blob.file.bytes.read COUNT : 0
-rocksdb.blobdb.blob.file.synced COUNT : 0
-rocksdb.blobdb.blob.index.expired.count COUNT : 0
-rocksdb.blobdb.blob.index.expired.size COUNT : 0
-rocksdb.blobdb.blob.index.evicted.count COUNT : 0
-rocksdb.blobdb.blob.index.evicted.size COUNT : 0
-rocksdb.blobdb.gc.num.files COUNT : 0
-rocksdb.blobdb.gc.num.new.files COUNT : 0
-rocksdb.blobdb.gc.failures COUNT : 0
-rocksdb.blobdb.gc.num.keys.overwritten COUNT : 0
-rocksdb.blobdb.gc.num.keys.expired COUNT : 0
-rocksdb.blobdb.gc.num.keys.relocated COUNT : 0
-rocksdb.blobdb.gc.bytes.overwritten COUNT : 0
-rocksdb.blobdb.gc.bytes.expired COUNT : 0
-rocksdb.blobdb.gc.bytes.relocated COUNT : 0
-rocksdb.blobdb.fifo.num.files.evicted COUNT : 0
-rocksdb.blobdb.fifo.num.keys.evicted COUNT : 0
-rocksdb.blobdb.fifo.bytes.evicted COUNT : 0
-rocksdb.txn.overhead.mutex.prepare COUNT : 0
-rocksdb.txn.overhead.mutex.old.commit.map COUNT : 0
-rocksdb.txn.overhead.duplicate.key COUNT : 0
-rocksdb.txn.overhead.mutex.snapshot COUNT : 0
-rocksdb.txn.get.tryagain COUNT : 0
-rocksdb.number.multiget.keys.found COUNT : 0
-rocksdb.num.iterator.created COUNT : 0
-rocksdb.num.iterator.deleted COUNT : 0
-rocksdb.block.cache.compression.dict.miss COUNT : 0
-rocksdb.block.cache.compression.dict.hit COUNT : 0
-rocksdb.block.cache.compression.dict.add COUNT : 0
-rocksdb.block.cache.compression.dict.bytes.insert COUNT : 0
-rocksdb.block.cache.compression.dict.bytes.evict COUNT : 0
-rocksdb.block.cache.add.redundant COUNT : 0
-rocksdb.block.cache.index.add.redundant COUNT : 0
-rocksdb.block.cache.filter.add.redundant COUNT : 0
-rocksdb.block.cache.data.add.redundant COUNT : 0
-rocksdb.block.cache.compression.dict.add.redundant COUNT : 0
-rocksdb.files.marked.trash COUNT : 0
-rocksdb.files.deleted.immediately COUNT : 376
-rocksdb.error.handler.bg.errro.count COUNT : 0
-rocksdb.error.handler.bg.io.errro.count COUNT : 0
-rocksdb.error.handler.bg.retryable.io.errro.count COUNT : 0
-rocksdb.error.handler.autoresume.count COUNT : 0
-rocksdb.error.handler.autoresume.retry.total.count COUNT : 0
-rocksdb.error.handler.autoresume.success.count COUNT : 0
-rocksdb.memtable.payload.bytes.at.flush COUNT : 4475658096
-rocksdb.memtable.garbage.bytes.at.flush COUNT : 28997904
-rocksdb.secondary.cache.hits COUNT : 0
-rocksdb.db.get.micros P50 : 14.800195 P95 : 29.646079 P99 : 33.850875 P100 : 76241.000000 COUNT : 29020048 SUM : 483524523
-rocksdb.db.write.micros P50 : 2.536700 P95 : 3.948952 P99 : 5.787784 P100 : 341.000000 COUNT : 29020048 SUM : 91445112
-rocksdb.compaction.times.micros P50 : 2506060.606061 P95 : 4008333.333333 P99 : 4241666.666667 P100 : 4280760.000000 COUNT : 50 SUM : 124000967
-rocksdb.compaction.times.cpu_micros P50 : 2282352.941176 P95 : 3425000.000000 P99 : 3871968.000000 P100 : 3871968.000000 COUNT : 50 SUM : 113217847
-rocksdb.subcompaction.setup.times.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.table.sync.micros P50 : 27722.972973 P95 : 32873.648649 P99 : 91329.000000 P100 : 91329.000000 COUNT : 77 SUM : 2203370
-rocksdb.compaction.outfile.sync.micros P50 : 60115.606936 P95 : 74552.023121 P99 : 100287.500000 P100 : 105597.000000 COUNT : 222 SUM : 13376654
-rocksdb.wal.file.sync.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.manifest.file.sync.micros P50 : 29.522388 P95 : 50.793939 P99 : 343.600000 P100 : 52337.000000 COUNT : 128 SUM : 56559
-rocksdb.table.open.io.micros P50 : 321.441441 P95 : 48300.000000 P99 : 115227.000000 P100 : 115227.000000 COUNT : 328 SUM : 1902895
-rocksdb.db.multiget.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.read.block.compaction.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.read.block.get.micros P50 : 1.792545 P95 : 2.894077 P99 : 3.313819 P100 : 115127.000000 COUNT : 104389127 SUM : 268864098
-rocksdb.write.raw.block.micros P50 : 0.501667 P95 : 0.953167 P99 : 0.993300 P100 : 745.000000 COUNT : 8466129 SUM : 6112661
-rocksdb.l0.slowdown.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.memtable.compaction.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.num.files.stall.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.hard.rate.limit.delay.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.soft.rate.limit.delay.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.numfiles.in.singlecompaction P50 : 1.000000 P95 : 3.921053 P99 : 7.000000 P100 : 7.000000 COUNT : 50 SUM : 113
-rocksdb.db.seek.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.db.write.stall P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.sst.read.micros P50 : 0.585643 P95 : 1.680884 P99 : 1.963888 P100 : 111652.000000 COUNT : 104390111 SUM : 137337648
-rocksdb.num.subcompactions.scheduled P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.bytes.per.read P50 : 100.000000 P95 : 100.000000 P99 : 100.000000 P100 : 100.000000 COUNT : 29020048 SUM : 2902004800
-rocksdb.bytes.per.write P50 : 163.000000 P95 : 163.000000 P99 : 163.000000 P100 : 163.000000 COUNT : 29020048 SUM : 4730267824
-rocksdb.bytes.per.multiget P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.bytes.compressed P50 : 3650.002835 P95 : 4325.047330 P99 : 4385.051285 P100 : 800446.000000 COUNT : 8465527 SUM : 33852773550
-rocksdb.bytes.decompressed P50 : 3649.992729 P95 : 4325.003463 P99 : 4385.004417 P100 : 800446.000000 COUNT : 104389123 SUM : 415827202219
-rocksdb.compression.times.nanos P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.decompression.times.nanos P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.read.num.merge_operands P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.key.size P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.value.size P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.write.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.get.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.multiget.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.seek.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.next.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.prev.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.blob.file.write.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.blob.file.read.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.blob.file.sync.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.gc.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.compression.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.blobdb.decompression.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.db.flush.micros P50 : 211081.081081 P95 : 248054.054054 P99 : 254908.000000 P100 : 254908.000000 COUNT : 76 SUM : 14165872
-rocksdb.sst.batch.size P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.num.index.and.filter.blocks.read.per.level P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.num.data.blocks.read.per.level P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.num.sst.read.per.level P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-rocksdb.error.handler.autoresume.retry.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
-
-578.49user 128.40system 9:55.27elapsed 118%CPU (0avgtext+0avgdata 125176maxresident)k
-2895824inputs+39048056outputs (24major+260051minor)pagefaults 0swaps
-after run...
-/dev/nvme0n1p1 f2fs     390708224 390185020    523204 100% /home/jeongho/mnt

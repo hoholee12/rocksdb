@@ -104,7 +104,8 @@ Status TableCache::GetTableReader(
     const SliceTransform* prefix_extractor, bool skip_filters, int level,
     bool prefetch_index_and_filter_in_cache,
     size_t max_file_size_for_l0_meta_pin) {
-      printf("\ncurrent level: %d\n", level);
+      countlevel[fd.GetNumber()] = level + 1;
+      printf("current level: %d\n", level);
       std::string fname = TableFileName(ioptions_.cf_paths, fd.GetNumber(), fd.GetPathId(), level);
   std::unique_ptr<FSRandomAccessFile> file;
   FileOptions fopts = file_options;

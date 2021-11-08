@@ -18,10 +18,12 @@
 #include "util/stop_watch.h"
 #include "util/string_util.h"
 
+int countlevel[1000000];
+
 namespace ROCKSDB_NAMESPACE {
 
 //some code uses size() to replace a string.. all of these strings here must be same 3 characters.
-static const std::string kRocksDbTFileExt_l0 = "sl0";
+static const std::string kRocksDbTFileExt_l0 = "buf";
 static const std::string kRocksDbTFileExt = "sst";
 static const std::string kLevelDbTFileExt = "ldb";
 static const std::string kRocksDBBlobFileExt = "blob";
@@ -105,11 +107,14 @@ std::string ArchivedLogFileName(const std::string& name, uint64_t number) {
   return MakeFileName(name + "/" + ARCHIVAL_DIR, number, "log");
 }
 
-int flushMode = 0;
+//upto BUFLEVEL is buf
+#define BUFLEVEL 1
 
-//this is where file really writes
-std::string MakeTableFileName(const std::string& path, uint64_t number, int flush_mode) {
-  if(flush_mode){
+//this is where file naming happens
+//level is 3rd arg
+std::string MakeTableFileName(const std::string& path, uint64_t number, int level) {
+  
+  if(level > BUFLEVEL){
     //printf("MakeTableFileName: %s/%06lu.%s\n", path.c_str(), number, kRocksDbTFileExt.c_str());
     return MakeFileName(path, number, kRocksDbTFileExt.c_str());
   }
@@ -119,9 +124,10 @@ std::string MakeTableFileName(const std::string& path, uint64_t number, int flus
   }
 }
 
-//called on compaction
-std::string MakeTableFileName(uint64_t number, int flush_mode) {
-  if(flush_mode){
+//this is where file naming happens
+//level is 2nd arg
+std::string MakeTableFileName(uint64_t number, int level) {
+  if(level > BUFLEVEL){
     //printf("MakeTableFileName: %06lu.%s\n", number, kRocksDbTFileExt.c_str());
     return MakeFileName(number, kRocksDbTFileExt.c_str());
   }
@@ -131,6 +137,7 @@ std::string MakeTableFileName(uint64_t number, int flush_mode) {
   }
 }
 
+//filename sanitizer (mostly called on delete)
 std::string Rocks2LevelTableFileName(const std::string& fullname) {
   
   assert(fullname.size() > kRocksDbTFileExt.size() + 1);
@@ -138,7 +145,7 @@ std::string Rocks2LevelTableFileName(const std::string& fullname) {
     return "";
   }
   switch(fullname.at(fullname.size() - 1)){
-  case '0': return fullname.substr(0, fullname.size() - kRocksDbTFileExt_l0.size()) +
+  case 'f': return fullname.substr(0, fullname.size() - kRocksDbTFileExt_l0.size()) +
          kRocksDbTFileExt;
   case 't': return fullname.substr(0, fullname.size() - kRocksDbTFileExt.size()) +
          kRocksDbTFileExt_l0;
@@ -158,9 +165,10 @@ uint64_t TableFileNameToNumber(const std::string& name) {
   return number;
 }
 
-
+//main callee
+//level is 4th arg
 std::string TableFileName(const std::vector<DbPath>& db_paths, uint64_t number,
-                          uint32_t path_id, int flush_mode) {
+                          uint32_t path_id, int level) {
 
   assert(number > 0);
   std::string path;
@@ -169,7 +177,7 @@ std::string TableFileName(const std::vector<DbPath>& db_paths, uint64_t number,
   } else {
     path = db_paths[path_id].path;
   }
-  return MakeTableFileName(path, number, flush_mode);
+  return MakeTableFileName(path, number, level);
 }
 
 void FormatFileNumber(uint64_t number, uint32_t path_id, char* out_buf,

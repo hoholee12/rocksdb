@@ -953,7 +953,7 @@ void CompactionJob::ProcessKeyValueCompactionWithCompactionService(
   for (const auto& files_per_level : inputs) {
     for (const auto& file : files_per_level.files) {
       compaction_input.input_files.emplace_back(
-          MakeTableFileName(file->fd.GetNumber()));
+          MakeTableFileName(file->fd.GetNumber(), compaction_input.output_level));
     }
   }
   compaction_input.column_family.name =
@@ -1050,7 +1050,7 @@ void CompactionJob::ProcessKeyValueCompactionWithCompactionService(
     uint64_t file_num = versions_->NewFileNumber();
     auto src_file = compaction_result.output_path + "/" + file.file_name;
     auto tgt_file = TableFileName(compaction->immutable_options()->cf_paths,
-                                  file_num, compaction->output_path_id());
+                                  file_num, compaction->output_path_id(), compaction_input.output_level);
     s = fs_->RenameFile(src_file, tgt_file, IOOptions(), nullptr);
     if (!s.ok()) {
       sub_compact->status = s;
@@ -1798,7 +1798,7 @@ Status CompactionJob::FinishCompactionOutputFile(
   FileDescriptor output_fd;
   uint64_t oldest_blob_file_number = kInvalidBlobFileNumber;
   if (meta != nullptr) {
-    fname = GetTableFileName(meta->fd.GetNumber());
+    fname = GetTableFileName(meta->fd.GetNumber(), sub_compact->compaction->output_level());
     output_fd = meta->fd;
     oldest_blob_file_number = meta->oldest_blob_file_number;
   } else {
@@ -1933,8 +1933,7 @@ Status CompactionJob::OpenCompactionOutputFile(
   
   
   
-  //here it is!!!
-  std::string fname = GetTableFileName(file_number, 1);
+  std::string fname = GetTableFileName(file_number, sub_compact->compaction->output_level());
   
   
   // Fire events.
@@ -2206,17 +2205,15 @@ void CompactionJob::LogCompaction() {
   }
 }
 
-std::string CompactionJob::GetTableFileName(uint64_t file_number, int flush_mode) {
-  flush_mode = 1;
+std::string CompactionJob::GetTableFileName(uint64_t file_number, int level) {
   return TableFileName(compact_->compaction->immutable_options()->cf_paths,
-                       file_number, compact_->compaction->output_path_id(), flush_mode);
+                       file_number, compact_->compaction->output_path_id(), level);
 }
 
 #ifndef ROCKSDB_LITE
 std::string CompactionServiceCompactionJob::GetTableFileName(
-    uint64_t file_number, int flush_mode) {
-  flush_mode = 1;
-  return MakeTableFileName(output_path_, file_number, flush_mode);
+    uint64_t file_number, int level) {
+  return MakeTableFileName(output_path_, file_number, level);
 }
 
 CompactionServiceCompactionJob::CompactionServiceCompactionJob(
@@ -2324,7 +2321,7 @@ Status CompactionServiceCompactionJob::Run() {
   for (const auto& output_file : sub_compact->outputs) {
     auto& meta = output_file.meta;
     compaction_result_->output_files.emplace_back(
-        MakeTableFileName(meta.fd.GetNumber()), meta.fd.smallest_seqno,
+        MakeTableFileName(meta.fd.GetNumber(), compaction_result_->output_level), meta.fd.smallest_seqno,
         meta.fd.largest_seqno, meta.smallest.Encode().ToString(),
         meta.largest.Encode().ToString(), meta.oldest_ancester_time,
         meta.file_creation_time, output_file.validator.GetHash(),

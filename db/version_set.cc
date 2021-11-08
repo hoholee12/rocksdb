@@ -1334,7 +1334,7 @@ Status Version::TablesRangeTombstoneSummary(int max_entries_to_print,
     for (const auto& file_meta : storage_info_.files_[level]) {
       auto fname =
           TableFileName(cfd_->ioptions()->cf_paths, file_meta->fd.GetNumber(),
-                        file_meta->fd.GetPathId());
+                        file_meta->fd.GetPathId(), level);
 
       ss << "=== file : " << fname << " ===\n";
 
@@ -1380,7 +1380,7 @@ Status Version::GetPropertiesOfAllTables(TablePropertiesCollection* props,
   for (const auto& file_meta : storage_info_.files_[level]) {
     auto fname =
         TableFileName(cfd_->ioptions()->cf_paths, file_meta->fd.GetNumber(),
-                      file_meta->fd.GetPathId());
+                      file_meta->fd.GetPathId(), level);
     // 1. If the table is already present in table cache, load table
     // properties from there.
     std::shared_ptr<const TableProperties> table_properties;
@@ -1408,7 +1408,7 @@ Status Version::GetPropertiesOfTablesInRange(
       for (const auto& file_meta : files) {
         auto fname =
             TableFileName(cfd_->ioptions()->cf_paths,
-                          file_meta->fd.GetNumber(), file_meta->fd.GetPathId());
+                          file_meta->fd.GetNumber(), file_meta->fd.GetPathId(), level);
         if (props->count(fname) == 0) {
           // 1. If the table is already present in table cache, load table
           // properties from there.
@@ -2785,7 +2785,7 @@ void VersionStorageInfo::ComputeFilesMarkedForPeriodicCompaction(
         }
         if (file_modification_time == kUnknownOldestAncesterTime) {
           auto file_path = TableFileName(ioptions.cf_paths, f->fd.GetNumber(),
-                                         f->fd.GetPathId());
+                                         f->fd.GetPathId(), level);
           status = ioptions.env->GetFileModificationTime(
               file_path, &file_modification_time);
           if (!status.ok()) {
@@ -5569,7 +5569,7 @@ void VersionSet::GetLiveFilesMetaData(std::vector<LiveFileMetaData>* metadata) {
           filemetadata.db_path = cfd->ioptions()->cf_paths.back().path;
         }
         const uint64_t file_number = file->fd.GetNumber();
-        filemetadata.name = MakeTableFileName("", file_number);
+        filemetadata.name = MakeTableFileName("", file_number, level);
         filemetadata.file_number = file_number;
         filemetadata.level = level;
         filemetadata.size = static_cast<size_t>(file->fd.GetFileSize());

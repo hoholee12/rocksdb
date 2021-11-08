@@ -23,6 +23,8 @@
 #include "rocksdb/status.h"
 #include "rocksdb/transaction_log.h"
 
+extern int countlevel[1000000];
+
 namespace ROCKSDB_NAMESPACE {
 
 class Env;
