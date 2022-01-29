@@ -66,42 +66,42 @@ function testme(){
 	#../blktrace_results/traceme_"$name".sh "$1"_"$2"g &
 	#blkcheck=$!
 	echo begin check "$1"...
-	smartctl -A /dev/"$5" &> results/results_"$1"_smartctl_begin_"$2"g.txt
-	iostat | grep "$5" > results/results_"$1"_iostat_begin_"$2"g.txt
+	smartctl -A /dev/"$5" &> results/results_mixgraph_"$1"_smartctl_begin_"$2"g.txt
+	iostat | grep "$5" > results/results_mixgraph_"$1"_iostat_begin_"$2"g.txt
 	# 100mb ftrace before
 	#echo begin first trace
-	#trace-cmd record -e "$fsname" ./run_bench.sh 725501 false "$4" > /dev/null
+	#trace-cmd record -e "$fsname" ./run_bench_mixgraph.sh 725501 false "$4" > /dev/null
 	#sleep 1
-	#trace-cmd report > results/results_"$1"_ftracea_"$2"g.txt
+	#trace-cmd report > results/results_mixgraph_"$1"_ftracea_"$2"g.txt
 	#rm trace.dat
 	# main load
-	#./run_bench.sh 725501 false "$4" > /dev/null
+	#./run_bench_mixgraph.sh 725501 false "$4" > /dev/null
 	echo run workload
-	#./run_bench.sh "$3" false "$4" "$1" "$2"
-	./run_bench.sh "$3" false "l1" "$1" "$2"
+	#./run_bench_mixgraph.sh "$3" false "$4" "$1" "$2"
+	./run_bench_mixgraph.sh "$3" false "l1" "$1" "$2"
 	# 100mb ftrace after
 	#echo begin second trace
-	#trace-cmd record -e "$fsname" ./run_bench.sh 725501 false "$4" > /dev/null
+	#trace-cmd record -e "$fsname" ./run_bench_mixgraph.sh 725501 false "$4" > /dev/null
 	#sleep 1
-	#trace-cmd report > results/results_"$1"_ftraceb_"$2"g.txt
+	#trace-cmd report > results/results_mixgraph_"$1"_ftraceb_"$2"g.txt
 	#rm trace.dat
-	smartctl -A /dev/"$5" &> results/results_"$1"_smartctl_end_"$2"g.txt
-	iostat | grep "$5" > results/results_"$1"_iostat_end_"$2"g.txt
+	smartctl -A /dev/"$5" &> results/results_mixgraph_"$1"_smartctl_end_"$2"g.txt
+	iostat | grep "$5" > results/results_mixgraph_"$1"_iostat_end_"$2"g.txt
 	#killall blktrace
 
 	# check fragmentation
 	filefrag /home/jeongho/mnt/* | awk '{print $(NF-2)}' > testfrag.txt
-	python countfrag.py testfrag.txt > results/results_"$1"_fragpercent_total_"$2"g.txt
+	python countfrag.py testfrag.txt > results/results_mixgraph_"$1"_fragpercent_total_"$2"g.txt
 	filefrag /home/jeongho/mnt/* | grep sst | awk '{print $(NF-2)}' > testfrag.txt
-	python countfrag.py testfrag.txt > results/results_"$1"_fragpercent_sst_"$2"g.txt
+	python countfrag.py testfrag.txt > results/results_mixgraph_"$1"_fragpercent_sst_"$2"g.txt
 	filefrag /home/jeongho/mnt/* | grep buf | awk '{print $(NF-2)}' > testfrag.txt
-	python countfrag.py testfrag.txt > results/results_"$1"_fragpercent_buf_"$2"g.txt
+	python countfrag.py testfrag.txt > results/results_mixgraph_"$1"_fragpercent_buf_"$2"g.txt
 	filefrag /home/jeongho/mnt/* | grep log | awk '{print $(NF-2)}' > testfrag.txt
-	python countfrag.py testfrag.txt > results/results_"$1"_fragpercent_log_"$2"g.txt
+	python countfrag.py testfrag.txt > results/results_mixgraph_"$1"_fragpercent_log_"$2"g.txt
 	#intact=$(($(filefrag /home/jeongho/mnt/* | grep "1 extent\|0 extent" | wc -l)*100))
 	#total=$(filefrag /home/jeongho/mnt/* | wc -l)
 	#fragpercentage=$((100-$(($intact/$total))))
-	#echo $fragpercentage > results/results_"$1"_fragpercent_"$2"g.txt
+	#echo $fragpercentage > results/results_mixgraph_"$1"_fragpercent_"$2"g.txt
 }
 
 #for each workloads
