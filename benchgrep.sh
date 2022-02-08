@@ -7,15 +7,7 @@ fi
 
 
 for i in $(ls | grep thread); do
-	mystr=$(cat $i | grep -i "::$1" | awk '{print $2}' | head -n 1)
-	if [[ $mystr != "" ]]; then
-		echo "$i: $mystr"
-	fi
-	mystr=$(cat $i | grep -i " $1" | awk '{print $2}' | head -n 1)
-	if [[ $mystr != "" ]]; then
-		echo "$i: $mystr"
-	fi
-	mystr=$(cat $i | grep -i "$1(" | awk '{print $2}' | head -n 1)
+	mystr=$(cat $i | grep -i "$1" | awk '{print $2}' | head -n 1)
 	if [[ $mystr != "" ]]; then
 		echo "$i: $mystr"
 	fi
