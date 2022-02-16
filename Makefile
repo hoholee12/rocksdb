@@ -141,6 +141,11 @@ CFLAGS += -march=armv8-a+crc+crypto
 ARMCRC_SOURCE=1
 endif
 
+# pq option for db_bench path analysis (to disable, compile with DEBUG_LEVEL=0)
+ifeq ($(DEBUG_LEVEL),1)
+CXXFLAGS += -pg
+endif
+
 # if we're compiling for shared libraries, add the shared flags
 ifeq ($(LIB_MODE),shared)
 CXXFLAGS += $(PLATFORM_SHARED_CFLAGS) -DROCKSDB_DLL
