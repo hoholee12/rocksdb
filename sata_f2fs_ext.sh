@@ -9,7 +9,7 @@ fi
 umount ~/mnt 2>/dev/null
 sleep 1
 #-E is for hot list, -e is for cold list, others are all warm.
-mkfs.f2fs /dev/sdb1 -f -e sst -E buf,log -o 0
+mkfs.f2fs /dev/sdb1 -f -e sst -E buf,log -o 0 -z 10000
 mount -t f2fs /dev/sdb1 ~/mnt -o mode=adaptive
 chown jeongho:jeongho ~/mnt
 
