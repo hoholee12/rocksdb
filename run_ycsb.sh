@@ -74,8 +74,8 @@ function pretestme(){
 	#./run_bench_age.sh 725501 false "$4" > /dev/null
 	echo "load ycsb"
 	
-	# arg1: workload, arg2: opcount, arg3: dblocation, arg4: load/run
-	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "load" &> results_ycsb/results_ycsb_"$1"_"$2"g.txt
+	# arg1: workload, arg2: opcount, arg3: dblocation, arg4: load/run, arg5: optionini
+	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "load" "rocksdboption.ini" &> results_ycsb/results_ycsb_"$1"_"$2"g.txt
 	# 100mb ftrace after
 	#echo begin second trace
 	#trace-cmd record -e "$fsname" ./run_bench_age.sh 725501 false "$4" > /dev/null
@@ -129,8 +129,8 @@ function testme(){
 	#./run_bench_age.sh 725501 false "$4" > /dev/null
 	echo "run ycsb"
 	
-	# arg1: workload, arg2: opcount, arg3: dblocation, arg4: load/run
-	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "run" &> results_ycsb/results_"$1"_"$2"g.txt
+	# arg1: workload, arg2: opcount, arg3: dblocation, arg4: load/run, arg5: optionini
+	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "run" "rocksdboption.ini" &> results_ycsb/results_"$1"_"$2"g.txt
 	# 100mb ftrace after
 	#echo begin second trace
 	#trace-cmd record -e "$fsname" ./run_bench_age.sh 725501 false "$4" > /dev/null
