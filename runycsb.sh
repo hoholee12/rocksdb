@@ -12,7 +12,7 @@ if [[ $counthere == "" ]]; then
 	counthere="1000000"
 fi
 if [[ $locationhere == "" ]]; then
-	locationhere="/home/jeongho/mnt/ycsbtest"
+	locationhere="/home/jeongho/mnt/"
 fi
 if [[ $typehere == "" ]]; then
 	typehere="load"
