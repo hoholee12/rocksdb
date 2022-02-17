@@ -121,7 +121,7 @@ devicename="sdb"
 init "l1" "bk1"
 #init "x1" "bk1"
 
-for x in 128; do
+for x in 32; do
 	dataset_size=$x
 	dataset=$((7255012*$dataset_size))
 	freespace=$(($x/32*4096))
@@ -143,23 +143,39 @@ for x in 128; do
 	#./"$name"_f2fs_reverse.sh
 	#testme "ssr_reverse_bk2" "$x" "$dataset" "l0" "$devicename" "space" "bk2"
 	
+	
+	
+	
+	
+	
+	
+	
+	# ext4 with space
+	#echo testing ext4... with space bk1
+	#./"$name"_ext4.sh
+	#testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
+	#testme "ext4_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
+	
 	# l1 cold
 	echo testing l1... with space bk1
 	./"$name"_f2fs_ext.sh
 	testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
 	#testme "l1_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
 	
-	# ext4 with space
-	echo testing ext4... with space bk1
-	./"$name"_ext4.sh
-	testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
-	#testme "ext4_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
-	
 	# with ssr with space
-	echo testing ssr... with space bk1
-	./"$name"_f2fs.sh
-	testme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
+	#echo testing ssr... with space bk1
+	#./"$name"_f2fs.sh
+	#testme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
 	#testme "ssr_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	# l1 hot
 	#echo testing l1 hot... with space bk1

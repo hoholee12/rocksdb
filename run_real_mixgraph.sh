@@ -143,17 +143,17 @@ for x in 128; do
 	#./"$name"_f2fs_reverse.sh
 	#testme "ssr_reverse_bk2" "$x" "$dataset" "l0" "$devicename" "space" "bk2"
 	
-	# l1 cold
-	echo testing l1... with space bk1
-	./"$name"_f2fs_ext.sh
-	testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
-	#testme "l1_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
-	
 	# ext4 with space
 	echo testing ext4... with space bk1
 	./"$name"_ext4.sh
 	testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
 	#testme "ext4_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
+	
+	# l1 cold
+	echo testing l1... with space bk1
+	./"$name"_f2fs_ext.sh
+	testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename" "space" "bk1"
+	#testme "l1_space_bk1" "$x" "$dataset" "x1" "$devicename" "space" "bk1"
 	
 	# with ssr with space
 	echo testing ssr... with space bk1

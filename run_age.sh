@@ -6,10 +6,11 @@ freespace=8192
 
 function freespaceme(){
 echo "generate full size"
-openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill 2>/dev/null
+mkdir /home/jeongho/mnt/fill/
+openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme 2>/dev/null
 
 echo "punch hole"
-./punch /home/jeongho/mnt/fill
+./punch /home/jeongho/mnt/fill/fillme
 }
 
 function init(){
@@ -159,9 +160,6 @@ function testme(){
 name="sata"
 devicename="sdb"
 
-./sata_ext4.sh
-freespaceme
-exit
 
 	# with no ssr
 	#echo testing nossr...
@@ -202,41 +200,66 @@ for x in 32; do
 	
 	
 	# ext4 with space
-	echo testing ext4... with space bk1
-	./"$name"_ext4.sh
-	freespaceme
-	pretestme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	#echo testing ext4... with space bk1
+	#./"$name"_ext4.sh
+	#./"$name"_ext4.sh
+	#freespaceme
+	#pretestme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	#testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
 	
 	#default zone
 	# l1 cold
-	echo testing l1... with space bk1
-	./"$name"_f2fs_ext_default.sh
-	freespaceme
-	pretestme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-	testme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	#echo testing l1... with space bk1
+	#./"$name"_f2fs_ext_default.sh
+	#./"$name"_f2fs_ext_default.sh
+	#freespaceme
+	#pretestme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	#testme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
 	
-	# with ssr with space
-	echo testing ssr... with space bk1
-	./"$name"_f2fs_default.sh
-	freespaceme
-	pretestme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-	testme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-
 	#20GB zone
 	# l1 cold
-	echo testing l1... with space bk1
-	./"$name"_f2fs_ext.sh
-	freespaceme
-	pretestme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	#echo testing l1... with space bk1
+	#./"$name"_f2fs_ext.sh
+	#./"$name"_f2fs_ext.sh
+	#freespaceme
+	#pretestme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	#testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
 	
-	# with ssr with space
-	echo testing ssr... with space bk1
-	./"$name"_f2fs.sh
+	#default zone
+	# l1 hot
+	echo testing l1 reverse... with space bk1
+	./"$name"_f2fs_ext_reverse_default.sh
+	./"$name"_f2fs_ext_reverse_default.sh
 	freespaceme
-	pretestme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	testme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	pretestme "l1_space_bk1_reverse_default" "$x" "$dataset" "l1" "$devicename"
+	testme "l1_space_bk1_reverse_default" "$x" "$dataset" "l1" "$devicename"
+	
+	#20GB zone
+	# l1 hot
+	echo testing l1 reverse... with space bk1
+	./"$name"_f2fs_ext_reverse.sh
+	./"$name"_f2fs_ext_reverse.sh
+	freespaceme
+	pretestme "l1_space_bk1_reverse" "$x" "$dataset" "l1" "$devicename"
+	testme "l1_space_bk1_reverse" "$x" "$dataset" "l1" "$devicename"
+	
+	#default zone
+	# with ssr with space
+	#echo testing ssr... with space bk1
+	#./"$name"_f2fs_default.sh
+	#./"$name"_f2fs_default.sh
+	#freespaceme
+	#pretestme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	#testme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+
+	#20GB zone
+	# with ssr with space
+	#echo testing ssr... with space bk1
+	#./"$name"_f2fs.sh
+	#./"$name"_f2fs.sh
+	#freespaceme
+	#pretestme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	#testme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
 
 	
 	

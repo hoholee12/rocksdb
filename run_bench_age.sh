@@ -8,6 +8,7 @@ if [[ $6 == "init" ]]; then
 	 -benchmarks="fillrandom" \
 	 -num=$1 \
 	 -threads=1 \
+	 -key_size=48 \
 	 -max_background_jobs=8 \
 	 -histogram \
 	 -statistics \
@@ -25,6 +26,7 @@ else
 	 -benchmarks="updaterandom" \
 	 -num=$1 \
 	 -threads=1 \
+	 -key_size=48 \
 	 -max_background_jobs=8 \
 	 -histogram \
 	 -statistics \

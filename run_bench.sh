@@ -9,6 +9,7 @@ sudo time ./db_bench_"$3" \
  -num=$1 \
  -threads=1 \
  -max_background_jobs=8 \
+ -subcompactions=4 \
  -histogram \
  -statistics \
  -use_existing_db=true \
