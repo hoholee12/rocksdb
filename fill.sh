@@ -8,6 +8,7 @@ mkdir /home/jeongho/mnt/fill
 sudo time ./db_bench_"$2" \
  -benchmarks="fillrandom" \
  -num=$1 \
+ -max_background_jobs=8 \
  -threads=1 \
  -histogram \
  -statistics \

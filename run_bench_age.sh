@@ -5,11 +5,11 @@ echo dataset $1
 
 if [[ $6 == "init" ]]; then
 	sudo time ./db_bench_"$3" \
-	 -benchmarks="fillrandom" \
+	 -benchmarks="fillrandom,stats" \
 	 -num=$1 \
 	 -threads=1 \
-	 -key_size=48 \
 	 -max_background_jobs=8 \
+	 -key_size=48 \
 	 -histogram \
 	 -statistics \
 	 -use_existing_db=false \
@@ -23,11 +23,11 @@ if [[ $6 == "init" ]]; then
 else
 	#run
 	sudo time ./db_bench_"$3" \
-	 -benchmarks="updaterandom" \
+	 -benchmarks="updaterandom,stats" \
 	 -num=$1 \
 	 -threads=1 \
-	 -key_size=48 \
 	 -max_background_jobs=8 \
+	 -key_size=48 \
 	 -histogram \
 	 -statistics \
 	 -use_existing_db=true \

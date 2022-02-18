@@ -75,7 +75,7 @@ function pretestme(){
 	echo "load ycsb"
 	
 	# arg1: workload, arg2: opcount, arg3: dblocation, arg4: load/run, arg5: optionini
-	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "load" "rocksdboption.ini" &> results_ycsb/results_ycsb_"$1"_"$2"g.txt
+	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "load" &> results_ycsb/results_ycsb_"$1"_"$2"g.txt
 	# 100mb ftrace after
 	#echo begin second trace
 	#trace-cmd record -e "$fsname" ./run_bench_age.sh 725501 false "$4" > /dev/null
@@ -130,7 +130,7 @@ function testme(){
 	echo "run ycsb"
 	
 	# arg1: workload, arg2: opcount, arg3: dblocation, arg4: load/run, arg5: optionini
-	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "run" "rocksdboption.ini" &> results_ycsb/results_"$1"_"$2"g.txt
+	./runycsb.sh "workloadc" "$3" "/home/jeongho/mnt/" "run" &> results_ycsb/results_"$1"_"$2"g.txt
 	# 100mb ftrace after
 	#echo begin second trace
 	#trace-cmd record -e "$fsname" ./run_bench_age.sh 725501 false "$4" > /dev/null
@@ -173,7 +173,7 @@ devicename="sdb"
 #init "l1" "bk1"
 #init "x1" "bk1"
 
-for x in 32; do
+for x in 4; do
 	dataset_size=$x
 	dataset=$((7255012*$dataset_size))
 	freespace=$(($x/32*4096))

@@ -7,10 +7,17 @@ freespace=8192
 function freespaceme(){
 echo "generate full size"
 mkdir /home/jeongho/mnt/fill/
-openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme 2>/dev/null
+fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme.buf 2>/dev/null
+fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme.sst 2>/dev/null
+fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme.warm 2>/dev/null
+openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.buf 2>/dev/null
+openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.sst 2>/dev/null
+openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.warm 2>/dev/null
 
 echo "punch hole"
-./punch /home/jeongho/mnt/fill/fillme
+./punch /home/jeongho/mnt/fill/fillme.buf
+./punch /home/jeongho/mnt/fill/fillme.sst
+./punch /home/jeongho/mnt/fill/fillme.warm
 }
 
 function init(){
@@ -21,10 +28,10 @@ function init(){
 		if [[ ! -d /home/jeongho/mntbackup2/fillbackup_"$1" ]]; then mkdir /home/jeongho/mntbackup2/fillbackup_"$1"; else return; fi
 	fi
 	./sata_f2fs.sh
-	mkdir /home/jeongho/mnt/stuffing
-	dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s0 bs=1M count=$freespace >/dev/null 2>&1
+	#mkdir /home/jeongho/mnt/stuffing
+	#dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s0 bs=1M count=$freespace >/dev/null 2>&1
 	#./fill.sh $((7255012*500)) "$1"
-	./fill.sh $((7255012*32)) "l1"
+	./fill.sh $((7255012*128)) "l1"
 	if [[ "$(echo $2 | grep bk1)" ]]; then
 		mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup2/fillbackup_"$1"
 	else
@@ -63,6 +70,9 @@ function pretestme(){
 	echo begin check "$1"...
 	smartctl -A /dev/"$5" &> results_age/results_age_"$1"_smartctl_begin_"$2"g.txt
 	iostat | grep "$5" > results_age/results_age_"$1"_iostat_begin_"$2"g.txt
+	if [[ -f /sys/kernel/debug/f2fs/status ]]; then
+		sh -c "cat /sys/kernel/debug/f2fs/status" > results_age/results_age_"$1"_f2fsstat_begin_"$2"g.txt
+	fi
 	# 100mb ftrace before
 	#echo begin first trace
 	#trace-cmd record -e "$fsname" ./run_bench_age.sh 725501 false "$4" > /dev/null
@@ -82,6 +92,9 @@ function pretestme(){
 	#rm trace.dat
 	smartctl -A /dev/"$5" &> results_age/results_age_"$1"_smartctl_end_"$2"g.txt
 	iostat | grep "$5" > results_age/results_age_"$1"_iostat_end_"$2"g.txt
+	if [[ -f /sys/kernel/debug/f2fs/status ]]; then
+		sh -c "cat /sys/kernel/debug/f2fs/status" > results_age/results_age_"$1"_f2fsstat_end_"$2"g.txt
+	fi
 	#killall blktrace
 
 	# check fragmentation
@@ -109,6 +122,8 @@ function testme(){
 		fsname=xfs
 	fi
 	
+	#cp /home/jeongho/mntbackup2/fillbackup_l1/* /home/jeongho/mnt
+		
 	# free memory before test
 	sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
@@ -117,6 +132,9 @@ function testme(){
 	echo begin check "$1"...
 	smartctl -A /dev/"$5" &> results_age/results_"$1"_smartctl_begin_"$2"g.txt
 	iostat | grep "$5" > results_age/results_"$1"_iostat_begin_"$2"g.txt
+	if [[ -f /sys/kernel/debug/f2fs/status ]]; then
+		sh -c "cat /sys/kernel/debug/f2fs/status" > results_age/results_"$1"_f2fsstat_begin_"$2"g.txt
+	fi
 	# 100mb ftrace before
 	#echo begin first trace
 	#trace-cmd record -e "$fsname" ./run_bench_age.sh 725501 false "$4" > /dev/null
@@ -136,6 +154,9 @@ function testme(){
 	#rm trace.dat
 	smartctl -A /dev/"$5" &> results_age/results_"$1"_smartctl_end_"$2"g.txt
 	iostat | grep "$5" > results_age/results_"$1"_iostat_end_"$2"g.txt
+	if [[ -f /sys/kernel/debug/f2fs/status ]]; then
+		sh -c "cat /sys/kernel/debug/f2fs/status" > results_age/results_"$1"_f2fsstat_end_"$2"g.txt
+	fi
 	#killall blktrace
 
 	# check fragmentation
@@ -160,7 +181,6 @@ function testme(){
 name="sata"
 devicename="sdb"
 
-
 	# with no ssr
 	#echo testing nossr...
 	#./"$name"_f2fs_nossr.sh
@@ -170,7 +190,7 @@ devicename="sdb"
 #init "l1" "bk1"
 #init "x1" "bk1"
 
-for x in 32; do
+for x in 64; do
 	dataset_size=$x
 	dataset=$((7255012*$dataset_size))
 	freespace=$(($x/32*4096))
@@ -195,71 +215,72 @@ for x in 32; do
 	
 	
 	
+	#default zone
+	# l1 cold
+	echo testing l1... with space bk1
+	./"$name"_f2fs_ext_default.sh
+	./"$name"_f2fs_ext_default.sh
+	freespaceme
+	pretestme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	testme "l1_space_bk1_default" "$(($x/2))" "$dataset" "l1" "$devicename"
 	
-	
-	
+	#default zone
+	# with ssr with space
+	echo testing ssr... with space bk1
+	./"$name"_f2fs_default.sh
+	./"$name"_f2fs_default.sh
+	freespaceme
+	pretestme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	testme "ssr_space_bk1_default" "$(($x/2))" "$dataset" "l1" "$devicename"
 	
 	# ext4 with space
-	#echo testing ext4... with space bk1
-	#./"$name"_ext4.sh
-	#./"$name"_ext4.sh
-	#freespaceme
-	#pretestme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	#testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	
-	#default zone
-	# l1 cold
-	#echo testing l1... with space bk1
-	#./"$name"_f2fs_ext_default.sh
-	#./"$name"_f2fs_ext_default.sh
-	#freespaceme
-	#pretestme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-	#testme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	echo testing ext4... with space bk1
+	./"$name"_ext4.sh
+	./"$name"_ext4.sh
+	freespaceme
+	pretestme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	testme "ext4_space_bk1" "$(($x/2))" "$dataset" "l1" "$devicename"
 	
 	#20GB zone
 	# l1 cold
-	#echo testing l1... with space bk1
-	#./"$name"_f2fs_ext.sh
-	#./"$name"_f2fs_ext.sh
-	#freespaceme
-	#pretestme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	#testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	
-	#default zone
-	# l1 hot
-	echo testing l1 reverse... with space bk1
-	./"$name"_f2fs_ext_reverse_default.sh
-	./"$name"_f2fs_ext_reverse_default.sh
+	echo testing l1... with space bk1
+	./"$name"_f2fs_ext.sh
+	./"$name"_f2fs_ext.sh
 	freespaceme
-	pretestme "l1_space_bk1_reverse_default" "$x" "$dataset" "l1" "$devicename"
-	testme "l1_space_bk1_reverse_default" "$x" "$dataset" "l1" "$devicename"
+	pretestme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	testme "l1_space_bk1" "$(($x/4))" "$dataset" "l1" "$devicename"
 	
 	#20GB zone
-	# l1 hot
-	echo testing l1 reverse... with space bk1
-	./"$name"_f2fs_ext_reverse.sh
-	./"$name"_f2fs_ext_reverse.sh
-	freespaceme
-	pretestme "l1_space_bk1_reverse" "$x" "$dataset" "l1" "$devicename"
-	testme "l1_space_bk1_reverse" "$x" "$dataset" "l1" "$devicename"
-	
-	#default zone
 	# with ssr with space
-	#echo testing ssr... with space bk1
-	#./"$name"_f2fs_default.sh
-	#./"$name"_f2fs_default.sh
+	echo testing ssr... with space bk1
+	./"$name"_f2fs.sh
+	./"$name"_f2fs.sh
+	freespaceme
+	pretestme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	testme "ssr_space_bk1" "$(($x/2))" "$dataset" "l1" "$devicename"
+	
+	
+	
+	#default zone
+	# l1 hot
+	#echo testing l1 reverse... with space bk1
+	#./"$name"_f2fs_ext_reverse_default.sh
+	#./"$name"_f2fs_ext_reverse_default.sh
 	#freespaceme
-	#pretestme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-	#testme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	#pretestme "l1_space_bk1_reverse_default" "$x" "$dataset" "l1" "$devicename"
+	#testme "l1_space_bk1_reverse_default" "$x" "$dataset" "l1" "$devicename"
+	
+	#20GB zone
+	# l1 hot
+	#echo testing l1 reverse... with space bk1
+	#./"$name"_f2fs_ext_reverse.sh
+	#./"$name"_f2fs_ext_reverse.sh
+	#freespaceme
+	#pretestme "l1_space_bk1_reverse" "$x" "$dataset" "l1" "$devicename"
+	#testme "l1_space_bk1_reverse" "$x" "$dataset" "l1" "$devicename"
+	
 
-	#20GB zone
-	# with ssr with space
-	#echo testing ssr... with space bk1
-	#./"$name"_f2fs.sh
-	#./"$name"_f2fs.sh
-	#freespaceme
-	#pretestme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	#testme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	
 
 	
 	
