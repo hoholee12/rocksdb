@@ -2,7 +2,7 @@
 
 mkdir results_age 2>/dev/null
 
-freespace=8192
+freespace=$(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')*6/10+8))
 
 function freespaceme(){
 echo "generate full size"
@@ -21,20 +21,19 @@ echo "punch hole"
 }
 
 function init(){
-	if [[ ! "$(echo $2 | grep bk1)" ]]; then
-		if [[ ! -d /home/jeongho/mntbackup/fillbackup_"$1" ]]; then mkdir /home/jeongho/mntbackup/fillbackup_"$1"; else return; fi
-	fi
-	if [[ "$(echo $2 | grep bk1)" ]]; then
-		if [[ ! -d /home/jeongho/mntbackup2/fillbackup_"$1" ]]; then mkdir /home/jeongho/mntbackup2/fillbackup_"$1"; else return; fi
+	if [[ $2 != "bk1" ]]; then
+		if [[ -d /home/jeongho/mntbackup/fillbackup_"$1" ]]; then return; fi
+	else
+		if [[ -d /home/jeongho/mntbackup2/fillbackup_"$1" ]]; then return; fi
 	fi
 	./sata_f2fs.sh
-	#mkdir /home/jeongho/mnt/stuffing
-	#dd if=/dev/zero of=/home/jeongho/mnt/stuffing/s0 bs=1M count=$freespace >/dev/null 2>&1
-	#./fill.sh $((7255012*500)) "$1"
-	./fill.sh $((7255012*128)) "l1"
-	if [[ "$(echo $2 | grep bk1)" ]]; then
+	fallocate -l "$freespace"G /home/jeongho/mnt/initfill 2>/dev/null
+	./fill.sh $((7255012*500)) "l1"
+	if [[ $2 == "bk1" ]]; then
+		mkdir /home/jeongho/mntbackup2/fillbackup_"$1";
 		mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup2/fillbackup_"$1"
 	else
+		mkdir /home/jeongho/mntbackup/fillbackup_"$1";
 		mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup/fillbackup_"$1"
 	fi
 }
@@ -122,7 +121,7 @@ function testme(){
 		fsname=xfs
 	fi
 	
-	#cp /home/jeongho/mntbackup2/fillbackup_l1/* /home/jeongho/mnt
+	cp /home/jeongho/mntbackup2/fillbackup_l1/* /home/jeongho/mnt
 		
 	# free memory before test
 	sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -187,10 +186,10 @@ devicename="sdb"
 	#testme "nossr" "$x" "$dataset" "l0" "$devicename"
 
 #init "l0"
-#init "l1" "bk1"
+init "l1" "bk1"
 #init "x1" "bk1"
 
-for x in 64; do
+for x in 32; do
 	dataset_size=$x
 	dataset=$((7255012*$dataset_size))
 	freespace=$(($x/32*4096))
@@ -211,7 +210,7 @@ for x in 64; do
 	#echo testing ssr_reverse... with space bk2
 	#./"$name"_f2fs_reverse.sh
 	#testme "ssr_reverse_bk2" "$x" "$dataset" "l0" "$devicename" "space" "bk2"
-	
+
 	
 	
 	
@@ -221,8 +220,8 @@ for x in 64; do
 	./"$name"_f2fs_ext_default.sh
 	./"$name"_f2fs_ext_default.sh
 	freespaceme
-	pretestme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-	testme "l1_space_bk1_default" "$(($x/2))" "$dataset" "l1" "$devicename"
+	#pretestme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	testme "l1_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
 	
 	#default zone
 	# with ssr with space
@@ -230,16 +229,16 @@ for x in 64; do
 	./"$name"_f2fs_default.sh
 	./"$name"_f2fs_default.sh
 	freespaceme
-	pretestme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
-	testme "ssr_space_bk1_default" "$(($x/2))" "$dataset" "l1" "$devicename"
+	#pretestme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
+	testme "ssr_space_bk1_default" "$x" "$dataset" "l1" "$devicename"
 	
 	# ext4 with space
 	echo testing ext4... with space bk1
 	./"$name"_ext4.sh
 	./"$name"_ext4.sh
 	freespaceme
-	pretestme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	testme "ext4_space_bk1" "$(($x/2))" "$dataset" "l1" "$devicename"
+	#pretestme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	testme "ext4_space_bk1" "$x" "$dataset" "l1" "$devicename"
 	
 	#20GB zone
 	# l1 cold
@@ -247,8 +246,8 @@ for x in 64; do
 	./"$name"_f2fs_ext.sh
 	./"$name"_f2fs_ext.sh
 	freespaceme
-	pretestme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	testme "l1_space_bk1" "$(($x/4))" "$dataset" "l1" "$devicename"
+	#pretestme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	testme "l1_space_bk1" "$x" "$dataset" "l1" "$devicename"
 	
 	#20GB zone
 	# with ssr with space
@@ -256,8 +255,8 @@ for x in 64; do
 	./"$name"_f2fs.sh
 	./"$name"_f2fs.sh
 	freespaceme
-	pretestme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
-	testme "ssr_space_bk1" "$(($x/2))" "$dataset" "l1" "$devicename"
+	#pretestme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
+	testme "ssr_space_bk1" "$x" "$dataset" "l1" "$devicename"
 	
 	
 	
