@@ -26,7 +26,7 @@ function init(){
 	else
 		if [[ -d /home/jeongho/mntbackup2/fillbackup_"$1" ]]; then return; fi
 	fi
-	./sata_f2fs.sh
+	./sata_f2fs_default.sh
 	fallocate -l "$freespace"G /home/jeongho/mnt/initfill 2>/dev/null
 	./fill.sh $((7255012*500)) "l1"
 	if [[ $2 == "bk1" ]]; then
