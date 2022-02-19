@@ -2,8 +2,6 @@
 
 mkdir results_age 2>/dev/null
 
-freespace=$(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')*6/10+8))
-
 function freespaceme(){
 echo "generate full size"
 mkdir /home/jeongho/mnt/fill/
@@ -27,6 +25,7 @@ function init(){
 		if [[ -d /home/jeongho/mntbackup2/fillbackup_"$1" ]]; then return; fi
 	fi
 	./sata_f2fs_default.sh
+	freespace=$(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')*6/10+8))
 	fallocate -l "$freespace"G /home/jeongho/mnt/initfill 2>/dev/null
 	./fill.sh $((7255012*500)) "l1"
 	if [[ $2 == "bk1" ]]; then
