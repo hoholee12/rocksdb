@@ -10,7 +10,7 @@ for i in $(ls $foldername | grep "fragpercent_$name"); do
 	for x in $(cat $foldername/$i | grep "files fragmented in" | awk '{print $4*$6}'); do
 		acc=$(($acc+$x))
 	done
-	echo $i fragmented by $(($acc*100/$total)) percent
+	echo $i fragmented by $(($acc/$total)) percent
 done
 
 
