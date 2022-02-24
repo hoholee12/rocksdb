@@ -7,22 +7,22 @@ echo "generate full size"
 mkdir /home/jeongho/mnt/fill/
 fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme.buf 2>/dev/null
 fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme.log 2>/dev/null
-fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme.warm 2>/dev/null
+fallocate -l $(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')/3))G /home/jeongho/mnt/fill/fillme2.buf 2>/dev/null
 openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.buf 2>/dev/null
 openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.log 2>/dev/null
-openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.warm 2>/dev/null
+openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme2.buf 2>/dev/null
 
 echo "punch hole"
 ./punch /home/jeongho/mnt/fill/fillme.buf
 ./punch /home/jeongho/mnt/fill/fillme.log
-./punch /home/jeongho/mnt/fill/fillme.warm
+./punch /home/jeongho/mnt/fill/fillme2.buf
 }
 
 function freespacemore(){
 echo "fill alittle more"
 mkdir /home/jeongho/mnt/fill/
-openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme2.warm 2>/dev/null
-./punch /home/jeongho/mnt/fill/fillme2.warm
+openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/null | base64)" -nosalt < /dev/zero > /home/jeongho/mnt/fill/fillme.sst 2>/dev/null
+./punch /home/jeongho/mnt/fill/fillme.sst
 
 }
 
@@ -61,13 +61,16 @@ function fragperlevel(){
 	extentcount=0
 	filecount=0
 	for i in /home/jeongho/mnt/*; do
-		level=$(cat $1 | grep -B1 "$i CREATE" | grep current | awk '{print $3}')
+		level=$(cat $1 | grep -B1 "$i CREATE" | grep "current level: " | awk '{print $3}')
+		if [[ $level == "" ]]; then
+			continue
+		fi
 		filecount[level]=$((${filecount[level]}+1))
 		extentcount[level]=$((${extentcount[level]}+$(filefrag $i | awk '{print $2}')))
 	done
-	for x in $(seq 0 10); do
-		if [[ ${filecount[x]} != "" ]]; then
-			echo "level $x fragmentation: $((${extentcount[x]}/${filecount[x]}))"
+	for asdf in $(seq 0 10); do
+		if [[ ${filecount[asdf]} != "" ]]; then
+			echo "level $asdf fragmentation: $((${extentcount[asdf]}/${filecount[asdf]}))"
 		fi
 	done
 }
@@ -82,7 +85,6 @@ function pretestme(){
 	if [[ "$(echo $1 | grep xfs)" ]]; then
 		fsname=xfs
 	fi
-
 	
 	# free memory before test
 	sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
@@ -173,7 +175,7 @@ function testme(){
 	#./run_bench_age.sh 725501 false "$4" > /dev/null
 	echo run updaterandom "$2"g
 	#./run_bench_age.sh "$3" false "$4" "$1" "$2"
-	myoutput=results_age/results_age_"$1"_"$2"g.txt
+	myoutput=results_age/results_"$1"_"$2"g.txt
 	./run_bench_age.sh "$3" false "l1" "$1" "$2" &> $myoutput
 	# 100mb ftrace after
 	#echo begin second trace
@@ -234,7 +236,7 @@ function posttestme(){
 	#./run_bench_age.sh 725501 false "$4" > /dev/null
 	echo run readseq "$2"g
 	#./run_bench_age.sh "$3" false "$4" "$1" "$2"	
-	myoutput=results_age/results_age_"$1"_"$2"g.txt
+	myoutput=results_age/results_"$1"_"$2"g.txt
 	./run_bench_age.sh "$3" false "l1" "$1" "$2" "readseq" &> $myoutput
 	# 100mb ftrace after
 	#echo begin second trace
@@ -343,7 +345,7 @@ for x in 32; do
 	echo testing l1... with space bk1
 	./"$name"_f2fs_ext_default.sh
 	./"$name"_f2fs_ext_default.sh
-	freespaceme
+	freespacemore
 	testme "l1_space_bk1_default_l1" "$x" "$dataset" "l1" "$devicename"
 	posttestme "l1_space_bk1_default_l1_readseq" "$x" "$dataset" "l1" "$devicename"
 	
