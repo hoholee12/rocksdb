@@ -342,28 +342,28 @@ for x in 32; do
 	
 	#default zone
 	# l1 cold
-	echo testing l1... with space bk1
-	./"$name"_f2fs_ext_default.sh
-	./"$name"_f2fs_ext_default.sh
-	freespaceme
-	testme "l1_space_bk1_default_l1" "$x" "$dataset" "l1" "$devicename"
-	posttestme "l1_space_bk1_default_l1_readseq" "$x" "$dataset" "l1" "$devicename"
+	#echo testing l1... with space bk1
+	#./"$name"_f2fs_ext_default.sh
+	#./"$name"_f2fs_ext_default.sh
+	#freespaceme
+	#testme "l1_space_bk1_default_l1" "$x" "$dataset" "l1" "$devicename"
+	#posttestme "l1_space_bk1_default_l1_readseq" "$x" "$dataset" "l1" "$devicename"
 	
 	#default zone
 	# with ssr with space
-	echo testing ssr... with space bk1 h1
-	./"$name"_f2fs_default.sh
-	./"$name"_f2fs_default.sh
-	freespaceme
-	testme "ssr_space_bk1_default_l1" "$x" "$dataset" "l1" "$devicename"
-	posttestme "ssr_space_bk1_default_l1_readseq" "$x" "$dataset" "l1" "$devicename"
+	#echo testing ssr... with space bk1 h1
+	#./"$name"_f2fs_default.sh
+	#./"$name"_f2fs_default.sh
+	#freespaceme
+	#testme "ssr_space_bk1_default_l1" "$x" "$dataset" "l1" "$devicename"
+	#posttestme "ssr_space_bk1_default_l1_readseq" "$x" "$dataset" "l1" "$devicename"
 	
 	# ext4 with space
-	echo testing ext4... with space bk1
-	./"$name"_ext4.sh
-	./"$name"_ext4.sh
-	freespaceme
-	testme "ext4_space_bk1_l1" "$x" "$dataset" "l1" "$devicename"
+	#echo testing ext4... with space bk1
+	#./"$name"_ext4.sh
+	#./"$name"_ext4.sh
+	#freespaceme
+	#testme "ext4_space_bk1_l1" "$x" "$dataset" "l1" "$devicename"
 	posttestme "ext4_space_bk1_l1_readseq" "$x" "$dataset" "l1" "$devicename"
 	
 	
