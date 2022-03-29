@@ -3,6 +3,8 @@
 ./nvme_partition.sh
 
 #arg1: segment count per section, arg2: section count per zone
+sections=$1
+zones=$2
 if [[ $1 == "" ]]; then
 	sections=1
 fi

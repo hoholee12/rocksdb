@@ -26,23 +26,18 @@ openssl enc -aes-256-ctr -pass pass:"$(dd if=/dev/urandom bs=128 count=1 2>/dev/
 
 }
 
+#arg1: protname(sata, nvme), arg2: drivename(sdb1, nvme0n1p1)
 function init(){
-	if [[ $2 != "bk1" ]]; then
-		if [[ -d /home/jeongho/mntbackup/fillbackup_"$1" ]]; then return; fi
-	else
-		if [[ -d /home/jeongho/mntbackup2/fillbackup_"$1" ]]; then return; fi
-	fi
-	./sata_f2fs_default.sh
-	freespace=$(($(df -h | grep sdb | awk '{print $2}' | sed 's/G//g')*6/10+8))
+	protname=$1
+	drivename=$2
+	if [[ -d /home/jeongho/mntbackup/fillbackup_"$protname" ]]; then return; fi
+	./"$protname"_f2fs_custom.sh
+	freespace=$(($(df -h | grep "$drivename" | awk '{print $2}' | sed 's/G//g')*6/10+8))
 	fallocate -l "$freespace"G /home/jeongho/mnt/initfill.buf 2>/dev/null
 	./fill.sh $((7255012*256)) "l1"
-	if [[ $2 == "bk1" ]]; then
-		mkdir /home/jeongho/mntbackup2/fillbackup_"$1";
-		mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup2/fillbackup_"$1"
-	else
-		mkdir /home/jeongho/mntbackup/fillbackup_"$1";
-		mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup/fillbackup_"$1"
-	fi
+	mkdir /home/jeongho/mntbackup/fillbackup_"$protname"
+	mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup/fillbackup_"$protname"/
+	
 }
 
 function blktraceme(){
@@ -279,10 +274,7 @@ devicename="sdb"
 	#./"$name"_f2fs_nossr.sh
 	#testme "nossr" "$x" "$dataset" "l0" "$devicename"
 
-#init "l0"
 init "l1" "bk1"
-init "x1" "bk1"
-init "h1" "bk1"
 
 for x in 32; do
 	dataset_size=$x
