@@ -8,7 +8,7 @@ if [[ "$(fuser -cu ~/mnt 2>&1 | wc -c)" -le 15 ]]; then
 fi
 umount ~/mnt 2>/dev/null
 sleep 1
-mkfs.f2fs /dev/sdb1 -f -o 0 -z 10000
+mkfs.f2fs /dev/sdb1 -f -o 0
 mount -t f2fs /dev/sdb1 ~/mnt -o mode=adaptive
 chown jeongho:jeongho ~/mnt
 

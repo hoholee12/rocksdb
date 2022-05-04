@@ -32,12 +32,11 @@ function init(){
 	drivename=$2
 	if [[ -d /home/jeongho/mntbackup/fillbackup_"$protname" ]]; then return; fi
 	./"$protname"_f2fs_custom.sh
-	freespace=$(($(df -h | grep "$drivename" | awk '{print $2}' | sed 's/G//g')*6/10+8))
+	freespace=$(($(df -h | grep "$drivename" | awk '{print $2}' | sed 's/G//g')*8/10+8))
 	fallocate -l "$freespace"G /home/jeongho/mnt/initfill.buf 2>/dev/null
-	./fill.sh $((7255012*256)) "l1"
+	./fill.sh $((7255012*1000)) "l1"
 	mkdir /home/jeongho/mntbackup/fillbackup_"$protname"
 	mv /home/jeongho/mnt/fill/* /home/jeongho/mntbackup/fillbackup_"$protname"/
-	
 }
 
 function blktraceme(){
@@ -266,15 +265,14 @@ function posttestme(){
 # $1 = num
 # $2 = workload type
 
-name="sata"
-devicename="sdb"
-
 	# with no ssr
 	#echo testing nossr...
 	#./"$name"_f2fs_nossr.sh
 	#testme "nossr" "$x" "$dataset" "l0" "$devicename"
 
-init "l1" "bk1"
+init "sata" "sdb1"
+
+exit
 
 for x in 32; do
 	dataset_size=$x
