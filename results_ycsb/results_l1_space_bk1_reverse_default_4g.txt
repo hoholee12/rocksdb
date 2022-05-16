@@ -1,0 +1,47 @@
+run...
+[WARN]  Running against a source checkout. In order to get our runtime dependencies we'll have to invoke Maven. Depending on the state of your system, this may take ~30-45 seconds
+[DEBUG]  Running 'mvn -pl site.ycsb:rocksdb-binding -am package -DskipTests dependency:build-classpath -DincludeScope=compile -Dmdep.outputFilterFile=true'
+java -cp /home/jeongho/YCSB/rocksdb/conf:/home/jeongho/YCSB/rocksdb/target/rocksdb-binding-0.18.0-SNAPSHOT.jar:/root/.m2/repository/org/apache/htrace/htrace-core4/4.1.0-incubating/htrace-core4-4.1.0-incubating.jar:/root/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/root/.m2/repository/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar:/root/.m2/repository/org/hdrhistogram/HdrHistogram/2.1.4/HdrHistogram-2.1.4.jar:/root/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.4/jackson-mapper-asl-1.9.4.jar:/root/.m2/repository/org/rocksdb/rocksdbjni/6.2.2/rocksdbjni-6.2.2.jar:/root/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.4/jackson-core-asl-1.9.4.jar:/home/jeongho/YCSB/core/target/core-0.18.0-SNAPSHOT.jar site.ycsb.Client -db site.ycsb.db.rocksdb.RocksDBClient -s -P workloads/workloadc -p recordcount=29020048 -p operationcount=29020048 -p rocksdb.dir=/home/jeongho/mnt/ -p rocksdb.optionsfile=../rocksdb/rocksdboption.ini -t
+Command line: -db site.ycsb.db.rocksdb.RocksDBClient -s -P workloads/workloadc -p recordcount=29020048 -p operationcount=29020048 -p rocksdb.dir=/home/jeongho/mnt/ -p rocksdb.optionsfile=../rocksdb/rocksdboption.ini -t
+YCSB Client 0.18.0-SNAPSHOT
+
+Loading workload...
+Starting test.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2022-02-18 06:20:35:646 0 sec: 0 operations; est completion in 0 second 
+site.ycsb.DBException: org.rocksdb.RocksDBException: Column families not opened: usertable
+	at site.ycsb.db.rocksdb.RocksDBClient.init(RocksDBClient.java:80)
+	at site.ycsb.DBWrapper.init(DBWrapper.java:90)
+	at site.ycsb.ClientThread.run(ClientThread.java:91)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.rocksdb.RocksDBException: Column families not opened: usertable
+	at org.rocksdb.RocksDB.open(Native Method)
+	at org.rocksdb.RocksDB.open(RocksDB.java:306)
+	at site.ycsb.db.rocksdb.RocksDBClient.initRocksDBWithOptionsFile(RocksDBClient.java:108)
+	at site.ycsb.db.rocksdb.RocksDBClient.init(RocksDBClient.java:75)
+	... 3 more
+site.ycsb.DBException: org.rocksdb.RocksDBException: Column families not opened: usertable
+	at site.ycsb.db.rocksdb.RocksDBClient.init(RocksDBClient.java:80)
+	at site.ycsb.DBWrapper.init(DBWrapper.java:90)
+	at site.ycsb.ClientThread.run(ClientThread.java:91)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.rocksdb.RocksDBException: Column families not opened: usertable
+	at org.rocksdb.RocksDB.open(Native Method)
+	at org.rocksdb.RocksDB.open(RocksDB.java:306)
+	at site.ycsb.db.rocksdb.RocksDBClient.initRocksDBWithOptionsFile(RocksDBClient.java:108)
+	at site.ycsb.db.rocksdb.RocksDBClient.init(RocksDBClient.java:75)
+	... 3 more
+2022-02-18 06:20:35:805 0 sec: 0 operations; est completion in 106751991167300 days 15 hours 
+[OVERALL], RunTime(ms), 172
+[OVERALL], Throughput(ops/sec), 0.0
+[TOTAL_GCS_PS_Scavenge], Count, 0
+[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 0
+[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.0
+[TOTAL_GCS_PS_MarkSweep], Count, 0
+[TOTAL_GC_TIME_PS_MarkSweep], Time(ms), 0
+[TOTAL_GC_TIME_%_PS_MarkSweep], Time(%), 0.0
+[TOTAL_GCs], Count, 0
+[TOTAL_GC_TIME], Time(ms), 0
+[TOTAL_GC_TIME_%], Time(%), 0.0

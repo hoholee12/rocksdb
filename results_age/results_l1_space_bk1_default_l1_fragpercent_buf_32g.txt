@@ -1,0 +1,23 @@
+files fragmented in 15887 pieces: 1
+files fragmented in 15914 pieces: 1
+files fragmented in 16144 pieces: 1
+files fragmented in 15883 pieces: 1
+files fragmented in 15178 pieces: 1
+files fragmented in 12148 pieces: 1
+files fragmented in 15941 pieces: 1
+files fragmented in 14736 pieces: 1
+files fragmented in 15944 pieces: 1
+files fragmented in 5947 pieces: 1
+files fragmented in 16114 pieces: 1
+files fragmented in 14334 pieces: 1
+files fragmented in 15822 pieces: 1
+files fragmented in 13748 pieces: 1
+files fragmented in 16148 pieces: 1
+files fragmented in 15766 pieces: 1
+files fragmented in 15928 pieces: 1
+files fragmented in 15805 pieces: 1
+files fragmented in 15804 pieces: 1
+files fragmented in 5438 pieces: 1
+files fragmented in 15978 pieces: 1
+total files: 21
+100% fragmented

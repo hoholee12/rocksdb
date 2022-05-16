@@ -1,0 +1,18 @@
+files fragmented in 13650 pieces: 1
+files fragmented in 5382 pieces: 1
+files fragmented in 13743 pieces: 1
+files fragmented in 13651 pieces: 1
+files fragmented in 13711 pieces: 1
+files fragmented in 13713 pieces: 1
+files fragmented in 13712 pieces: 1
+files fragmented in 13715 pieces: 1
+files fragmented in 13699 pieces: 1
+files fragmented in 5545 pieces: 1
+files fragmented in 13647 pieces: 2
+files fragmented in 13646 pieces: 2
+files fragmented in 5488 pieces: 1
+files fragmented in 2678 pieces: 1
+files fragmented in 13649 pieces: 3
+files fragmented in 13648 pieces: 3
+total files: 22
+100% fragmented

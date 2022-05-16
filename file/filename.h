@@ -24,7 +24,14 @@
 #include "rocksdb/transaction_log.h"
 
 extern int countlevel[1000000];
-
+extern int createperlevel[10];
+extern int deleteperlevel[10];
+extern int createperlevel_S[10];
+extern int deleteperlevel_S[10];
+enum counter{jobcounter, buflevel};
+extern int counter[2];
+extern int S, K;
+extern int extperfile[1000000];
 namespace ROCKSDB_NAMESPACE {
 
 class Env;
@@ -70,6 +77,8 @@ extern std::string MakeTableFileName(uint64_t number, int flush_mode = 0);
 // Return the name of sstable with LevelDB suffix
 // created from RocksDB sstable suffixed name
 extern std::string Rocks2LevelTableFileName(const std::string& fullname);
+
+extern std::string determinefilename(const std::string& fullname, bool hot);
 
 // the reverse function of MakeTableFileName
 // TODO(yhchiang): could merge this function with ParseFileName()

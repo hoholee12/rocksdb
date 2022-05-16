@@ -1,0 +1,73 @@
+
+=====[ partition info(sdb1). #0, RW, CP: Good]=====
+[SB: 1] [CP: 2] [SIT: 10] [NAT: 110] [SSA: 239] [MAIN: 121736(OverProv:992 Resv:495)]
+
+Utilization: 98% (60844350 valid blocks, 35687 discard blocks)
+  - Node: 89353 (Inode: 1268, Other: 88085)
+  - Data: 60754997
+  - Inline_xattr Inode: 1257
+  - Inline_data Inode: 1
+  - Inline_dentry Inode: 0
+  - Orphan/Append/Update Inode: 0, 0, 0
+
+Main area: 121736 segs, 121736 secs 121736 zones
+  - COLD  data: 21504, 21504, 21504
+  - WARM  data: 119213, 119213, 119213
+  - HOT   data: 27131, 27131, 27131
+  - Dir   dnode: 0, 0, 0
+  - File   dnode: 34, 34, 34
+  - Indir nodes: 32, 32, 32
+
+  - Valid: 104666
+  - Dirty: 16564
+  - Prefree: 0
+  - Free: 506 (506)
+
+CP calls: 1555 (BG: 30)
+  - cp blocks : 7714
+  - sit blocks : 138106
+  - nat blocks : 19104
+  - ssa blocks : 671494
+GC calls: 5 (BG: 0)
+  - data segments : 0 (0)
+  - node segments : 5 (0)
+Try to move 387 blocks (BG: 0)
+  - data blocks : 0 (0)
+  - node blocks : 387 (0)
+Skipped : atomic write 0 (0)
+BG skip : IO: 183, Other: 3
+
+Extent Cache:
+  - Hit Count: L1-1:847 L1-2:7191 L2:25340
+  - Hit Ratio: 0% (33378 / 308384635)
+  - Inner Struct Count: tree: 1257(0), node: 20053
+
+Balancing F2FS Async:
+  - DIO (R:    0, W:    0)
+  - IO_R (Data:    0, Node:    0, Meta:    0
+  - IO_W (CP:    0, Data:    0, Flush: (   0 5892    1), Discard: (   0 3435)) cmd: 1161735 undiscard:1208372
+  - inmem:    0, atomic IO:    0 (Max.    0), volatile IO:    0 (Max.    0)
+  - nodes:   20 in 4608
+  - dents:    3 in dirs:   1 (   4)
+  - datas: 15536 in files:   0
+  - quota datas:    0 in quota files:   0
+  - meta:    0 in 13887
+  - imeta:    3
+  - NATs:        63/      763
+  - SITs:       214/   121736
+  - free_nids:      3458/ 12723382
+  - alloc_nids:         0
+
+Distribution of User Blocks: [ valid | invalid | free ]
+  [-------------------------------------------------|-|]
+
+IPU: 1773 blocks
+SSR: 81481639 blocks in 549971 segments
+LFS: 62235980 blocks in 121549 segments
+
+BDF: 93, avg. vblocks: 437
+
+Memory: 232135 KB
+  - static: 29623 KB
+  - cached: 128531 KB
+  - paged : 73980 KB

@@ -1,0 +1,73 @@
+
+=====[ partition info(sdb1). #0, RW, CP: Good]=====
+[SB: 1] [CP: 2] [SIT: 10] [NAT: 110] [SSA: 239] [MAIN: 121736(OverProv:992 Resv:495)]
+
+Utilization: 93% (57840580 valid blocks, 82482 discard blocks)
+  - Node: 62755 (Inode: 3438, Other: 59317)
+  - Data: 57777825
+  - Inline_xattr Inode: 3435
+  - Inline_data Inode: 3
+  - Inline_dentry Inode: 0
+  - Orphan/Append/Update Inode: 0, 0, 0
+
+Main area: 121736 segs, 121736 secs 121736 zones
+  - COLD  data: 55946, 55946, 55946
+  - WARM  data: 26090, 26090, 26090
+  - HOT   data: 551, 551, 551
+  - Dir   dnode: 0, 0, 0
+  - File   dnode: 527, 527, 527
+  - Indir nodes: 894, 894, 894
+
+  - Valid: 112221
+  - Dirty: 1502
+  - Prefree: 160
+  - Free: 7853 (7853)
+
+CP calls: 253 (BG: 17)
+  - cp blocks : 1021
+  - sit blocks : 6491
+  - nat blocks : 3011
+  - ssa blocks : 146454
+GC calls: 0 (BG: 0)
+  - data segments : 0 (0)
+  - node segments : 0 (0)
+Try to move 0 blocks (BG: 0)
+  - data blocks : 0 (0)
+  - node blocks : 0 (0)
+Skipped : atomic write 0 (0)
+BG skip : IO: 39, Other: 0
+
+Extent Cache:
+  - Hit Count: L1-1:8895205 L1-2:974 L2:142
+  - Hit Ratio: 10% (8896321 / 84787900)
+  - Inner Struct Count: tree: 3435(0), node: 13
+
+Balancing F2FS Async:
+  - DIO (R:    0, W:    0)
+  - IO_R (Data:    0, Node:    0, Meta:    0
+  - IO_W (CP:    0, Data:    0, Flush: (   0 1325    1), Discard: (   0   57)) cmd: 5278 undiscard:4404142
+  - inmem:    0, atomic IO:    0 (Max.    0), volatile IO:    0 (Max.    0)
+  - nodes:   12 in 3212
+  - dents:    4 in dirs:   1 (   2)
+  - datas: 1224 in files:   0
+  - quota datas:    0 in quota files:   0
+  - meta:    9 in 1403
+  - imeta:    1
+  - NATs:        91/     1084
+  - SITs:       181/   121736
+  - free_nids:      4361/ 12749952
+  - alloc_nids:         0
+
+Distribution of User Blocks: [ valid | invalid | free ]
+  [----------------------------------------------|--|--]
+
+IPU: 1240 blocks
+SSR: 0 blocks in 0 segments
+LFS: 74991200 blocks in 146463 segments
+
+BDF: 99, avg. vblocks: 250
+
+Memory: 49078 KB
+  - static: 29623 KB
+  - cached: 994 KB
+  - paged : 18460 KB

@@ -1,0 +1,15 @@
+files fragmented in 11 pieces: 1
+files fragmented in 25 pieces: 1
+files fragmented in 13 pieces: 1
+files fragmented in 12 pieces: 1
+files fragmented in 20 pieces: 1
+files fragmented in 14 pieces: 1
+files fragmented in 555 pieces: 1
+files fragmented in 355 pieces: 1
+files fragmented in 1 pieces: 385
+files fragmented in 0 pieces: 1
+files fragmented in 3 pieces: 1
+files fragmented in 2 pieces: 1
+files fragmented in 8 pieces: 1
+total files: 397
+3% fragmented

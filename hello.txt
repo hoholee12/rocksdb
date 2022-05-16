@@ -1,0 +1,73 @@
+
+=====[ partition info(sdb1). #0, RW, CP: Good]=====
+[SB: 1] [CP: 2] [SIT: 10] [NAT: 110] [SSA: 239] [MAIN: 121736(OverProv:992 Resv:495)]
+
+Utilization: 63% (39316260 valid blocks, 0 discard blocks)
+  - Node: 62956 (Inode: 157, Other: 62799)
+  - Data: 39253304
+  - Inline_xattr Inode: 156
+  - Inline_data Inode: 3
+  - Inline_dentry Inode: 1
+  - Orphan/Append/Update Inode: 0, 0, 0
+
+Main area: 121736 segs, 121736 secs 121736 zones
+  - COLD  data: 59043, 59043, 59043
+  - WARM  data: 5807, 5807, 5807
+  - HOT   data: 6495, 6495, 6495
+  - Dir   dnode: 0, 0, 0
+  - File   dnode: 59045, 59045, 59045
+  - Indir nodes: 30433, 30433, 30433
+
+  - Valid: 10637
+  - Dirty: 110107
+  - Prefree: 0
+  - Free: 992 (992)
+
+CP calls: 446 (BG: 23)
+  - cp blocks : 2180
+  - sit blocks : 28253
+  - nat blocks : 1531
+  - ssa blocks : 178861
+GC calls: 1 (BG: 1)
+  - data segments : 1 (1)
+  - node segments : 0 (0)
+Try to move 307 blocks (BG: 307)
+  - data blocks : 307 (307)
+  - node blocks : 0 (0)
+Skipped : atomic write 0 (0)
+BG skip : IO: 79, Other: 0
+
+Extent Cache:
+  - Hit Count: L1-1:178 L1-2:6813 L2:1511232
+  - Hit Ratio: 1% (1518223 / 132887799)
+  - Inner Struct Count: tree: 155(0), node: 1100833
+
+Balancing F2FS Async:
+  - DIO (R:    0, W:    0)
+  - IO_R (Data:    0, Node:    0, Meta:    0
+  - IO_W (CP:    0, Data:    0, Flush: (   0 1388    1), Discard: (   8 552021)) cmd: 18219195 undiscard:21862425
+  - inmem:    0, atomic IO:    0 (Max.    0), volatile IO:    0 (Max.    0)
+  - nodes:    0 in 2472
+  - dents:    0 in dirs:   0 (   0)
+  - datas:    0 in files:   0
+  - quota datas:    0 in quota files:   0
+  - meta:    0 in 12012
+  - imeta:    0
+  - NATs:         0/     4242
+  - SITs:         0/   121736
+  - free_nids:      2012/ 12749841
+  - alloc_nids:         0
+
+Distribution of User Blocks: [ valid | invalid | free ]
+  [-------------------------------|-------------------|]
+
+IPU: 642 blocks
+SSR: 11683889 blocks in 57748 segments
+LFS: 62012249 blocks in 121113 segments
+
+BDF: 13, avg. vblocks: 307
+
+Memory: 2149286 KB
+  - static: 29623 KB
+  - cached: 2061726 KB
+  - paged : 57936 KB

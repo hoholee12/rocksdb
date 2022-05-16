@@ -1,0 +1,37 @@
+files fragmented in 56 pieces: 1
+files fragmented in 198 pieces: 1
+files fragmented in 53 pieces: 1
+files fragmented in 67 pieces: 1
+files fragmented in 52 pieces: 1
+files fragmented in 22 pieces: 1
+files fragmented in 23 pieces: 2
+files fragmented in 45 pieces: 1
+files fragmented in 42 pieces: 1
+files fragmented in 43 pieces: 1
+files fragmented in 40 pieces: 1
+files fragmented in 41 pieces: 1
+files fragmented in 1 pieces: 3162
+files fragmented in 0 pieces: 1
+files fragmented in 3 pieces: 170
+files fragmented in 2 pieces: 564
+files fragmented in 5 pieces: 21
+files fragmented in 4 pieces: 59
+files fragmented in 7 pieces: 7
+files fragmented in 6 pieces: 13
+files fragmented in 9 pieces: 5
+files fragmented in 8 pieces: 3
+files fragmented in 206 pieces: 1
+files fragmented in 14 pieces: 1
+files fragmented in 11 pieces: 1
+files fragmented in 10 pieces: 3
+files fragmented in 13 pieces: 4
+files fragmented in 58 pieces: 1
+files fragmented in 17 pieces: 2
+files fragmented in 18 pieces: 3
+files fragmented in 49 pieces: 1
+files fragmented in 37 pieces: 2
+files fragmented in 36 pieces: 2
+files fragmented in 35 pieces: 1
+files fragmented in 34 pieces: 1
+total files: 4041
+22% fragmented

@@ -19,13 +19,22 @@ fi
 
 init
 
-for i in 32 64 128; do
-	./sata_ext4.sh
-	./run_bench_yesim.sh $((9256395*$i)) ext4
-	./sata_f2fs.sh
-	./run_bench_yesim.sh $((9256395*$i)) f2fs
+
+for i in 128; do
 	./sata_f2fs_ext.sh
-	./run_bench_yesim.sh $((9256395*$i)) f2fs_ext
+	cp /home/jeongho/mntbackup2/fillbackup/* /home/jeongho/mnt/
+	dd if=/dev/zero of=/home/jeongho/mnt/filltemp bs=1M count=28672
+	./run_bench_yesim_old.sh $((9256395*$i)) f2fs_ext_hotcold
+		
+	./sata_ext4.sh
+	cp /home/jeongho/mntbackup2/fillbackup/* /home/jeongho/mnt/
+	dd if=/dev/zero of=/home/jeongho/mnt/filltemp bs=1M count=28672
+	./run_bench_yesim_old.sh $((9256395*$i)) ext4
+	
+	./sata_f2fs.sh
+	cp /home/jeongho/mntbackup2/fillbackup/* /home/jeongho/mnt/
+	dd if=/dev/zero of=/home/jeongho/mnt/filltemp bs=1M count=28672
+	./run_bench_yesim_old.sh $((9256395*$i)) f2fs
 done
 
 #default key 16 bytes value 100bytes

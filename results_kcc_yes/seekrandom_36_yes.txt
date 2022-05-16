@@ -1,0 +1,579 @@
+Initializing RocksDB Options from the specified file
+Initializing RocksDB Options from command-line flags
+current level: 0
+mymsg /home/jeongho/mnt/001903.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001901.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001898.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001895.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001889.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001882.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001879.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001873.buf CREATE
+current level: 0
+current level: 0
+mymsg /home/jeongho/mnt/001875.buf CREATE
+mymsg /home/jeongho/mnt/001870.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001859.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001854.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001856.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001906.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001847.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001838.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001835.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001832.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001829.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001886.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001891.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001827.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001824.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001815.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001812.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001866.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001850.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001807.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001821.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001810.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001818.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001841.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001840.buf CREATE
+current level: 0
+mymsg /home/jeongho/mnt/001863.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001836.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001833.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001830.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001825.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001816.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001842.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001813.buf CREATE
+current level: 1
+mymsg /home/jeongho/mnt/001805.buf CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001892.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001880.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001877.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001876.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001867.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001852.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001883.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001799.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001796.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001851.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001845.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001783.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001776.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001767.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001764.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001760.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001757.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001780.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001721.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001887.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001694.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001868.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001691.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001773.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001864.sst CREATE
+current level: 2
+mymsg /home/jeongho/RocksDB:    version 6.24
+Date:       Sun May  1 16:47:07 2022
+CPU:        8 * Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz
+CPUCache:   8192 KB
+... finished 100 ops                              ... finished 100 ops                              ... finished 100 ops                              ... finished 100 ops                              ... finished 100 ops                              ... finished 100 ops                              ... finished 100 ops                              ... finished 100 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 200 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 300 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 400 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 500 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 600 ops                              ... finished 700 ops                              ... finished 700 ops                              ... finished 700 ops                              ... finished 700 ops                              ... finished 700 ops                              ... finished 700 ops                              ... finished 700 ops                              ... finished 800 ops                              ... finished 700 ops                              ... finished 800 ops                              ... finished 800 ops                              ... finished 800 ops                              ... finished 800 ops                              ... finished 800 ops                              ... finished 800 ops                              ... finished 900 ops                              ... finished 900 ops                              ... finished 800 ops                              ... finished 900 ops                              ... finished 900 ops                              ... finished 900 ops                              ... finished 900 ops                              ... finished 900 ops                              ... finished 1000 ops                              ... finished 1000 ops                              ... finished 900 ops                              ... finished 1000 ops                              ... finished 1000 ops                              ... finished 1000 ops                              ... finished 1000 ops                              ... finished 1000 ops                              ... finished 1000 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 1500 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2000 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 2500 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3000 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 3500 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4000 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 4500 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 5000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 6000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 7000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 8000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 9000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 10000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 15000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 20000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 25000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 30000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 35000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 40000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 45000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              ... finished 50000 ops                              long op: 20341 micros                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 60000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 70000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 80000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 90000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              ... finished 100000 ops                              long op: 24940 micros                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 150000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 200000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              ... finished 250000 ops                              long op: 23121 micros                              long op: 23013 micros                              long op: 20349 micros                              ... finished 300000 ops                              ... finished 300000 ops                              ... finished 300000 ops                              ... finished 300000 ops                              ... finished 300000 ops                              ... finished 300000 ops                              ... finished 300000 ops                              ... finished 300000 ops                              long op: 20217 micros                              long op: 21896 micros                              ... finished 350000 ops                              ... finished 350000 ops                              ... finished 350000 ops                              ... finished 350000 ops                              ... finished 350000 ops                              ... finished 350000 ops                              ... finished 350000 ops                              ... finished 350000 ops                              long op: 20363 micros                              ... finished 400000 ops                              ... finished 400000 ops                              ... finished 400000 ops                              ... finished 400000 ops                              ... finished 400000 ops                              ... finished 400000 ops                              ... finished 400000 ops                              ... finished 400000 ops                              long op: 21196 micros                              ... finished 450000 ops                              ... finished 450000 ops                              ... finished 450000 ops                              ... finished 450000 ops                              ... finished 450000 ops                              ... finished 450000 ops                              ... finished 450000 ops                              long op: 26875 micros                              ... finished 450000 ops                              long op: 21813 micros                              ... finished 500000 ops                              ... finished 500000 ops                              ... finished 500000 ops                              ... finished 500000 ops                              ... finished 500000 ops                              ... finished 500000 ops                              ... finished 500000 ops                              ... finished 500000 ops                              long op: 21314 micros                              long op: 25415 micros                              long op: 21652 micros                              mnt/001884.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001710.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001707.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001617.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001763.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001716.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001427.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001772.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001418.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001594.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001253.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001848.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001871.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001789.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/000921.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001804.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001627.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/001074.sst CREATE
+current level: 2
+mymsg /home/jeongho/mnt/000749.sst CREATE
+Rocks2level is called on db_impl.cc 2
+current level: 0
+mymsg /home/jeongho/mnt/001910.buf CREATE
+mymsg /home/jeongho/mnt/001905.log DELETE level:-1
+Keys:       48 bytes each (+ 0 bytes user-defined timestamp)
+Values:     100 bytes each (50 bytes after compression)
+Entries:    580400
+Prefix:    0 bytes
+Keys per prefix:    0
+RawSize:    81.9 MB (estimated)
+FileSize:   54.2 MB (estimated)
+Write rate: 0 bytes/second
+Read rate: 0 ops/second
+Compression: Snappy
+Compression sampling rate: 0
+Memtablerep: skip_list
+Perf Level: 1
+------------------------------------------------
+DB path: [/home/jeongho/mnt]
+seekrandom   :     300.565 micros/op 26577 ops/sec;  187.6 MB/s (580186 of 580400 found)
+
+Microseconds per seek:
+Count: 4643200 Average: 300.5654  StdDev: 136.61
+Min: 70  Median: 301.0328  Max: 26875
+Percentiles: P50: 301.03 P75: 340.81 P99: 378.99 P99.9: 824.16 P99.99: 6442.08
+------------------------------------------------------
+(      51,      76 ]        2   0.000%   0.000% 
+(      76,     110 ]      457   0.010%   0.010% 
+(     110,     170 ]   137424   2.960%   2.970% #
+(     170,     250 ]   694371  14.955%  17.924% ###
+(     250,     380 ]  3793929  81.709%  99.634% ################
+(     380,     580 ]    10194   0.220%  99.853% 
+(     580,     870 ]     2589   0.056%  99.909% 
+(     870,    1300 ]     1151   0.025%  99.934% 
+(    1300,    1900 ]      697   0.015%  99.949% 
+(    1900,    2900 ]      661   0.014%  99.963% 
+(    2900,    4400 ]      610   0.013%  99.976% 
+(    4400,    6600 ]      701   0.015%  99.991% 
+(    6600,    9900 ]      257   0.006%  99.997% 
+(    9900,   14000 ]      105   0.002%  99.999% 
+(   14000,   22000 ]       47   0.001% 100.000% 
+(   22000,   33000 ]        5   0.000% 100.000% 
+
+
+
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop Rblob(GB) Wblob(GB)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  L0     33/0   852.78 MB   0.1      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0    117.3      0.19              0.00         1    0.192       0      0       0.0       0.0
+  L1     10/0   596.75 MB   0.1      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0       0.0       0.0
+  L2     44/0    1.75 GB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0       0.0       0.0
+ Sum     87/0    3.16 GB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0    117.3      0.19              0.00         1    0.192       0      0       0.0       0.0
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0      0.00              0.00         0    0.000       0      0       0.0       0.0
+
+** Compaction Stats [default] **
+Priority    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop Rblob(GB) Wblob(GB)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+User      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0    117.3      0.19              0.00         1    0.192       0      0       0.0       0.0
+
+Blob file count: 0, total size: 0.0 GB
+
+Uptime(secs): 175.5 total, 174.7 interval
+Flush(GB): cumulative 0.022, interval 0.000
+AddFile(GB): cumulative 0.000, interval 0.000
+AddFile(Total Files): cumulative 0, interval 0
+AddFile(L0 Files): cumulative 0, interval 0
+AddFile(Keys): cumulative 0, interval 0
+Cumulative compaction: 0.02 GB write, 0.13 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.2 seconds
+Interval compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Stalls(count): 0 level0_slowdown, 0 level0_slowdown_with_compaction, 0 level0_numfiles, 0 level0_numfiles_with_compaction, 0 stop for pending_compaction_bytes, 0 slowdown for pending_compaction_bytes, 0 memtable_compaction, 0 memtable_slowdown, interval 0 total count
+Block cache LRUCache@0x55817d1df570#23789 capacity: 8.00 MB collections: 1 last_copies: 0 last_secs: 0.000201 secs_since: 174
+Block cache entry stats(count,size,portion): Misc(1,0.00 KB,0%)
+
+** File Read Latency Histogram By Level [default] **
+** Level 0 read latency histogram (micros):
+Count: 127827490 Average: 1.6307  StdDev: 6.42
+Min: 0  Median: 1.1752  Max: 14373
+Percentiles: P50: 1.18 P75: 1.60 P99: 2.00 P99.9: 2.99 P99.99: 14373.00
+------------------------------------------------------
+[       0,       1 ] 50581766  39.570%  39.570% ########
+(       1,       2 ] 76089979  59.526%  99.096% ############
+(       2,       3 ]  1040050   0.814%  99.909% 
+(       3,       4 ]      882   0.001%  99.910% 
+(       4,       6 ]     1397   0.001%  99.911% 
+(       6,      10 ]    47618   0.037%  99.949% 
+(      10,      15 ]     6844   0.005%  99.954% 
+(      15,      22 ]     3434   0.003%  99.957% 
+(      22,      34 ]      730   0.001%  99.957% 
+(      34,      51 ]      496   0.000%  99.958% 
+(      51,      76 ]      310   0.000%  99.958% 
+(      76,     110 ]      628   0.000%  99.958% 
+(     110,     170 ]     2365   0.002%  99.960% 
+(     170,     250 ]     1126   0.001%  99.961% 
+(     250,     380 ]      219   0.000%  99.961% 
+(     380,     580 ]       64   0.000%  99.961% 
+(     580,     870 ]       22   0.000%  99.961% 
+(     870,    1300 ]       42   0.000%  99.961% 
+(    1300,    1900 ]       31   0.000%  99.961% 
+(    1900,    2900 ]       15   0.000%  99.961% 
+(    2900,    4400 ]       43   0.000%  99.961% 
+(    4400,    6600 ]       33   0.000%  99.961% 
+(    6600,    9900 ]       22   0.000%  99.961% 
+(    9900,   14000 ]       13   0.000%  99.961% 
+(   14000,   22000 ]        2   0.000%  99.961% 
+
+** Level 1 read latency histogram (micros):
+Count: 7001887 Average: 1.7079  StdDev: 15.76
+Min: 0  Median: 1.1881  Max: 22807
+Percentiles: P50: 1.19 P75: 1.60 P99: 2.20 P99.9: 2.98 P99.99: 146.27
+------------------------------------------------------
+[       0,       1 ]  2709713  38.700%  38.700% ########
+(       1,       2 ]  4206172  60.072%  98.772% ############
+(       2,       3 ]    80464   1.149%  99.921% 
+(       3,       4 ]      115   0.002%  99.923% 
+(       4,       6 ]       99   0.001%  99.924% 
+(       6,      10 ]     2640   0.038%  99.962% 
+(      10,      15 ]      352   0.005%  99.967% 
+(      15,      22 ]      191   0.003%  99.969% 
+(      22,      34 ]       44   0.001%  99.970% 
+(      34,      51 ]       29   0.000%  99.970% 
+(      51,      76 ]       19   0.000%  99.971% 
+(      76,     110 ]      511   0.007%  99.978% 
+(     110,     170 ]     1386   0.020%  99.998% 
+(     170,     250 ]      365   0.005% 100.003% 
+(     250,     380 ]       34   0.000% 100.004% 
+(     380,     580 ]        2   0.000% 100.004% 
+(     580,     870 ]        4   0.000% 100.004% 
+(     870,    1300 ]        6   0.000% 100.004% 
+(    1300,    1900 ]        7   0.000% 100.004% 
+(    1900,    2900 ]        8   0.000% 100.004% 
+(    2900,    4400 ]       23   0.000% 100.004% 
+(    4400,    6600 ]        6   0.000% 100.004% 
+(    6600,    9900 ]        4   0.000% 100.004% 
+(    9900,   14000 ]        4   0.000% 100.004% 
+(   22000,   33000 ]        1   0.000% 100.004% 
+
+** Level 2 read latency histogram (micros):
+Count: 13454752 Average: 1.5815  StdDev: 16.66
+Min: 0  Median: 0.9794  Max: 21520
+Percentiles: P50: 0.98 P75: 1.50 P99: 1.99 P99.9: 2.98 P99.99: 210.14
+------------------------------------------------------
+[       0,       1 ]  6868969  51.052%  51.052% ##########
+(       1,       2 ]  6485946  48.206%  99.258% ##########
+(       2,       3 ]    88201   0.656%  99.914% 
+(       3,       4 ]      382   0.003%  99.916% 
+(       4,       6 ]      331   0.002%  99.919% 
+(       6,      10 ]     4599   0.034%  99.953% 
+(      10,      15 ]      658   0.005%  99.958% 
+(      15,      22 ]      348   0.003%  99.960% 
+(      22,      34 ]       76   0.001%  99.961% 
+(      34,      51 ]       40   0.000%  99.961% 
+(      51,      76 ]       26   0.000%  99.962% 
+(      76,     110 ]     1015   0.008%  99.969% 
+(     110,     170 ]     2520   0.019%  99.988% 
+(     170,     250 ]      589   0.004%  99.992% 
+(     250,     380 ]       43   0.000%  99.993% 
+(     380,     580 ]       14   0.000%  99.993% 
+(     580,     870 ]        5   0.000%  99.993% 
+(     870,    1300 ]        7   0.000%  99.993% 
+(    1300,    1900 ]       14   0.000%  99.993% 
+(    1900,    2900 ]       20   0.000%  99.993% 
+(    2900,    4400 ]       31   0.000%  99.993% 
+(    4400,    6600 ]       21   0.000%  99.993% 
+(    6600,    9900 ]       14   0.000%  99.993% 
+(    9900,   14000 ]        8   0.000%  99.993% 
+(   14000,   22000 ]        1   0.000%  99.994% 
+
+
+** DB Stats **
+Uptime(secs): 175.5 total, 174.7 interval
+Cumulative writes: 0 writes, 0 keys, 0 commit groups, 0.0 writes per commit group, ingest: 0.00 GB, 0.00 MB/s
+Cumulative WAL: 0 writes, 0 syncs, 0.00 writes per sync, written: 0.00 GB, 0.00 MB/s
+Cumulative stall: 00:00:0.000 H:M:S, 0.0 percent
+Interval writes: 0 writes, 0 keys, 0 commit groups, 0.0 writes per commit group, ingest: 0.00 MB, 0.00 MB/s
+Interval WAL: 0 writes, 0 syncs, 0.00 writes per sync, written: 0.00 GB, 0.00 MB/s
+Interval stall: 00:00:0.000 H:M:S, 0.0 percent
+
+STATISTICS:
+rocksdb.block.cache.miss COUNT : 150267817
+rocksdb.block.cache.hit COUNT : 28994868
+rocksdb.block.cache.add COUNT : 150267817
+rocksdb.block.cache.add.failures COUNT : 0
+rocksdb.block.cache.index.miss COUNT : 0
+rocksdb.block.cache.index.hit COUNT : 0
+rocksdb.block.cache.index.add COUNT : 0
+rocksdb.block.cache.index.bytes.insert COUNT : 0
+rocksdb.block.cache.index.bytes.evict COUNT : 0
+rocksdb.block.cache.filter.miss COUNT : 0
+rocksdb.block.cache.filter.hit COUNT : 0
+rocksdb.block.cache.filter.add COUNT : 0
+rocksdb.block.cache.filter.bytes.insert COUNT : 0
+rocksdb.block.cache.filter.bytes.evict COUNT : 0
+rocksdb.block.cache.data.miss COUNT : 150267817
+rocksdb.block.cache.data.hit COUNT : 28994868
+rocksdb.block.cache.data.add COUNT : 150267817
+rocksdb.block.cache.data.bytes.insert COUNT : 610689416752
+rocksdb.block.cache.bytes.read COUNT : 117835338336
+rocksdb.block.cache.bytes.write COUNT : 610689416752
+rocksdb.bloom.filter.useful COUNT : 0
+rocksdb.bloom.filter.full.positive COUNT : 0
+rocksdb.bloom.filter.full.true.positive COUNT : 0
+rocksdb.bloom.filter.micros COUNT : 0
+rocksdb.persistent.cache.hit COUNT : 0
+rocksdb.persistent.cache.miss COUNT : 0
+rocksdb.sim.block.cache.hit COUNT : 0
+rocksdb.sim.block.cache.miss COUNT : 0
+rocksdb.memtable.hit COUNT : 0
+rocksdb.memtable.miss COUNT : 0
+rocksdb.l0.hit COUNT : 0
+rocksdb.l1.hit COUNT : 0
+rocksdb.l2andup.hit COUNT : 0
+rocksdb.compaction.key.drop.new COUNT : 0
+rocksdb.compaction.key.drop.obsolete COUNT : 0
+rocksdb.compaction.key.drop.range_del COUNT : 0
+rocksdb.compaction.key.drop.user COUNT : 0
+rocksdb.compaction.range_del.drop.obsolete COUNT : 0
+rocksdb.compaction.optimized.del.drop.obsolete COUNT : 0
+rocksdb.compaction.cancelled COUNT : 0
+rocksdb.number.keys.written COUNT : 0
+rocksdb.number.keys.read COUNT : 0
+rocksdb.number.keys.updated COUNT : 0
+rocksdb.bytes.written COUNT : 0
+rocksdb.bytes.read COUNT : 0
+rocksdb.number.db.seek COUNT : 4643200
+rocksdb.number.db.next COUNT : 232160000
+rocksdb.number.db.prev COUNT : 0
+rocksdb.number.db.seek.found COUNT : 4643200
+rocksdb.number.db.next.found COUNT : 232160000
+rocksdb.number.db.prev.found COUNT : 0
+rocksdb.db.iter.bytes.read COUNT : 35046873600
+rocksdb.no.file.closes COUNT : 0
+rocksdb.no.file.opens COUNT : 87
+rocksdb.no.file.errors COUNT : 0
+rocksdb.l0.slowdown.micros COUNT : 0
+rocksdb.memtable.compaction.micros COUNT : 0
+rocksdb.l0.num.files.stall.micros COUNT : 0
+rocksdb.stall.micros COUNT : 0
+rocksdb.db.mutex.wait.micros COUNT : 0
+rocksdb.rate.limit.delay.millis COUNT : 0
+rocksdb.num.iterators COUNT : 0
+rocksdb.number.multiget.get COUNT : 0
+rocksdb.number.multiget.keys.read COUNT : 0
+rocksdb.number.multiget.bytes.read COUNT : 0
+rocksdb.number.deletes.filtered COUNT : 0
+rocksdb.number.merge.failures COUNT : 0
+rocksdb.bloom.filter.prefix.checked COUNT : 0
+rocksdb.bloom.filter.prefix.useful COUNT : 0
+rocksdb.number.reseeks.iteration COUNT : 0
+rocksdb.getupdatessince.calls COUNT : 0
+rocksdb.block.cachecompressed.miss COUNT : 0
+rocksdb.block.cachecompressed.hit COUNT : 0
+rocksdb.block.cachecompressed.add COUNT : 0
+rocksdb.block.cachecompressed.add.failures COUNT : 0
+rocksdb.wal.synced COUNT : 0
+rocksdb.wal.bytes COUNT : 0
+rocksdb.write.self COUNT : 0
+rocksdb.write.other COUNT : 0
+rocksdb.write.timeout COUNT : 0
+rocksdb.write.wal COUNT : 0
+rocksdb.compact.read.bytes COUNT : 0
+rocksdb.compact.write.bytes COUNT : 23644408
+rocksdb.flush.write.bytes COUNT : 0
+rocksdb.compact.read.marked.bytes COUNT : 0
+rocksdb.compact.read.periodic.bytes COUNT : 0
+rocksdb.compact.read.ttl.bytes COUNT : 0
+rocksdb.compact.write.marked.bytes COUNT : 0
+rocksdb.compact.write.periodic.bytes COUNT : 0
+rocksdb.compact.write.ttl.bytes COUNT : 0
+rocksdb.number.direct.load.table.properties COUNT : 0
+rocksdb.number.superversion_acquires COUNT : 8
+rocksdb.number.superversion_releases COUNT : 0
+rocksdb.number.superversion_cleanups COUNT : 0
+rocksdb.number.block.compressed COUNT : 12954
+rocksdb.number.block.decompressed COUNT : 150267904
+rocksdb.number.block.not_compressed COUNT : 0
+rocksdb.merge.operation.time.nanos COUNT : 0
+rocksdb.filter.operation.time.nanos COUNT : 0
+rocksdb.row.cache.hit COUNT : 0
+rocksdb.row.cache.miss COUNT : 0
+rocksdb.read.amp.estimate.useful.bytes COUNT : 0
+rocksdb.read.amp.total.read.bytes COUNT : 0
+rocksdb.number.rate_limiter.drains COUNT : 0
+rocksdb.number.iter.skip COUNT : 165806593
+rocksdb.blobdb.num.put COUNT : 0
+rocksdb.blobdb.num.write COUNT : 0
+rocksdb.blobdb.num.get COUNT : 0
+rocksdb.blobdb.num.multiget COUNT : 0
+rocksdb.blobdb.num.seek COUNT : 0
+rocksdb.blobdb.num.next COUNT : 0
+rocksdb.blobdb.num.prev COUNT : 0
+rocksdb.blobdb.num.keys.written COUNT : 0
+rocksdb.blobdb.num.keys.read COUNT : 0
+rocksdb.blobdb.bytes.written COUNT : 0
+rocksdb.blobdb.bytes.read COUNT : 0
+rocksdb.blobdb.write.inlined COUNT : 0
+rocksdb.blobdb.write.inlined.ttl COUNT : 0
+rocksdb.blobdb.write.blob COUNT : 0
+rocksdb.blobdb.write.blob.ttl COUNT : 0
+rocksdb.blobdb.blob.file.bytes.written COUNT : 0
+rocksdb.blobdb.blob.file.bytes.read COUNT : 0
+rocksdb.blobdb.blob.file.synced COUNT : 0
+rocksdb.blobdb.blob.index.expired.count COUNT : 0
+rocksdb.blobdb.blob.index.expired.size COUNT : 0
+rocksdb.blobdb.blob.index.evicted.count COUNT : 0
+rocksdb.blobdb.blob.index.evicted.size COUNT : 0
+rocksdb.blobdb.gc.num.files COUNT : 0
+rocksdb.blobdb.gc.num.new.files COUNT : 0
+rocksdb.blobdb.gc.failures COUNT : 0
+rocksdb.blobdb.gc.num.keys.overwritten COUNT : 0
+rocksdb.blobdb.gc.num.keys.expired COUNT : 0
+rocksdb.blobdb.gc.num.keys.relocated COUNT : 0
+rocksdb.blobdb.gc.bytes.overwritten COUNT : 0
+rocksdb.blobdb.gc.bytes.expired COUNT : 0
+rocksdb.blobdb.gc.bytes.relocated COUNT : 0
+rocksdb.blobdb.fifo.num.files.evicted COUNT : 0
+rocksdb.blobdb.fifo.num.keys.evicted COUNT : 0
+rocksdb.blobdb.fifo.bytes.evicted COUNT : 0
+rocksdb.txn.overhead.mutex.prepare COUNT : 0
+rocksdb.txn.overhead.mutex.old.commit.map COUNT : 0
+rocksdb.txn.overhead.duplicate.key COUNT : 0
+rocksdb.txn.overhead.mutex.snapshot COUNT : 0
+rocksdb.txn.get.tryagain COUNT : 0
+rocksdb.number.multiget.keys.found COUNT : 0
+rocksdb.num.iterator.created COUNT : 4643200
+rocksdb.num.iterator.deleted COUNT : 4643200
+rocksdb.block.cache.compression.dict.miss COUNT : 0
+rocksdb.block.cache.compression.dict.hit COUNT : 0
+rocksdb.block.cache.compression.dict.add COUNT : 0
+rocksdb.block.cache.compression.dict.bytes.insert COUNT : 0
+rocksdb.block.cache.compression.dict.bytes.evict COUNT : 0
+rocksdb.block.cache.add.redundant COUNT : 509474
+rocksdb.block.cache.index.add.redundant COUNT : 0
+rocksdb.block.cache.filter.add.redundant COUNT : 0
+rocksdb.block.cache.data.add.redundant COUNT : 509474
+rocksdb.block.cache.compression.dict.add.redundant COUNT : 0
+rocksdb.files.marked.trash COUNT : 0
+rocksdb.files.deleted.immediately COUNT : 0
+rocksdb.error.handler.bg.errro.count COUNT : 0
+rocksdb.error.handler.bg.io.errro.count COUNT : 0
+rocksdb.error.handler.bg.retryable.io.errro.count COUNT : 0
+rocksdb.error.handler.autoresume.count COUNT : 0
+rocksdb.error.handler.autoresume.retry.total.count COUNT : 0
+rocksdb.error.handler.autoresume.success.count COUNT : 0
+rocksdb.memtable.payload.bytes.at.flush COUNT : 0
+rocksdb.memtable.garbage.bytes.at.flush COUNT : 0
+rocksdb.secondary.cache.hits COUNT : 0
+rocksdb.db.get.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.db.write.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.compaction.times.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.compaction.times.cpu_micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.subcompaction.setup.times.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.table.sync.micros P50 : 55206.000000 P95 : 55206.000000 P99 : 55206.000000 P100 : 55206.000000 COUNT : 1 SUM : 55206
+rocksdb.compaction.outfile.sync.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.wal.file.sync.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.manifest.file.sync.micros P50 : 14000.000000 P95 : 17076.000000 P99 : 17076.000000 P100 : 17076.000000 COUNT : 2 SUM : 29706
+rocksdb.table.open.io.micros P50 : 8136.206897 P95 : 16447.000000 P99 : 16447.000000 P100 : 16447.000000 COUNT : 87 SUM : 745013
+rocksdb.db.multiget.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.read.block.compaction.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.read.block.get.micros P50 : 3.466631 P95 : 5.117657 P99 : 5.842863 P100 : 24485.000000 COUNT : 150267904 SUM : 599546972
+rocksdb.write.raw.block.micros P50 : 0.503537 P95 : 0.956720 P99 : 0.997003 P100 : 421.000000 COUNT : 12956 SUM : 11322
+rocksdb.l0.slowdown.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.memtable.compaction.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.num.files.stall.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.hard.rate.limit.delay.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.soft.rate.limit.delay.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.numfiles.in.singlecompaction P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.db.seek.micros P50 : 228.926059 P95 : 363.333712 P99 : 377.103942 P100 : 26790.000000 COUNT : 4643200 SUM : 1052672079
+rocksdb.db.write.stall P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.sst.read.micros P50 : 1.163757 P95 : 1.929655 P99 : 1.997735 P100 : 22807.000000 COUNT : 150268165 SUM : 244841205
+rocksdb.num.subcompactions.scheduled P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.bytes.per.read P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.bytes.per.write P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.bytes.per.multiget P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.bytes.compressed P50 : 3650.000000 P95 : 4325.104231 P99 : 4385.113496 P100 : 253792.000000 COUNT : 12954 SUM : 51878399
+rocksdb.bytes.decompressed P50 : 3650.000364 P95 : 4325.000746 P99 : 4385.000780 P100 : 800562.000000 COUNT : 150267904 SUM : 598719611079
+rocksdb.compression.times.nanos P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.decompression.times.nanos P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.read.num.merge_operands P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.key.size P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.value.size P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.write.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.get.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.multiget.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.seek.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.next.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.prev.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.blob.file.write.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.blob.file.read.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.blob.file.sync.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.gc.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.compression.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.blobdb.decompression.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.db.flush.micros P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.sst.batch.size P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.num.index.and.filter.blocks.read.per.level P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.num.data.blocks.read.per.level P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.num.sst.read.per.level P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+rocksdb.error.handler.autoresume.retry.count P50 : 0.000000 P95 : 0.000000 P99 : 0.000000 P100 : 0.000000 COUNT : 0 SUM : 0
+
+1191.05user 188.39system 2:55.58elapsed 785%CPU (0avgtext+0avgdata 116236maxresident)k
+308640inputs+46528outputs (59major+34984minor)pagefaults 0swaps

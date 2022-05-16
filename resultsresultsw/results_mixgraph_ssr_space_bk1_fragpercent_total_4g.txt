@@ -1,0 +1,7 @@
+files fragmented in 1 pieces: 52
+files fragmented in 0 pieces: 1
+files fragmented in 12 pieces: 1
+files fragmented in 2 pieces: 117
+files fragmented in 11 pieces: 1
+total files: 172
+70% fragmented

@@ -1,0 +1,30 @@
+files fragmented in 13694 pieces: 17
+files fragmented in 13695 pieces: 20
+files fragmented in 13696 pieces: 7
+files fragmented in 13697 pieces: 10
+files fragmented in 13690 pieces: 4
+files fragmented in 13691 pieces: 9
+files fragmented in 13692 pieces: 2
+files fragmented in 13693 pieces: 11
+files fragmented in 13698 pieces: 4
+files fragmented in 13699 pieces: 9
+files fragmented in 13654 pieces: 1
+files fragmented in 13678 pieces: 2
+files fragmented in 13635 pieces: 1
+files fragmented in 13670 pieces: 1
+files fragmented in 13676 pieces: 1
+files fragmented in 13263 pieces: 1
+files fragmented in 13689 pieces: 6
+files fragmented in 13644 pieces: 3
+files fragmented in 13683 pieces: 1
+files fragmented in 13687 pieces: 1
+files fragmented in 13686 pieces: 4
+files fragmented in 13685 pieces: 2
+files fragmented in 13684 pieces: 1
+files fragmented in 13700 pieces: 22
+files fragmented in 13701 pieces: 10
+files fragmented in 13665 pieces: 1
+files fragmented in 13664 pieces: 1
+files fragmented in 13688 pieces: 3
+total files: 155
+100% fragmented

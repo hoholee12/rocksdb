@@ -7,7 +7,7 @@ sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 mkdir /home/jeongho/mnt/fill
 #generate l0
-sudo time ./db_bench \
+sudo time ./db_bench_old \
  -benchmarks="fillrandom" \
  -num=$1 \
  -threads=1 \

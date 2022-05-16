@@ -1,0 +1,4 @@
+files fragmented in 1 pieces: 2940
+files fragmented in 2 pieces: 3
+total files: 2943
+1% fragmented

@@ -63,6 +63,8 @@
 #include "util/thread_local.h"
 #include "util/threadpool_imp.h"
 
+#include "file/filename.h"
+
 #if !defined(TMPFS_MAGIC)
 #define TMPFS_MAGIC 0x01021994
 #endif
@@ -704,9 +706,12 @@ class PosixFileSystem : public FileSystem {
   IOStatus GetFileSize(const std::string& fname, const IOOptions& /*opts*/,
                        uint64_t* size, IODebugContext* /*dbg*/) override {
     struct stat sbuf;
+    std::string badname;
     if (stat(fname.c_str(), &sbuf) != 0) {
       *size = 0;
-      return IOError("while stat a file for size", fname, errno);
+      badname = Rocks2LevelTableFileName(fname);
+      if(stat(badname.c_str(), &sbuf) != 0) return IOError("while stat a file for size", badname, errno);
+      else *size = sbuf.st_size;
     } else {
       *size = sbuf.st_size;
     }

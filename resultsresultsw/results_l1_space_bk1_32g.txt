@@ -1,0 +1,4 @@
+ERROR: unknown command line flag 'bits_per_key'
+Command exited with non-zero status 1
+0.01user 0.00system 0:00.03elapsed 39%CPU (0avgtext+0avgdata 8380maxresident)k
+12776inputs+8outputs (54major+314minor)pagefaults 0swaps

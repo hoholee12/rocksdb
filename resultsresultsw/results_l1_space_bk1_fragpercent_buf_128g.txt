@@ -1,0 +1,9 @@
+files fragmented in 10 pieces: 1
+files fragmented in 12 pieces: 1
+files fragmented in 19 pieces: 1
+files fragmented in 3 pieces: 1
+files fragmented in 2 pieces: 2
+files fragmented in 6 pieces: 1
+files fragmented in 8 pieces: 1
+total files: 8
+100% fragmented

@@ -1,0 +1,5 @@
+level 0 fragmentation: 5428
+level 1 fragmentation: 15024
+level 2 fragmentation: 13615
+level 3 fragmentation: 12949
+level 4 fragmentation: 12457

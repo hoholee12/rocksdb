@@ -61,31 +61,57 @@ DeleteScheduler::~DeleteScheduler() {
 Status DeleteScheduler::DeleteFile(const std::string& file_path,
                                    const std::string& dir_to_sync,
                                    const bool force_bg) {
+
+    std::string bad_file;
+    int level = countlevel[TableFileNameToNumber(file_path.c_str())] - 1;
+    int filetype = extperfile[TableFileNameToNumber(file_path.c_str())];
+    if(level > -1) {
+      deleteperlevel[level]++;
+      printf("level %d delete op %d\n", level, deleteperlevel[level]);
+      counter[jobcounter]++;
+    }
+    Status s;
+    if(filetype != 0){
+      bad_file = determinefilename(file_path, (filetype == 2) ? false : true);
+    }
+    else if(level == -1){
+      bad_file = file_path;
+    }
+    else if(level < counter[buflevel]){
+      bad_file = determinefilename(file_path, true); 
+    }
+    else if(level >= counter[buflevel]){
+      bad_file = determinefilename(file_path, false);
+    }
   if (rate_bytes_per_sec_.load() <= 0 || (!force_bg &&
       total_trash_size_.load() >
           sst_file_manager_->GetTotalSize() * max_trash_db_ratio_.load())) {
     // Rate limiting is disabled or trash size makes up more than
     // max_trash_db_ratio_ (default 25%) of the total DB size
     
-    TEST_SYNC_POINT("DeleteScheduler::DeleteFile");
-    Status s = fs_->DeleteFile(file_path, IOOptions(), nullptr);
 
-    std::string bad_file;
-    int level = countlevel[TableFileNameToNumber(file_path.c_str())] - 1;
-    printf("mymsg %s DELETE level:%d\n", file_path.c_str(), level);
+
+    TEST_SYNC_POINT("DeleteScheduler::DeleteFile");
+    //Status s = fs_->DeleteFile(file_path, IOOptions(), nullptr);
+
+
+    
+    s = fs_->DeleteFile(bad_file, IOOptions(), nullptr);
+    printf("mymsg %s DELETE level:%d\n", bad_file.c_str(), level);
     if (s.IsPathNotFound()) {
       printf("can't delete!!\n");
-      bad_file = Rocks2LevelTableFileName(file_path);
+      bad_file = Rocks2LevelTableFileName(bad_file);
       s = fs_->DeleteFile(bad_file, IOOptions(), nullptr);
       printf("mymsg %s DELETE again\n", bad_file.c_str());
     }
+  
     
     if (s.ok()) {
-      s = sst_file_manager_->OnDeleteFile(file_path);
+      s = sst_file_manager_->OnDeleteFile(bad_file);
       ROCKS_LOG_INFO(info_log_,
                      "Deleted file %s immediately, rate_bytes_per_sec %" PRIi64
                      ", total_trash_size %" PRIu64 " max_trash_db_ratio %lf",
-                     file_path.c_str(), rate_bytes_per_sec_.load(),
+                     bad_file.c_str(), rate_bytes_per_sec_.load(),
                      total_trash_size_.load(), max_trash_db_ratio_.load());
       InstrumentedMutexLock l(&mu_);
       RecordTick(stats_.get(), FILES_DELETED_IMMEDIATELY);
@@ -95,17 +121,17 @@ Status DeleteScheduler::DeleteFile(const std::string& file_path,
 
   // Move file to trash
   std::string trash_file;
-  Status s = MarkAsTrash(file_path, &trash_file);
+  s = MarkAsTrash(bad_file, &trash_file);
   ROCKS_LOG_INFO(info_log_, "Mark file: %s as trash -- %s", trash_file.c_str(),
                  s.ToString().c_str());
 
   if (!s.ok()) {
     ROCKS_LOG_ERROR(info_log_, "Failed to mark %s as trash -- %s",
-                    file_path.c_str(), s.ToString().c_str());
+                    bad_file.c_str(), s.ToString().c_str());
                         //printf("i am deleted from delete_scheduler.cc 2\n");
-    s = fs_->DeleteFile(file_path, IOOptions(), nullptr);
+    s = fs_->DeleteFile(bad_file, IOOptions(), nullptr);
     if (s.ok()) {
-      s = sst_file_manager_->OnDeleteFile(file_path);
+      s = sst_file_manager_->OnDeleteFile(bad_file);
       ROCKS_LOG_INFO(info_log_, "Deleted file %s immediately",
                      trash_file.c_str());
       InstrumentedMutexLock l(&mu_);

@@ -1,0 +1,40 @@
+load...
+[WARN]  Running against a source checkout. In order to get our runtime dependencies we'll have to invoke Maven. Depending on the state of your system, this may take ~30-45 seconds
+[DEBUG]  Running 'mvn -pl site.ycsb:rocksdb-binding -am package -DskipTests dependency:build-classpath -DincludeScope=compile -Dmdep.outputFilterFile=true'
+java -cp /home/jeongho/YCSB/rocksdb/conf:/home/jeongho/YCSB/rocksdb/target/rocksdb-binding-0.18.0-SNAPSHOT.jar:/root/.m2/repository/org/apache/htrace/htrace-core4/4.1.0-incubating/htrace-core4-4.1.0-incubating.jar:/root/.m2/repository/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar:/root/.m2/repository/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar:/root/.m2/repository/org/hdrhistogram/HdrHistogram/2.1.4/HdrHistogram-2.1.4.jar:/root/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.9.4/jackson-mapper-asl-1.9.4.jar:/root/.m2/repository/org/rocksdb/rocksdbjni/6.2.2/rocksdbjni-6.2.2.jar:/root/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.9.4/jackson-core-asl-1.9.4.jar:/home/jeongho/YCSB/core/target/core-0.18.0-SNAPSHOT.jar site.ycsb.Client -db site.ycsb.db.rocksdb.RocksDBClient -s -P workloads/workloadc -p recordcount=1000000 -p operationcount=1000000 -p rocksdb.dir=/home/jeongho/mnt/ycsbtest -load
+Command line: -db site.ycsb.db.rocksdb.RocksDBClient -s -P workloads/workloadc -p recordcount=1000000 -p operationcount=1000000 -p rocksdb.dir=/home/jeongho/mnt/ycsbtest -load
+YCSB Client 0.18.0-SNAPSHOT
+
+Loading workload...
+Starting test.
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2022-02-17 18:00:31:761 0 sec: 0 operations; est completion in 0 second 
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2022-02-17 18:00:41:749 10 sec: 707624 operations; 70755.32 current ops/sec; est completion in 5 second [INSERT: Count=707685, Max=7627, Min=4, Avg=8.61, 90=11, 99=24, 99.9=43, 99.99=1112] 
+2022-02-17 18:00:46:245 14 sec: 1000000 operations; 65044.72 current ops/sec; [CLEANUP: Count=1, Max=1682431, Min=1681408, Avg=1681920, 90=1682431, 99=1682431, 99.9=1682431, 99.99=1682431] [INSERT: Count=292315, Max=1460, Min=5, Avg=8.5, 90=12, 99=23, 99.9=40, 99.99=1105] 
+[OVERALL], RunTime(ms), 14496
+[OVERALL], Throughput(ops/sec), 68984.54746136865
+[TOTAL_GCS_PS_Scavenge], Count, 32
+[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 51
+[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.3518211920529801
+[TOTAL_GCS_PS_MarkSweep], Count, 0
+[TOTAL_GC_TIME_PS_MarkSweep], Time(ms), 0
+[TOTAL_GC_TIME_%_PS_MarkSweep], Time(%), 0.0
+[TOTAL_GCs], Count, 32
+[TOTAL_GC_TIME], Time(ms), 51
+[TOTAL_GC_TIME_%], Time(%), 0.3518211920529801
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 1681920.0
+[CLEANUP], MinLatency(us), 1681408
+[CLEANUP], MaxLatency(us), 1682431
+[CLEANUP], 95thPercentileLatency(us), 1682431
+[CLEANUP], 99thPercentileLatency(us), 1682431
+[INSERT], Operations, 1000000
+[INSERT], AverageLatency(us), 8.581761
+[INSERT], MinLatency(us), 4
+[INSERT], MaxLatency(us), 7627
+[INSERT], 95thPercentileLatency(us), 19
+[INSERT], 99thPercentileLatency(us), 24
+[INSERT], Return=OK, 1000000
