@@ -19,18 +19,6 @@
 #include "util/string_util.h"
 
 int countlevel[1000000];
-int createperlevel[10];
-int deleteperlevel[10];
-int createperlevel_S[10];
-int deleteperlevel_S[10];
-int counter[2];
-int S = 1000;
-int K = 10;
-int extperfile[1000000];
-
-//upto BUFLEVEL is buf
-#define BUFLEVEL 1
-
 
 namespace ROCKSDB_NAMESPACE {
 
@@ -119,42 +107,19 @@ std::string ArchivedLogFileName(const std::string& name, uint64_t number) {
   return MakeFileName(name + "/" + ARCHIVAL_DIR, number, "log");
 }
 
+//upto BUFLEVEL is buf
+#define BUFLEVEL 1
+
 //this is where file naming happens
 //level is 3rd arg
 std::string MakeTableFileName(const std::string& path, uint64_t number, int level) {
-  //if jobcounter reaches modulo
-  if(counter[jobcounter]%S == 0){
-    printf("job counter: %d\n", counter[jobcounter]);
-    //check K if there was a difference.
-    if((createperlevel[0]-createperlevel_S[0]) != 0){
-      for(int i =0; i < 10; i++){
-        int temp = (createperlevel[i]-createperlevel_S[i]) - (deleteperlevel[i]-deleteperlevel_S[i]);
-        printf("diff of level %d: %d - %d\n", i, (createperlevel[i]-createperlevel_S[i]), (deleteperlevel[i]-deleteperlevel_S[i]));
-        if(temp > K){
-          counter[buflevel] = i;
-          break;
-        }
-        else if(temp < 0){
-          break;
-        }
-      }
-      printf("buflevel changed to %d\n", counter[buflevel]);
-      
-      //backup previous S
-      for(int i = 0; i < 10; i++){
-        createperlevel_S[i] = 0;
-        deleteperlevel_S[i] = 0;
-      }
-    }
-  }
-
-
-  if(level >= counter[buflevel]){
-    //to cold
+  
+  if(level > BUFLEVEL){
+    //printf("MakeTableFileName: %s/%06lu.%s\n", path.c_str(), number, kRocksDbTFileExt.c_str());
     return MakeFileName(path, number, kRocksDbTFileExt.c_str());
   }
   else{
-    //still hot
+    //printf("MakeTableFileName: %s/%06lu.%s\n", path.c_str(), number, kRocksDbTFileExt_l0.c_str());
     return MakeFileName(path, number, kRocksDbTFileExt_l0.c_str());
   }
 }
@@ -162,39 +127,12 @@ std::string MakeTableFileName(const std::string& path, uint64_t number, int leve
 //this is where file naming happens
 //level is 2nd arg
 std::string MakeTableFileName(uint64_t number, int level) {
-  //if jobcounter reaches modulo
-  if(counter[jobcounter]%S == 0){
-    printf("job counter: %d\n", counter[jobcounter]);
-    //check K if there was a difference.
-    if((createperlevel[0]-createperlevel_S[0]) != 0){
-      for(int i =0; i < 10; i++){
-        int temp = (createperlevel[i]-createperlevel_S[i]) - (deleteperlevel[i]-deleteperlevel_S[i]);
-        printf("diff of level %d: %d - %d\n", i, (createperlevel[i]-createperlevel_S[i]), (deleteperlevel[i]-deleteperlevel_S[i]));
-        if(temp > K){
-          counter[buflevel] = i;
-          break;
-        }
-        else if(temp < 0){
-          break;
-        }
-      }
-      printf("buflevel changed to %d\n", counter[buflevel]);
-      
-      //backup previous S
-      for(int i = 0; i < 10; i++){
-        createperlevel_S[i] = 0;
-        deleteperlevel_S[i] = 0;
-      }
-    }
-  }
-
-
-  if(level >= counter[buflevel]){
-    //to cold
+  if(level > BUFLEVEL){
+    //printf("MakeTableFileName: %06lu.%s\n", number, kRocksDbTFileExt.c_str());
     return MakeFileName(number, kRocksDbTFileExt.c_str());
   }
   else{
-    //still hot
+    //printf("MakeTableFileName: %06lu.%s\n", number, kRocksDbTFileExt_l0.c_str());
     return MakeFileName(number, kRocksDbTFileExt_l0.c_str());
   }
 }
@@ -215,36 +153,6 @@ std::string Rocks2LevelTableFileName(const std::string& fullname) {
   return fullname.substr(0, fullname.size() - kRocksDbTFileExt.size()) +
          kLevelDbTFileExt;
 }
-
-std::string determinefilename(const std::string& fullname, bool hot) {
-  
-  assert(fullname.size() > kRocksDbTFileExt.size() + 1);
-  if (fullname.size() <= kRocksDbTFileExt.size() + 1) {
-    return "";
-  }
-  switch(fullname.at(fullname.size() - 1)){
-  case 'f': //buf
-    if(hot){
-      return fullname;
-    }
-    else{
-      return fullname.substr(0, fullname.size() - kRocksDbTFileExt_l0.size()) +
-         kRocksDbTFileExt;
-    }
-  case 't': //sst
-   if(hot){
-      return fullname.substr(0, fullname.size() - kRocksDbTFileExt.size()) +
-         kRocksDbTFileExt_l0;
-    }
-    else{
-      return fullname;
-    }
-   
-  }
-  return fullname.substr(0, fullname.size() - kRocksDbTFileExt.size()) +
-         kLevelDbTFileExt;
-}
-
 
 uint64_t TableFileNameToNumber(const std::string& name) {
   uint64_t number = 0;

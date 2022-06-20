@@ -1,2 +1,0 @@
-level 0 fragmentation is 13682
-level 4 fragmentation is 12692

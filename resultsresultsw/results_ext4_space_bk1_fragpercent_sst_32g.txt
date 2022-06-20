@@ -1,5 +1,0 @@
-files fragmented in 1 pieces: 1983
-files fragmented in 3 pieces: 4
-files fragmented in 2 pieces: 915
-total files: 2902
-32% fragmented
