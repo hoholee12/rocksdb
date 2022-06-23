@@ -12,7 +12,7 @@ sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"
 
 mkdir /home/jeongho/mnt/fill
 #generate l0
-sudo time ./db_bench_l1 \
+sudo time ./db_bench \
  -benchmarks="fillrandom,stats" \
  -num=$1 \
  -threads=8 \
