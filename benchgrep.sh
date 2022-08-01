@@ -7,8 +7,9 @@ fi
 
 
 for i in $(ls | grep thread); do
-	mystr=$(cat $i | grep -i "$1" | awk '{print $1,$2}' | head -n 1)
+	mystr=$(cat $i | grep -i "$1" | awk '{print $1,$2}' | grep -v "}")
 	if [[ $mystr != "" ]]; then
-		echo "$i: $mystr"
+		echo "$i:"
+		echo "$mystr"
 	fi
 done
