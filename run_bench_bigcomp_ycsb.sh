@@ -14,8 +14,9 @@ if [[ $4 == "bloom" ]]; then
 	bloom="-bloom_bits=10"
 fi
 
-if [[ $5 != "" ]]; then
-	shard="-cache_numshardbits=$5"
+shard=$5
+if [[ $5 == "" ]]; then
+	shard=1
 fi
 
 #run
@@ -30,12 +31,11 @@ sudo time ./db_bench \
  -use_direct_io_for_flush_and_compaction=false \
  -use_direct_reads=false \
  -cache_size=$((1024*1024*1024*2)) \
- $shard \
+ -cache_numshardbits=$shard \
  -level0_slowdown_writes_trigger=1000 \
  -level0_stop_writes_trigger=1000 \
  -level0_file_num_compaction_trigger=1000 \
  -max_bytes_for_level_base=10485760000 \
- -seek_nexts=50 \
  $bloom \
  &> results/"$3"_on_"$2".txt \
  

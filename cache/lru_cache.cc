@@ -416,6 +416,11 @@ void LRUCacheShard::Promote(LRUHandle* e) {
   }
 }
 
+uint32_t Shard(uint32_t hash) {
+  // Note, hash >> 32 yields hash in gcc, not the zero we expect!
+  return (numshardbits > 0) ? (hash >> (32 - numshardbits)) : 0;
+}
+
 Cache::Handle* LRUCacheShard::Lookup(
     const Slice& key, uint32_t hash,
     const ShardedCache::CacheItemHelper* helper,
@@ -423,7 +428,20 @@ Cache::Handle* LRUCacheShard::Lookup(
     bool wait, Statistics* stats) {
   LRUHandle* e = nullptr;
   {
+    
+    struct timespec telapsed = {0, 0};
+    struct timespec tstart = {0, 0}, tend = {0, 0};
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tstart);
     MutexLock l(&mutex_);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend);
+    telapsed.tv_sec += (tend.tv_sec - tstart.tv_sec);
+    telapsed.tv_nsec += (tend.tv_nsec - tstart.tv_nsec);
+    time_t telapsedtotal = telapsed.tv_sec * 1000000000 + telapsed.tv_nsec;
+    if(shardtime[Shard(hash)] < telapsedtotal){
+      shardtime[Shard(hash)] = telapsedtotal;
+    }
+
     e = table_.Lookup(key, hash);
     if (e != nullptr) {
       assert(e->InCache());

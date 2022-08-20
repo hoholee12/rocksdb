@@ -27,6 +27,10 @@
 #include "util/stop_watch.h"
 #include "util/string_util.h"
 
+
+time_t shardtime[SHARDTIMECOUNT];
+int numshardbits;
+
 using GFLAGS_NAMESPACE::ParseCommandLineFlags;
 
 static constexpr uint32_t KiB = uint32_t{1} << 10;
@@ -135,7 +139,7 @@ struct KeyGen {
 
   Slice GetRand(Random64& rnd, uint64_t max_key, int max_log) {
     uint64_t key = 0;
-    if (!FLAGS_skewed) {
+    if (FLAGS_skewed) {
       uint64_t raw = rnd.Next();
       // Skew according to setting
       for (uint32_t i = 0; i < FLAGS_skew; ++i) {
@@ -264,6 +268,12 @@ class CacheBench {
   bool Run() {
     const auto clock = SystemClock::Default().get();
 
+    //initialize shardtime to -1
+    for(int i = 0; i < SHARDTIMECOUNT; i++){
+      shardtime[i] = -1;
+    }
+    numshardbits = FLAGS_num_shard_bits;
+
     PrintEnv();
     SharedState shared(this);
     std::vector<std::unique_ptr<ThreadState> > threads(FLAGS_threads);
@@ -330,6 +340,28 @@ class CacheBench {
     }
 
     printf("\n%s", stats_report.c_str());
+
+
+    //results
+    int maxi = -1;
+    time_t maxtime = -1;
+    time_t total = 0;
+    for(int i = 0; i < pow(2, numshardbits); i++){
+      if(shardtime[i] != -1) {
+        total += shardtime[i];
+        if(shardtime[i] > maxtime){
+          maxi = i;
+          maxtime = shardtime[i];
+        }
+        printf("%ld\n", shardtime[i]);
+      }
+      else{
+        printf("0\n");
+      }
+    }
+
+    printf("\n\nthe shard with the most time taken to lock is shard=%d with %ld ns\n", maxi, maxtime);
+    printf("average time = %ld ns\n", total / (time_t)pow(2, numshardbits));
 
     return true;
   }

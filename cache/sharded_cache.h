@@ -116,7 +116,7 @@ class ShardedCache : public Cache {
   int GetNumShardBits() const;
   uint32_t GetNumShards() const;
 
- protected:
+ public:
   inline uint32_t Shard(uint32_t hash) { return hash & shard_mask_; }
 
  private:
