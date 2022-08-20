@@ -95,6 +95,8 @@ class SharedState {
 
   port::Mutex* GetMutex() { return &mu_; }
 
+  port::RWMutex* GetRWMutex() { return &rwmu_; }
+
   port::CondVar* GetCondVar() { return &cv_; }
 
   CacheBench* GetCacheBench() const { return cache_bench_; }
@@ -113,6 +115,7 @@ class SharedState {
 
  private:
   port::Mutex mu_;
+  port::RWMutex rwmu_;
   port::CondVar cv_;
 
   uint64_t num_initialized_;

@@ -134,7 +134,8 @@ LRUCacheShard::LRUCacheShard(
 void LRUCacheShard::EraseUnRefEntries() {
   autovector<LRUHandle*> last_reference_list;
   {
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+    //MutexLock l(&mutex_);
     while (lru_.next != &lru_) {
       LRUHandle* old = lru_.next;
       // LRU list contains only elements which can be evicted
@@ -161,7 +162,8 @@ void LRUCacheShard::ApplyToSomeEntries(
   // The state is essentially going to be the starting hash, which works
   // nicely even if we resize between calls because we use upper-most
   // hash bits for table indexes.
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   uint32_t length_bits = table_.GetLengthBits();
   uint32_t length = uint32_t{1} << length_bits;
 
@@ -191,13 +193,15 @@ void LRUCacheShard::ApplyToSomeEntries(
 }
 
 void LRUCacheShard::TEST_GetLRUList(LRUHandle** lru, LRUHandle** lru_low_pri) {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   *lru = &lru_;
   *lru_low_pri = lru_low_pri_;
 }
 
 size_t LRUCacheShard::TEST_GetLRUSize() {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   LRUHandle* lru_handle = lru_.next;
   size_t lru_size = 0;
   while (lru_handle != &lru_) {
@@ -208,7 +212,8 @@ size_t LRUCacheShard::TEST_GetLRUSize() {
 }
 
 double LRUCacheShard::GetHighPriPoolRatio() {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   return high_pri_pool_ratio_;
 }
 
@@ -288,7 +293,8 @@ void LRUCacheShard::EvictFromLRU(size_t charge,
 void LRUCacheShard::SetCapacity(size_t capacity) {
   autovector<LRUHandle*> last_reference_list;
   {
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+    //MutexLock l(&mutex_);
     capacity_ = capacity;
     high_pri_pool_capacity_ = capacity_ * high_pri_pool_ratio_;
     EvictFromLRU(0, &last_reference_list);
@@ -307,7 +313,8 @@ void LRUCacheShard::SetCapacity(size_t capacity) {
 }
 
 void LRUCacheShard::SetStrictCapacityLimit(bool strict_capacity_limit) {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   strict_capacity_limit_ = strict_capacity_limit;
 }
 
@@ -318,7 +325,8 @@ Status LRUCacheShard::InsertItem(LRUHandle* e, Cache::Handle** handle,
   size_t total_charge = e->CalcTotalCharge(metadata_charge_policy_);
 
   {
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+    //MutexLock l(&mutex_);
 
     // Free the space following strict LRU policy until enough space
     // is freed or the lru list is empty
@@ -410,7 +418,8 @@ void LRUCacheShard::Promote(LRUHandle* e) {
   } else {
     // Since the secondary cache lookup failed, mark the item as not in cache
     // Don't charge the cache as its only metadata that'll shortly be released
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+    //MutexLock l(&mutex_);
     e->charge = 0;
     e->SetInCache(false);
   }
@@ -433,7 +442,8 @@ Cache::Handle* LRUCacheShard::Lookup(
     struct timespec tstart = {0, 0}, tend = {0, 0};
 
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tstart);
-    MutexLock l(&mutex_);
+    rwmutex_.ReadLock();
+    //MutexLock l(&mutex_);
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend);
     telapsed.tv_sec += (tend.tv_sec - tstart.tv_sec);
     telapsed.tv_nsec += (tend.tv_nsec - tstart.tv_nsec);
@@ -443,7 +453,11 @@ Cache::Handle* LRUCacheShard::Lookup(
     }
 
     e = table_.Lookup(key, hash);
+
+    rwmutex_.ReadUnlock();
     if (e != nullptr) {
+      //needs a write lock for this.
+      WriteLock wl(&rwmutex_);
       assert(e->InCache());
       if (!e->HasRefs()) {
         // The entry is in LRU since it's in hash and has no external references
@@ -511,7 +525,8 @@ Cache::Handle* LRUCacheShard::Lookup(
 
 bool LRUCacheShard::Ref(Cache::Handle* h) {
   LRUHandle* e = reinterpret_cast<LRUHandle*>(h);
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   // To create another reference - entry must be already externally referenced
   assert(e->HasRefs());
   e->Ref();
@@ -519,7 +534,8 @@ bool LRUCacheShard::Ref(Cache::Handle* h) {
 }
 
 void LRUCacheShard::SetHighPriorityPoolRatio(double high_pri_pool_ratio) {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   high_pri_pool_ratio_ = high_pri_pool_ratio;
   high_pri_pool_capacity_ = capacity_ * high_pri_pool_ratio_;
   MaintainPoolSize();
@@ -532,7 +548,8 @@ bool LRUCacheShard::Release(Cache::Handle* handle, bool force_erase) {
   LRUHandle* e = reinterpret_cast<LRUHandle*>(handle);
   bool last_reference = false;
   {
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+    //MutexLock l(&mutex_);
     last_reference = e->Unref();
     if (last_reference && e->InCache()) {
       // The item is still in cache, and nobody else holds a reference to it
@@ -605,7 +622,8 @@ void LRUCacheShard::Erase(const Slice& key, uint32_t hash) {
   LRUHandle* e;
   bool last_reference = false;
   {
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+    //MutexLock l(&mutex_);
     e = table_.Remove(key, hash);
     if (e != nullptr) {
       assert(e->InCache());
@@ -630,7 +648,8 @@ void LRUCacheShard::Erase(const Slice& key, uint32_t hash) {
 
 bool LRUCacheShard::IsReady(Cache::Handle* handle) {
   LRUHandle* e = reinterpret_cast<LRUHandle*>(handle);
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   bool ready = true;
   if (e->IsPending()) {
     assert(secondary_cache_);
@@ -641,12 +660,14 @@ bool LRUCacheShard::IsReady(Cache::Handle* handle) {
 }
 
 size_t LRUCacheShard::GetUsage() const {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   return usage_;
 }
 
 size_t LRUCacheShard::GetPinnedUsage() const {
-  MutexLock l(&mutex_);
+  WriteLock l(&rwmutex_);
+  //MutexLock l(&mutex_);
   assert(usage_ >= lru_usage_);
   return usage_ - lru_usage_;
 }
@@ -655,7 +676,8 @@ std::string LRUCacheShard::GetPrintableOptions() const {
   const int kBufferSize = 200;
   char buffer[kBufferSize];
   {
-    MutexLock l(&mutex_);
+    WriteLock l(&rwmutex_);
+   //MutexLock l(&mutex_);
     snprintf(buffer, kBufferSize, "    high_pri_pool_ratio: %.3lf\n",
              high_pri_pool_ratio_);
   }

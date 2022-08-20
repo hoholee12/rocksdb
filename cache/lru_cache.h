@@ -440,6 +440,9 @@ class ALIGN_AS(CACHE_LINE_SIZE) LRUCacheShard final : public CacheShard {
   // don't mind mutex_ invoking the non-const actions.
   mutable port::Mutex mutex_;
 
+  //rwlock for speed
+  mutable port::RWMutex rwmutex_;
+
   std::shared_ptr<SecondaryCache> secondary_cache_;
 };
 
