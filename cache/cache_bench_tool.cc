@@ -28,8 +28,13 @@
 #include "util/string_util.h"
 
 
-time_t shardtime[SHARDTIMECOUNT];
+time_t shardpeaktime[SHARDCOUNT];
+time_t shardtotaltime[SHARDCOUNT];
+uint64_t shardaccesscount[SHARDCOUNT];
 int numshardbits;
+
+uint64_t* keyrangecounter;
+uint64_t keyrangecounter_size;
 
 using GFLAGS_NAMESPACE::ParseCommandLineFlags;
 
@@ -140,7 +145,7 @@ struct ThreadState {
 struct KeyGen {
   char key_data[27];
 
-  Slice GetRand(Random64& rnd, uint64_t max_key, int max_log) {
+  Slice GetRand(Random64& rnd, uint64_t max_key, int max_log, bool count = false) {
     uint64_t key = 0;
     if (FLAGS_skewed) {
       uint64_t raw = rnd.Next();
@@ -155,6 +160,11 @@ struct KeyGen {
         key -= max_key;
       }
     }
+
+    if(count){
+      keyrangecounter[key]++;
+    }
+
     // Variable size and alignment
     size_t off = key % 8;
     key_data[0] = char{42};
@@ -271,11 +281,17 @@ class CacheBench {
   bool Run() {
     const auto clock = SystemClock::Default().get();
 
-    //initialize shardtime to -1
-    for(int i = 0; i < SHARDTIMECOUNT; i++){
-      shardtime[i] = -1;
+    //initialize shard counters
+    for(int i = 0; i < SHARDCOUNT; i++){
+      shardpeaktime[i] = -1;
+      shardtotaltime[i] = -1;
+      shardaccesscount[i] = 0;
     }
     numshardbits = FLAGS_num_shard_bits;
+
+    keyrangecounter_size = max_key_;
+    keyrangecounter = (uint64_t*)malloc(sizeof(uint64_t)*keyrangecounter_size);
+    memset(keyrangecounter, 0, sizeof(uint64_t)*keyrangecounter_size);
 
     PrintEnv();
     SharedState shared(this);
@@ -345,27 +361,74 @@ class CacheBench {
     printf("\n%s", stats_report.c_str());
 
 
-    //results
-    int maxi = -1;
-    time_t maxtime = -1;
-    time_t total = 0;
+    //results - shardpeaktime
+    printf("\n\n");
+    int maxpeaki = -1;
+    time_t maxpeaktime = -1;
+    time_t peaktotal = 0;
     for(int i = 0; i < pow(2, numshardbits); i++){
-      if(shardtime[i] != -1) {
-        total += shardtime[i];
-        if(shardtime[i] > maxtime){
-          maxi = i;
-          maxtime = shardtime[i];
+      if(shardpeaktime[i] != -1) {
+        peaktotal += shardpeaktime[i];
+        if(shardpeaktime[i] > maxpeaktime){
+          maxpeaki = i;
+          maxpeaktime = shardpeaktime[i];
         }
-        printf("%ld\n", shardtime[i]);
+        printf("%ld\n", shardpeaktime[i]);
       }
       else{
         printf("0\n");
       }
     }
 
-    printf("\n\nthe shard with the most time taken to lock is shard=%d with %ld ns\n", maxi, maxtime);
-    printf("average time = %ld ns\n", total / (time_t)pow(2, numshardbits));
+    printf("\n\nlargest peak time: shard=%d with %ld ns\n", maxpeaki, maxpeaktime);
+    printf("average peak time = %ld ns\n", peaktotal / (time_t)pow(2, numshardbits));
 
+    //results - shardtotaltime
+    printf("\n\n");
+    int maxtotali = -1;
+    time_t maxtotaltime = -1;
+    time_t totaltotal = 0;
+    for(int i = 0; i < pow(2, numshardbits); i++){
+      if(shardtotaltime[i] != -1) {
+        totaltotal += shardtotaltime[i];
+        if(shardtotaltime[i] > maxtotaltime){
+          maxtotali = i;
+          maxtotaltime = shardtotaltime[i];
+        }
+        printf("%ld\n", shardtotaltime[i]);
+      }
+      else{
+        printf("0\n");
+      }
+    }
+
+    printf("\n\nlargest total time: shard=%d with %ld ns\n", maxtotali, maxtotaltime);
+    printf("average total time = %ld ns\n", totaltotal / (time_t)pow(2, numshardbits));
+
+    //results - shardaccesscount
+    printf("\n\n");
+    int maxaccessi = -1;
+    uint64_t maxaccesscount = 0;
+    uint64_t accesstotal = 0;
+    for(int i = 0; i < pow(2, numshardbits); i++){
+      accesstotal += shardaccesscount[i];
+      if(shardaccesscount[i] > maxaccesscount){
+        maxaccessi = i;
+        maxaccesscount = shardaccesscount[i];
+      }
+      printf("%ld\n", shardaccesscount[i]);
+    
+    }
+
+    printf("\n\nlargest access count: shard=%d with %ld times\n", maxaccessi, maxaccesscount);
+    printf("average access count = %ld times\n", accesstotal / (uint64_t)pow(2, numshardbits));
+    
+    
+    printf("\n\nkey space usage\n\n");
+    for(uint64_t i = 0; i < keyrangecounter_size; i++){
+      printf("%ld\n", keyrangecounter[i]);
+    }
+    
     return true;
   }
 
@@ -486,7 +549,7 @@ class CacheBench {
 
     for (uint64_t i = 0; i < FLAGS_ops_per_thread; i++) {
       timer.Start();
-      Slice key = gen.GetRand(thread->rnd, max_key_, max_log_);
+      
       uint64_t random_op = thread->rnd.Next();
       Cache::CreateCallback create_cb =
           [](void* buf, size_t size, void** out_obj, size_t* charge) -> Status {
@@ -497,6 +560,7 @@ class CacheBench {
       };
 
       if (random_op < lookup_insert_threshold_) {
+        Slice key = gen.GetRand(thread->rnd, max_key_, max_log_);
         if (handle) {
           cache_->Release(handle);
           handle = nullptr;
@@ -514,6 +578,7 @@ class CacheBench {
                          FLAGS_value_bytes, &handle);
         }
       } else if (random_op < insert_threshold_) {
+        Slice key = gen.GetRand(thread->rnd, max_key_, max_log_);
         if (handle) {
           cache_->Release(handle);
           handle = nullptr;
@@ -522,6 +587,7 @@ class CacheBench {
         cache_->Insert(key, createValue(thread->rnd), &helper3,
                        FLAGS_value_bytes, &handle);
       } else if (random_op < lookup_threshold_) {
+        Slice key = gen.GetRand(thread->rnd, max_key_, max_log_, true);
         if (handle) {
           cache_->Release(handle);
           handle = nullptr;
@@ -535,6 +601,7 @@ class CacheBench {
                              FLAGS_value_bytes);
         }
       } else if (random_op < erase_threshold_) {
+        Slice key = gen.GetRand(thread->rnd, max_key_, max_log_);
         // do erase
         cache_->Erase(key);
       } else {
