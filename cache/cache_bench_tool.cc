@@ -32,6 +32,8 @@ time_t shardpeaktime[SHARDCOUNT];
 time_t shardtotaltime[SHARDCOUNT];
 uint64_t shardaccesscount[SHARDCOUNT];
 int numshardbits;
+#define SHARDLIMIT 256
+#define KEYRANGELIMIT 209
 
 uint64_t* keyrangecounter;
 uint64_t keyrangecounter_size;
@@ -361,71 +363,119 @@ class CacheBench {
     printf("\n%s", stats_report.c_str());
 
 
+    int limit = pow(2, numshardbits); //shardlimit
+    int shardlimit = SHARDLIMIT;
+    int repeat = limit / shardlimit;
+    if(limit < shardlimit){
+      shardlimit = limit;
+      repeat = 1;
+    }
+    uint64_t displayarr[SHARDLIMIT];
+
+    //print the index first for convenience
+    for(int i = 0; i < shardlimit; i++) printf("%d\n", i*repeat);
+    
     //results - shardpeaktime
+    memset(displayarr, 0, sizeof(uint64_t)*SHARDLIMIT);
+    int j = 0;
     printf("\n\n");
     int maxpeaki = -1;
     time_t maxpeaktime = -1;
     time_t peaktotal = 0;
-    for(int i = 0; i < pow(2, numshardbits); i++){
+    
+    for(int i = 0; i < limit; i++){
       if(shardpeaktime[i] != -1) {
         peaktotal += shardpeaktime[i];
         if(shardpeaktime[i] > maxpeaktime){
           maxpeaki = i;
           maxpeaktime = shardpeaktime[i];
         }
-        printf("%ld\n", shardpeaktime[i]);
+        //printf("%ld\n", shardpeaktime[i]);
+        
       }
       else{
-        printf("0\n");
+        //printf("0\n");
       }
+
+      if(shardpeaktime[i] != -1){
+        displayarr[j] += (uint64_t)shardpeaktime[i];
+      }
+      if(i % repeat == repeat - 1){
+        //displayarr[j] /= repeat; //avg
+        j++;
+      }
+      
     }
+
+    for(int i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
 
     printf("\n\nlargest peak time: shard=%d with %ld ns\n", maxpeaki, maxpeaktime);
     printf("average peak time = %ld ns\n", peaktotal / (time_t)pow(2, numshardbits));
 
     //results - shardtotaltime
+    memset(displayarr, 0, sizeof(uint64_t)*SHARDLIMIT);
+    j = 0;
     printf("\n\n");
     int maxtotali = -1;
     time_t maxtotaltime = -1;
     time_t totaltotal = 0;
-    for(int i = 0; i < pow(2, numshardbits); i++){
+    for(int i = 0; i < limit; i++){
       if(shardtotaltime[i] != -1) {
         totaltotal += shardtotaltime[i];
         if(shardtotaltime[i] > maxtotaltime){
           maxtotali = i;
           maxtotaltime = shardtotaltime[i];
         }
-        printf("%ld\n", shardtotaltime[i]);
+        //printf("%ld\n", shardtotaltime[i]);
       }
       else{
-        printf("0\n");
+        //printf("0\n");
+      }
+
+      if(shardtotaltime[i] != -1){
+        displayarr[j] += (uint64_t)shardtotaltime[i];
+      }
+      if(i % repeat == repeat - 1){
+        //displayarr[j] /= repeat; //avg
+        j++;
       }
     }
+
+    for(int i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
 
     printf("\n\nlargest total time: shard=%d with %ld ns\n", maxtotali, maxtotaltime);
     printf("average total time = %ld ns\n", totaltotal / (time_t)pow(2, numshardbits));
 
     //results - shardaccesscount
+    memset(displayarr, 0, sizeof(uint64_t)*SHARDLIMIT);
+    j = 0;
     printf("\n\n");
     int maxaccessi = -1;
     uint64_t maxaccesscount = 0;
     uint64_t accesstotal = 0;
-    for(int i = 0; i < pow(2, numshardbits); i++){
+    for(int i = 0; i < limit; i++){
       accesstotal += shardaccesscount[i];
       if(shardaccesscount[i] > maxaccesscount){
         maxaccessi = i;
         maxaccesscount = shardaccesscount[i];
       }
-      printf("%ld\n", shardaccesscount[i]);
-    
+      //printf("%ld\n", shardaccesscount[i]);
+
+      displayarr[j] += (uint64_t)shardaccesscount[i];
+      if(i % repeat == repeat - 1){
+        //displayarr[j] /= repeat; //avg
+        j++;
+      }
     }
 
+    for(int i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
+    
     printf("\n\nlargest access count: shard=%d with %ld times\n", maxaccessi, maxaccesscount);
     printf("average access count = %ld times\n", accesstotal / (uint64_t)pow(2, numshardbits));
     
     
     printf("\n\nkey space usage\n\n");
-    for(uint64_t i = 0; i < keyrangecounter_size; i++){
+    for(uint64_t i = 0; i < keyrangecounter_size && i < KEYRANGELIMIT; i++){
       printf("%ld\n", keyrangecounter[i]);
     }
     
