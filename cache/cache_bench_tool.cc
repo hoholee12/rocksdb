@@ -3,6 +3,7 @@
 //  COPYING file in the root directory) and Apache 2.0 License
 //  (found in the LICENSE.Apache file in the root directory).
 
+//#define GFLAGS
 #ifdef GFLAGS
 #include <cinttypes>
 #include <cstdio>
@@ -31,12 +32,19 @@
 time_t shardpeaktime[SHARDCOUNT];
 time_t shardtotaltime[SHARDCOUNT];
 uint64_t shardaccesscount[SHARDCOUNT];
-int numshardbits;
+uint64_t numshardbits;
+uint64_t shardnumlimit;
 #define SHARDLIMIT 256
 #define KEYRANGELIMIT 209
 
 uint64_t* keyrangecounter;
 uint64_t keyrangecounter_size;
+
+uint32_t threadnumshard[SHARDCOUNT];
+
+bool enableshardfix;
+uint64_t shardsperthread;
+
 
 using GFLAGS_NAMESPACE::ParseCommandLineFlags;
 
@@ -55,7 +63,10 @@ DEFINE_uint64(ops_per_thread, 2000000U, "Number of operations per thread.");
 DEFINE_uint32(value_bytes, 8 * KiB, "Size of each value added.");
 
 DEFINE_uint32(skew, 5, "Degree of skew in key selection");
+DEFINE_double(zipf_const, 0.99, "zipfian constant");
 DEFINE_bool(populate_cache, true, "Populate cache before operations");
+
+DEFINE_bool(enableshardfix, false, "enableshardfix");
 
 DEFINE_uint32(lookup_insert_percent, 87,
               "Ratio of lookup (+ insert on not found) to total workload "
@@ -85,6 +96,8 @@ static class std::shared_ptr<ROCKSDB_NAMESPACE::SecondaryCache> secondary_cache;
 DEFINE_bool(use_clock_cache, false, "");
 
 namespace ROCKSDB_NAMESPACE {
+
+
 
 class CacheBench;
 namespace {
@@ -147,15 +160,85 @@ struct ThreadState {
 struct KeyGen {
   char key_data[27];
 
-  Slice GetRand(Random64& rnd, uint64_t max_key, int max_log, bool count = false) {
+  //int n is max key space, alpha is 1.0/(1.0-zipfconstant)
+  uint64_t zipf(Random64& rnd, uint64_t n)
+  {
+    double alpha = 1.0 / (1.0 - FLAGS_zipf_const);
+    static bool first = true;      // Static first time flag
+    static double c = 0;          // Normalization constant
+    static double* sum_probs;     // Pre-calculated sum of probabilities
+    double z;                     // Uniform random number (0 < z < 1)
+    uint64_t zipf_value = 0;               // Computed exponential value to be returned
+    uint64_t    i = 0;                     // Loop counter
+    // Binary-search bounds
+    uint64_t low = 0;
+    uint64_t high = 0;
+    uint64_t mid = 0;
+
+    // Compute normalization constant on first call only
+    if (first)
+    {
+        for (i = 1; i <= n; i++)
+            c = c + (1.0 / pow((double)i, alpha));
+        c = 1.0 / c;
+
+        sum_probs = (double*)malloc((n + 1) * sizeof(*sum_probs));
+        sum_probs[0] = 0;
+        for (i = 1; i <= n; i++) {
+            sum_probs[i] = sum_probs[i - 1] + c / pow((double)i, alpha);
+        }
+        first = false;
+    }
+
+    // Pull a uniform random number (0 < z < 1)
+    do
+    {
+        z = rnd.UniformReal();
+    } while ((z == 0) || (z == 1));
+
+    // Map z to the value
+    low = 1, high = n;
+    do {
+        mid = floor((low + high) / 2);
+        if (sum_probs[mid] >= z && sum_probs[mid - 1] < z) {
+            zipf_value = mid;
+            break;
+        }
+        else if (sum_probs[mid] >= z) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    } while (low <= high);
+
+    // Assert that zipf_value is between 1 and N
+    assert((zipf_value >= 1) && (zipf_value <= n));
+
+    return(zipf_value);
+  }
+
+  Slice GetRand(Random64& rnd, uint64_t max_key, int max_log, bool count = false, int threadnum = -1) {
     uint64_t key = 0;
     if (FLAGS_skewed) {
+
+      /*
       uint64_t raw = rnd.Next();
       // Skew according to setting
       for (uint32_t i = 0; i < FLAGS_skew; ++i) {
         raw = std::min(raw, rnd.Next());
       }
-      key = FastRange64(raw, max_key);
+      */
+
+     //zipf starts from 1
+      if(enableshardfix){
+        uint64_t hello = max_key / FLAGS_threads;
+
+        key = zipf(rnd, hello) - 1 + hello*threadnum;
+      }
+      else{
+        key = zipf(rnd, max_key) - 1;
+      }
     } else {
       key = rnd.Skewed(max_log);
       if (key > max_key) {
@@ -288,8 +371,14 @@ class CacheBench {
       shardpeaktime[i] = -1;
       shardtotaltime[i] = -1;
       shardaccesscount[i] = 0;
+      threadnumshard[i] = -1;
     }
     numshardbits = FLAGS_num_shard_bits;
+    shardnumlimit = pow(2, numshardbits);
+    if(shardnumlimit < FLAGS_threads) shardsperthread = shardnumlimit;
+    else shardsperthread = shardnumlimit / FLAGS_threads;
+
+    enableshardfix = FLAGS_enableshardfix;
 
     keyrangecounter_size = max_key_;
     keyrangecounter = (uint64_t*)malloc(sizeof(uint64_t)*keyrangecounter_size);
@@ -300,7 +389,7 @@ class CacheBench {
     std::vector<std::unique_ptr<ThreadState> > threads(FLAGS_threads);
     for (uint32_t i = 0; i < FLAGS_threads; i++) {
       threads[i].reset(new ThreadState(i, &shared));
-      std::thread(ThreadBody, threads[i].get()).detach();
+      std::thread(ThreadBody, threads[i].get(), i).detach();
     }
 
     HistogramImpl stats_hist;
@@ -362,19 +451,25 @@ class CacheBench {
 
     printf("\n%s", stats_report.c_str());
 
+    
 
-    int limit = pow(2, numshardbits); //shardlimit
-    int shardlimit = SHARDLIMIT;
-    int repeat = limit / shardlimit;
-    if(limit < shardlimit){
-      shardlimit = limit;
+    printf("\n\neasy index:\n");
+
+    uint64_t shardlimit = SHARDLIMIT;
+    uint64_t repeat = shardnumlimit / shardlimit;
+    if(shardnumlimit < shardlimit){
+      shardlimit = shardnumlimit;
       repeat = 1;
     }
     uint64_t displayarr[SHARDLIMIT];
 
     //print the index first for convenience
-    for(int i = 0; i < shardlimit; i++) printf("%d\n", i*repeat);
+    for(uint64_t i = 0; i < shardlimit; i++) printf("%ld\n", i*repeat);
     
+    //thread num shard
+    printf("\n\nthreadnumshard:\n");
+    for(uint64_t i = 0; i < shardlimit; i++) printf("%d\n", threadnumshard[i]);
+
     //results - shardpeaktime
     memset(displayarr, 0, sizeof(uint64_t)*SHARDLIMIT);
     int j = 0;
@@ -383,7 +478,7 @@ class CacheBench {
     time_t maxpeaktime = -1;
     time_t peaktotal = 0;
     
-    for(int i = 0; i < limit; i++){
+    for(uint64_t i = 0; i < shardnumlimit; i++){
       if(shardpeaktime[i] != -1) {
         peaktotal += shardpeaktime[i];
         if(shardpeaktime[i] > maxpeaktime){
@@ -407,7 +502,7 @@ class CacheBench {
       
     }
 
-    for(int i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
+    for(uint64_t i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
 
     printf("\n\nlargest peak time: shard=%d with %ld ns\n", maxpeaki, maxpeaktime);
     printf("average peak time = %ld ns\n", peaktotal / (time_t)pow(2, numshardbits));
@@ -419,7 +514,7 @@ class CacheBench {
     int maxtotali = -1;
     time_t maxtotaltime = -1;
     time_t totaltotal = 0;
-    for(int i = 0; i < limit; i++){
+    for(uint64_t i = 0; i < shardnumlimit; i++){
       if(shardtotaltime[i] != -1) {
         totaltotal += shardtotaltime[i];
         if(shardtotaltime[i] > maxtotaltime){
@@ -441,7 +536,7 @@ class CacheBench {
       }
     }
 
-    for(int i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
+    for(uint64_t i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
 
     printf("\n\nlargest total time: shard=%d with %ld ns\n", maxtotali, maxtotaltime);
     printf("average total time = %ld ns\n", totaltotal / (time_t)pow(2, numshardbits));
@@ -453,7 +548,7 @@ class CacheBench {
     int maxaccessi = -1;
     uint64_t maxaccesscount = 0;
     uint64_t accesstotal = 0;
-    for(int i = 0; i < limit; i++){
+    for(uint64_t i = 0; i < shardnumlimit; i++){
       accesstotal += shardaccesscount[i];
       if(shardaccesscount[i] > maxaccesscount){
         maxaccessi = i;
@@ -468,7 +563,7 @@ class CacheBench {
       }
     }
 
-    for(int i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
+    for(uint64_t i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
     
     printf("\n\nlargest access count: shard=%d with %ld times\n", maxaccessi, maxaccesscount);
     printf("average access count = %ld times\n", accesstotal / (uint64_t)pow(2, numshardbits));
@@ -563,7 +658,7 @@ class CacheBench {
     }
   }
 
-  static void ThreadBody(ThreadState* thread) {
+  static void ThreadBody(ThreadState* thread, int threadnum) {
     SharedState* shared = thread->shared;
 
     {
@@ -576,7 +671,7 @@ class CacheBench {
         shared->GetCondVar()->Wait();
       }
     }
-    thread->shared->GetCacheBench()->OperateCache(thread);
+    thread->shared->GetCacheBench()->OperateCache(thread, threadnum);
 
     {
       MutexLock l(shared->GetMutex());
@@ -587,12 +682,19 @@ class CacheBench {
     }
   }
 
-  void OperateCache(ThreadState* thread) {
+  uint32_t Shard(uint32_t hash) {
+    // Note, hash >> 32 yields hash in gcc, not the zero we expect!
+    return (numshardbits > 0) ? (hash >> (32 - numshardbits)) : 0;
+  }  
+
+  void OperateCache(ThreadState* thread, int threadnum) {
+    
     // To use looked-up values
     uint64_t result = 0;
     // To hold handles for a non-trivial amount of time
     Cache::Handle* handle = nullptr;
     KeyGen gen;
+    gen.zipf(thread->rnd, threadnum);
     const auto clock = SystemClock::Default().get();
     uint64_t start_time = clock->NowMicros();
     StopWatchNano timer(clock);
@@ -637,14 +739,15 @@ class CacheBench {
         cache_->Insert(key, createValue(thread->rnd), &helper3,
                        FLAGS_value_bytes, &handle);
       } else if (random_op < lookup_threshold_) {
-        Slice key = gen.GetRand(thread->rnd, max_key_, max_log_, true);
+        Slice key = gen.GetRand(thread->rnd, max_key_, max_log_, true, threadnum);
         if (handle) {
           cache_->Release(handle);
           handle = nullptr;
         }
         // do lookup
         handle = cache_->Lookup(key, &helper2, create_cb, Cache::Priority::LOW,
-                                true);
+                                true, nullptr, threadnum);
+
         if (handle) {
           // do something with the data
           result += NPHash64(static_cast<char*>(cache_->Value(handle)),
@@ -682,11 +785,13 @@ class CacheBench {
     printf("Max key             : %" PRIu64 "\n", max_key_);
     printf("Resident ratio      : %g\n", FLAGS_resident_ratio);
     printf("Skew degree         : %u\n", FLAGS_skew);
+    printf("zipf constant         : %lf\n", FLAGS_zipf_const);
     printf("Populate cache      : %d\n", int{FLAGS_populate_cache});
     printf("Lookup+Insert pct   : %u%%\n", FLAGS_lookup_insert_percent);
     printf("Insert percentage   : %u%%\n", FLAGS_insert_percent);
     printf("Lookup percentage   : %u%%\n", FLAGS_lookup_percent);
     printf("Erase percentage    : %u%%\n", FLAGS_erase_percent);
+    printf("enableshardfix      : %d\n", int{FLAGS_enableshardfix});
     std::ostringstream stats;
     if (FLAGS_gather_stats) {
       stats << "enabled (" << FLAGS_gather_stats_sleep_ms << "ms, "

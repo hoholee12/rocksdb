@@ -89,10 +89,10 @@ class ShardedCache : public Cache {
                         const CacheItemHelper* helper, size_t chargge,
                         Handle** handle = nullptr,
                         Priority priority = Priority::LOW) override;
-  virtual Handle* Lookup(const Slice& key, Statistics* stats) override;
+  virtual Handle* Lookup(const Slice& key, Statistics* stats, int threadnum = -1) override;
   virtual Handle* Lookup(const Slice& key, const CacheItemHelper* helper,
                          const CreateCallback& create_cb, Priority priority,
-                         bool wait, Statistics* stats = nullptr) override;
+                         bool wait, Statistics* stats = nullptr, int threadnum = -1) override;
   virtual bool Release(Handle* handle, bool useful,
                        bool force_erase = false) override;
   virtual bool IsReady(Handle* handle) override;

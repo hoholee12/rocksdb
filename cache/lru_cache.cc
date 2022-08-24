@@ -39,6 +39,7 @@ LRUHandle* LRUHandleTable::Lookup(const Slice& key, uint32_t hash) {
   return *FindPointer(key, hash);
 }
 
+//this replaces to new entry from old entry via same key, and returns old one?
 LRUHandle* LRUHandleTable::Insert(LRUHandle* h) {
   LRUHandle** ptr = FindPointer(h->key(), h->hash);
   LRUHandle* old = *ptr;
@@ -66,7 +67,9 @@ LRUHandle* LRUHandleTable::Remove(const Slice& key, uint32_t hash) {
 }
 
 LRUHandle** LRUHandleTable::FindPointer(const Slice& key, uint32_t hash) {
+  //length_bits is lower, shard bits is higher. we already fixiated on one shard at this point. this is just finding block on list.
   LRUHandle** ptr = &list_[hash >> (32 - length_bits_)];
+  //and this is done when collision
   while (*ptr != nullptr && ((*ptr)->hash != hash || key != (*ptr)->key())) {
     ptr = &(*ptr)->next_hash;
   }

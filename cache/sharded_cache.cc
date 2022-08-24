@@ -74,7 +74,7 @@ Status ShardedCache::Insert(const Slice& key, void* value,
       ->Insert(key, hash, value, helper, charge, handle, priority);
 }
 
-Cache::Handle* ShardedCache::Lookup(const Slice& key, Statistics* /*stats*/) {
+Cache::Handle* ShardedCache::Lookup(const Slice& key, Statistics* /*stats*/, int) {
   uint32_t hash = HashSlice(key);
   return GetShard(Shard(hash))->Lookup(key, hash);
 }
@@ -83,9 +83,22 @@ Cache::Handle* ShardedCache::Lookup(const Slice& key,
                                     const CacheItemHelper* helper,
                                     const CreateCallback& create_cb,
                                     Priority priority, bool wait,
-                                    Statistics* stats) {
+                                    Statistics* stats, int threadnum) {
+  
+  //this is where shard is selected.
   uint32_t hash = HashSlice(key);
-  return GetShard(Shard(hash))
+  uint32_t shardnum;
+  
+  if(enableshardfix){
+    //shardfix enabled.
+    //shardnum = threadnum;
+    shardnum = FastRange32(hash, shardsperthread) + threadnum*shardsperthread;
+  }
+  else{
+    shardnum = Shard(hash);
+  }
+  threadnumshard[shardnum] = threadnum; //log this
+  return GetShard(shardnum)
       ->Lookup(key, hash, helper, create_cb, priority, wait, stats);
 }
 
