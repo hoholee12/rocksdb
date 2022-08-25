@@ -420,8 +420,8 @@ void LRUCacheShard::Promote(LRUHandle* e) {
 }
 
 uint32_t Shard(uint32_t hash) {
-  // Note, hash >> 32 yields hash in gcc, not the zero we expect!
-  return (numshardbits > 0) ? (hash >> (32 - numshardbits)) : 0;
+  uint32_t shard_mask_ = (uint32_t{1} << numshardbits) - 1;
+  return hash & shard_mask_;
 }
 
 Cache::Handle* LRUCacheShard::Lookup(

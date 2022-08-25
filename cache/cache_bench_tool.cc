@@ -3,7 +3,6 @@
 //  COPYING file in the root directory) and Apache 2.0 License
 //  (found in the LICENSE.Apache file in the root directory).
 
-//#define GFLAGS
 #ifdef GFLAGS
 #include <cinttypes>
 #include <cstdio>
@@ -231,7 +230,7 @@ struct KeyGen {
       */
 
      //zipf starts from 1
-      if(enableshardfix){
+      if(FLAGS_enableshardfix){
         uint64_t hello = max_key / FLAGS_threads;
 
         key = zipf(rnd, hello) - 1 + hello*threadnum;
@@ -240,10 +239,9 @@ struct KeyGen {
         key = zipf(rnd, max_key) - 1;
       }
     } else {
-      key = rnd.Skewed(max_log);
-      if (key > max_key) {
-        key -= max_key;
-      }
+      key = max_log;  //because im too lazy to remove this
+      key = rnd.Uniform(max_key);
+
     }
 
     if(count){
