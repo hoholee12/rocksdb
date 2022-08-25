@@ -93,6 +93,23 @@
 #include "memory/memkind_kmem_allocator.h"
 #endif
 
+
+time_t shardpeaktime[SHARDCOUNT];
+time_t shardtotaltime[SHARDCOUNT];
+uint64_t shardaccesscount[SHARDCOUNT];
+uint64_t numshardbits;
+uint64_t shardnumlimit;
+#define SHARDLIMIT 256
+#define KEYRANGELIMIT 209
+
+uint64_t* keyrangecounter;
+uint64_t keyrangecounter_size;
+
+uint32_t threadnumshard[SHARDCOUNT];
+
+bool enableshardfix;
+uint64_t shardsperthread;
+
 ///
 /// from SILK-USENIXATC2019/zipf.cc
 ///
@@ -133,7 +150,7 @@ void init_zipf_generator(long min, long max){
   //fprintf(stderr, "****INIT_ZIPF_GENERATOR: min %d, max %d", min, max);
 	items = max-min+1;
 	base = min;
-	zipfianconstant = 0.99;
+	zipfianconstant = 0.99;  //very skewed
 	theta = zipfianconstant;
 	zeta2theta = zeta(0, 2, 0);
 	alpha = 1.0/(1.0-theta);
