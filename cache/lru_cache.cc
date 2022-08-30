@@ -442,12 +442,9 @@ Cache::Handle* LRUCacheShard::Lookup(
     telapsed.tv_nsec += (tend.tv_nsec - tstart.tv_nsec);
     time_t telapsedtotal = telapsed.tv_sec * 1000000000 + telapsed.tv_nsec;
     uint32_t hashshard = Shard(hash);
-    if(shardpeaktime[hashshard] < telapsedtotal){
-      shardpeaktime[hashshard] = telapsedtotal;
-    }
     shardtotaltime[hashshard] += telapsedtotal;
     shardaccesscount[hashshard] += 1;
-
+   
 
     e = table_.Lookup(key, hash);
     if (e != nullptr) {

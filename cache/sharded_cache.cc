@@ -88,7 +88,6 @@ Cache::Handle* ShardedCache::Lookup(const Slice& key,
   //this is where shard is selected.
   uint32_t hash = HashSlice(key);
   uint32_t shardnum;
-  
   if(enableshardfix){
     //shardfix enabled.
     //shardnum = threadnum;

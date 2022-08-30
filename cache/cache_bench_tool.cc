@@ -3,6 +3,7 @@
 //  COPYING file in the root directory) and Apache 2.0 License
 //  (found in the LICENSE.Apache file in the root directory).
 
+//#define GFLAGS
 #ifdef GFLAGS
 #include <cinttypes>
 #include <cstdio>
@@ -28,7 +29,6 @@
 #include "util/string_util.h"
 
 
-time_t shardpeaktime[SHARDCOUNT];
 time_t shardtotaltime[SHARDCOUNT];
 uint64_t shardaccesscount[SHARDCOUNT];
 uint64_t numshardbits;
@@ -219,7 +219,7 @@ struct KeyGen {
 
   Slice GetRand(Random64& rnd, uint64_t max_key, int max_log, bool count = false, int threadnum = -1) {
     uint64_t key = 0;
-    if (FLAGS_skewed) {
+    if (FLAGS_skewed && threadnum != -1) {
 
       /*
       uint64_t raw = rnd.Next();
@@ -358,6 +358,8 @@ class CacheBench {
     for (uint64_t i = 0; i < 2 * FLAGS_cache_size; i += FLAGS_value_bytes) {
       cache_->Insert(keygen.GetRand(rnd, max_key_, max_log_), createValue(rnd),
                      &helper1, FLAGS_value_bytes);
+      cache_->Insert(keygen.GetRand(rnd, max_key_, max_log_, false, 0), createValue(rnd),
+                     &helper1, FLAGS_value_bytes);
     }
   }
 
@@ -366,7 +368,6 @@ class CacheBench {
 
     //initialize shard counters
     for(int i = 0; i < SHARDCOUNT; i++){
-      shardpeaktime[i] = -1;
       shardtotaltime[i] = -1;
       shardaccesscount[i] = 0;
       threadnumshard[i] = -1;
@@ -468,43 +469,8 @@ class CacheBench {
     printf("\n\nthreadnumshard:\n");
     for(uint64_t i = 0; i < shardlimit; i++) printf("%d\n", threadnumshard[i]);
 
-    //results - shardpeaktime
-    memset(displayarr, 0, sizeof(uint64_t)*SHARDLIMIT);
     int j = 0;
-    printf("\n\n");
-    int maxpeaki = -1;
-    time_t maxpeaktime = -1;
-    time_t peaktotal = 0;
     
-    for(uint64_t i = 0; i < shardnumlimit; i++){
-      if(shardpeaktime[i] != -1) {
-        peaktotal += shardpeaktime[i];
-        if(shardpeaktime[i] > maxpeaktime){
-          maxpeaki = i;
-          maxpeaktime = shardpeaktime[i];
-        }
-        //printf("%ld\n", shardpeaktime[i]);
-        
-      }
-      else{
-        //printf("0\n");
-      }
-
-      if(shardpeaktime[i] != -1){
-        displayarr[j] += (uint64_t)shardpeaktime[i];
-      }
-      if(i % repeat == repeat - 1){
-        //displayarr[j] /= repeat; //avg
-        j++;
-      }
-      
-    }
-
-    for(uint64_t i = 0; i < shardlimit; i++) printf("%ld\n", displayarr[i]);
-
-    printf("\n\nlargest peak time: shard=%d with %ld ns\n", maxpeaki, maxpeaktime);
-    printf("average peak time = %ld ns\n", peaktotal / (time_t)pow(2, numshardbits));
-
     //results - shardtotaltime
     memset(displayarr, 0, sizeof(uint64_t)*SHARDLIMIT);
     j = 0;
@@ -679,11 +645,6 @@ class CacheBench {
       }
     }
   }
-
-  uint32_t Shard(uint32_t hash) {
-    // Note, hash >> 32 yields hash in gcc, not the zero we expect!
-    return (numshardbits > 0) ? (hash >> (32 - numshardbits)) : 0;
-  }  
 
   void OperateCache(ThreadState* thread, int threadnum) {
     

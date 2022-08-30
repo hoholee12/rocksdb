@@ -185,6 +185,7 @@ struct LRUHandle {
   }
 
   void Free() {
+    
     assert(refs == 0);
 #ifdef __SANITIZE_THREAD__
     // Here we can safely assert they are the same without a data race reported
@@ -439,6 +440,8 @@ class ALIGN_AS(CACHE_LINE_SIZE) LRUCacheShard final : public CacheShard {
   // We don't count mutex_ as the cache's internal state so semantically we
   // don't mind mutex_ invoking the non-const actions.
   mutable port::Mutex mutex_;
+  //rwlock for speed
+  mutable port::RWMutex rwmutex_;
 
   std::shared_ptr<SecondaryCache> secondary_cache_;
 };
