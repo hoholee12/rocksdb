@@ -108,7 +108,7 @@ class TableReader {
   virtual Status Get(const ReadOptions& readOptions, const Slice& key,
                      GetContext* get_context,
                      const SliceTransform* prefix_extractor,
-                     bool skip_filters = false) = 0;
+                     bool skip_filters = false, bool waste = false) = 0;
 
   virtual void MultiGet(const ReadOptions& readOptions,
                         const MultiGetContext::Range* mget_range,

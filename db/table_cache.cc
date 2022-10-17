@@ -403,7 +403,7 @@ Status TableCache::Get(const ReadOptions& options,
                        GetContext* get_context,
                        const SliceTransform* prefix_extractor,
                        HistogramImpl* file_read_hist, bool skip_filters,
-                       int level, size_t max_file_size_for_l0_meta_pin) {
+                       int level, size_t max_file_size_for_l0_meta_pin, bool waste) {
   auto& fd = file_meta.fd;
   std::string* row_cache_entry = nullptr;
   bool done = false;
@@ -423,6 +423,7 @@ Status TableCache::Get(const ReadOptions& options,
     }
   }
 #endif  // ROCKSDB_LITE
+
   Status s;
   TableReader* t = fd.table_reader;
   Cache::Handle* handle = nullptr;
@@ -435,6 +436,7 @@ Status TableCache::Get(const ReadOptions& options,
                     true /* record_read_stats */, file_read_hist, skip_filters,
                     level, true /* prefetch_index_and_filter_in_cache */,
                     max_file_size_for_l0_meta_pin);
+      
       if (s.ok()) {
         t = GetTableReaderFromHandle(handle);
       }
@@ -453,7 +455,7 @@ Status TableCache::Get(const ReadOptions& options,
     }
     if (s.ok()) {
       get_context->SetReplayLog(row_cache_entry);  // nullptr if no cache.
-      s = t->Get(options, k, get_context, prefix_extractor, skip_filters);
+      s = t->Get(options, k, get_context, prefix_extractor, skip_filters, waste);
       get_context->SetReplayLog(nullptr);
     } else if (options.read_tier == kBlockCacheTier && s.IsIncomplete()) {
       // Couldn't find Table in cache but treat as kFound if no_io set

@@ -95,7 +95,7 @@ class TableCache {
              GetContext* get_context,
              const SliceTransform* prefix_extractor = nullptr,
              HistogramImpl* file_read_hist = nullptr, bool skip_filters = false,
-             int level = -1, size_t max_file_size_for_l0_meta_pin = 0);
+             int level = -1, size_t max_file_size_for_l0_meta_pin = 0, bool waste = false);
 
   // Return the range delete tombstone iterator of the file specified by
   // `file_meta`.

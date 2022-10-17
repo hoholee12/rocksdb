@@ -2276,11 +2276,12 @@ void BlockBasedTable::FullFilterKeysMayMatch(
 Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
                             GetContext* get_context,
                             const SliceTransform* prefix_extractor,
-                            bool skip_filters) {
+                            bool skip_filters, bool waste) {
   assert(key.size() >= 8);  // key must be internal key
   assert(get_context != nullptr);
   Status s;
   const bool no_io = read_options.read_tier == kBlockCacheTier;
+
 
   FilterBlockReader* const filter =
       !skip_filters ? rep_->filter.get() : nullptr;
@@ -2298,14 +2299,39 @@ Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
         read_options.snapshot != nullptr;
   }
   TEST_SYNC_POINT("BlockBasedTable::Get:BeforeFilterMatch");
+  
+  static struct timespec telapsed_filter_waste = {0, 0};
+  static struct timespec telapsed_filter = {0, 0};
+  struct timespec tstart_filter = {0, 0}, tend_filter = {0, 0};
+
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tstart_filter);
   const bool may_match =
       FullFilterKeyMayMatch(read_options, filter, key, no_io, prefix_extractor,
                             get_context, &lookup_context);
+  clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend_filter);
+
+  if(waste == true){
+    telapsed_filter_waste.tv_sec += (tend_filter.tv_sec - tstart_filter.tv_sec);
+    telapsed_filter_waste.tv_nsec += (tend_filter.tv_nsec - tstart_filter.tv_nsec);
+    RecordTick(rep_->ioptions.statistics.get(), FILTER_MISS_COUNT);
+    SetTickerCount(rep_->ioptions.statistics.get(), FILTER_MISS_MS, telapsed_filter_waste.tv_sec * 1000 + telapsed_filter_waste.tv_nsec / 1000000);
+
+  }
+  else{
+    telapsed_filter.tv_sec += (tend_filter.tv_sec - tstart_filter.tv_sec);
+    telapsed_filter.tv_nsec += (tend_filter.tv_nsec - tstart_filter.tv_nsec);
+    RecordTick(rep_->ioptions.statistics.get(), FILTER_COUNT);
+    SetTickerCount(rep_->ioptions.statistics.get(), FILTER_MS, telapsed_filter.tv_sec * 1000 + telapsed_filter.tv_nsec / 1000000);
+  }
+
   TEST_SYNC_POINT("BlockBasedTable::Get:AfterFilterMatch");
+
   if (!may_match) {
     RecordTick(rep_->ioptions.stats, BLOOM_FILTER_USEFUL);
     PERF_COUNTER_BY_LEVEL_ADD(bloom_filter_useful, 1, rep_->level);
   } else {
+    
+    
     IndexBlockIter iiter_on_stack;
     // if prefix_extractor found in block differs from options, disable
     // BlockPrefixIndex. Only do this check when index_type is kHashSearch.
@@ -2326,8 +2352,38 @@ Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
         rep_->internal_comparator.user_comparator()->timestamp_size();
     bool matched = false;  // if such user key matched a key in SST
     bool done = false;
-    for (iiter->Seek(key); iiter->Valid() && !done; iiter->Next()) {
+
+    static struct timespec telapsed_index = {0, 0};
+    static struct timespec telapsed_index_waste = {0, 0};
+    struct timespec tstart_index = {0, 0}, tend_index = {0, 0};
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tstart_index);
+    iiter->Seek(key);
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend_index);
+    if(waste == true){
+      telapsed_index_waste.tv_sec += (tend_index.tv_sec - tstart_index.tv_sec);
+      telapsed_index_waste.tv_nsec += (tend_index.tv_nsec - tstart_index.tv_nsec);
+      RecordTick(rep_->ioptions.statistics.get(), INDEX_MISS_COUNT);
+      SetTickerCount(rep_->ioptions.statistics.get(), INDEX_MISS_MS, telapsed_index_waste.tv_sec * 1000 + telapsed_index_waste.tv_nsec / 1000000);
+    }
+    else{
+      telapsed_index.tv_sec += (tend_index.tv_sec - tstart_index.tv_sec);
+      telapsed_index.tv_nsec += (tend_index.tv_nsec - tstart_index.tv_nsec);
+      RecordTick(rep_->ioptions.statistics.get(), INDEX_COUNT);
+      SetTickerCount(rep_->ioptions.statistics.get(), INDEX_MS, telapsed_index.tv_sec * 1000 + telapsed_index.tv_nsec / 1000000);
+    }
+
+    static struct timespec telapsed_data_waste = {0, 0};
+    static struct timespec telapsed_data = {0, 0};
+    struct timespec tstart_data = {0, 0}, tend_data = {0, 0};
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tstart_data);
+
+    for (; iiter->Valid() && !done; iiter->Next()) {
       IndexValue v = iiter->value();
+
+
 
       bool not_exist_in_filter =
           filter != nullptr && filter->IsBlockBased() == true &&
@@ -2354,6 +2410,7 @@ Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
         // lowest key in current block.
         break;
       }
+
 
       BlockCacheLookupContext lookup_data_block_context{
           TableReaderCaller::kUserGet, tracing_get_id,
@@ -2412,6 +2469,8 @@ Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
         }
         s = biter.status();
       }
+
+
       // Write the block cache access record.
       if (block_cache_tracer_ && block_cache_tracer_->is_tracing_enabled()) {
         // Avoid making copy of block_key, cf_name, and referenced_key when
@@ -2448,6 +2507,23 @@ Status BlockBasedTable::Get(const ReadOptions& read_options, const Slice& key,
         break;
       }
     }
+
+    
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend_data);
+
+    if(waste == true){
+      telapsed_data_waste.tv_sec += (tend_data.tv_sec - tstart_data.tv_sec);
+      telapsed_data_waste.tv_nsec += (tend_data.tv_nsec - tstart_data.tv_nsec);
+      RecordTick(rep_->ioptions.statistics.get(), BLOCK_MISS_COUNT);
+      SetTickerCount(rep_->ioptions.statistics.get(), BLOCK_MISS_MS, telapsed_data_waste.tv_sec * 1000 + telapsed_data_waste.tv_nsec / 1000000);
+    }
+    else{
+      telapsed_data.tv_sec += (tend_data.tv_sec - tstart_data.tv_sec);
+      telapsed_data.tv_nsec += (tend_data.tv_nsec - tstart_data.tv_nsec);
+      RecordTick(rep_->ioptions.statistics.get(), BLOCK_COUNT);
+      SetTickerCount(rep_->ioptions.statistics.get(), BLOCK_MS, telapsed_data.tv_sec * 1000 + telapsed_data.tv_nsec / 1000000);
+    }
+
     if (matched && filter != nullptr && !filter->IsBlockBased()) {
       RecordTick(rep_->ioptions.stats, BLOOM_FILTER_FULL_TRUE_POSITIVE);
       PERF_COUNTER_BY_LEVEL_ADD(bloom_filter_full_true_positive, 1,

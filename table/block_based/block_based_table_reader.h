@@ -130,7 +130,7 @@ class BlockBasedTable : public TableReader {
   // @param skip_filters Disables loading/accessing the filter block
   Status Get(const ReadOptions& readOptions, const Slice& key,
              GetContext* get_context, const SliceTransform* prefix_extractor,
-             bool skip_filters = false) override;
+             bool skip_filters = false, bool waste = false) override;
 
   void MultiGet(const ReadOptions& readOptions,
                 const MultiGetContext::Range* mget_range,

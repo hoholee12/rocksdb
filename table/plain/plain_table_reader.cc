@@ -558,7 +558,7 @@ void PlainTableReader::Prepare(const Slice& target) {
 Status PlainTableReader::Get(const ReadOptions& /*ro*/, const Slice& target,
                              GetContext* get_context,
                              const SliceTransform* /* prefix_extractor */,
-                             bool /*skip_filters*/) {
+                             bool /*skip_filters*/, bool) {
   // Check bloom filter first.
   Slice prefix_slice;
   uint32_t prefix_hash;
