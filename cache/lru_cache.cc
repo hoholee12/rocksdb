@@ -437,13 +437,7 @@ Cache::Handle* LRUCacheShard::Lookup(
 
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tstart);
     MutexLock l(&mutex_);
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend);
-    telapsed.tv_sec += (tend.tv_sec - tstart.tv_sec);
-    telapsed.tv_nsec += (tend.tv_nsec - tstart.tv_nsec);
-    time_t telapsedtotal = telapsed.tv_sec * 1000000000 + telapsed.tv_nsec;
-    uint32_t hashshard = Shard(hash);
-    shardtotaltime[hashshard] += telapsedtotal;
-    shardaccesscount[hashshard] += 1;
+    
    
 
     e = table_.Lookup(key, hash);
@@ -456,6 +450,13 @@ Cache::Handle* LRUCacheShard::Lookup(
       e->Ref();
       e->SetHit();
     }
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &tend);
+    telapsed.tv_sec += (tend.tv_sec - tstart.tv_sec);
+    telapsed.tv_nsec += (tend.tv_nsec - tstart.tv_nsec);
+    time_t telapsedtotal = telapsed.tv_sec * 1000000000 + telapsed.tv_nsec;
+    uint32_t hashshard = Shard(hash);
+    shardtotaltime[hashshard] += telapsedtotal;
+    shardaccesscount[hashshard] += 1;
   }
 
   // If handle table lookup failed, then allocate a handle outside the

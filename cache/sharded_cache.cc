@@ -17,6 +17,37 @@
 #include "util/math.h"
 #include "util/mutexlock.h"
 
+//////////////////
+// benchmark stuff
+time_t shardtotaltime[SHARDCOUNT];
+uint64_t shardaccesscount[SHARDCOUNT];
+time_t readtotaltime[SHARDCOUNT];
+uint64_t numshardbits;
+uint64_t shardnumlimit;
+uint32_t threadnumshard[SHARDCOUNT];
+bool enableshardfix;
+bool dynaswitch;
+int totalDCAcount = 0;
+int noDCAcount = 0;
+int fullDCAcount = 0;
+uint64_t shardsperthread;
+int called = 0;
+int misscount = 0;
+int invalidatedcount = 0;
+int evictedcount = 0;
+//////////////////
+
+//////////////////////////////
+// counters for CBHT internals
+int N[SHARDCOUNT];  // all 0s
+bool CBHTState[SHARDCOUNT]; // all trues
+int nohit[SHARDCOUNT]; // all 0s
+int NLIMIT = 20000;
+int CBHTturnoff = NLIMIT * 5 / 100;
+int CBHTbitlength = 5;
+//////////////////////////////
+
+
 namespace ROCKSDB_NAMESPACE {
 
 namespace {

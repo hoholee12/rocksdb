@@ -32,6 +32,39 @@
 #include "rocksdb/statistics.h"
 #include "rocksdb/status.h"
 
+#define SHARDCOUNT 1048576
+
+//////////////////
+// benchmark stuff
+extern time_t shardtotaltime[SHARDCOUNT];
+extern uint64_t shardaccesscount[SHARDCOUNT];
+extern time_t readtotaltime[SHARDCOUNT];
+extern uint64_t numshardbits;
+extern uint64_t shardnumlimit;
+extern uint32_t threadnumshard[SHARDCOUNT];
+extern bool enableshardfix;
+extern bool dynaswitch;
+extern int totalDCAcount;
+extern int noDCAcount;
+extern int fullDCAcount;
+extern uint64_t shardsperthread;
+extern int called;
+extern int misscount;
+extern int invalidatedcount;
+extern int evictedcount;
+//////////////////
+
+//////////////////////////////
+// counters for CBHT internals
+extern int N[SHARDCOUNT];
+extern bool CBHTState[SHARDCOUNT];
+extern int nohit[SHARDCOUNT];
+extern int NLIMIT;
+extern int CBHTturnoff;
+extern int CBHTbitlength;
+//////////////////////////////
+
+
 namespace ROCKSDB_NAMESPACE {
 
 class Cache;
@@ -269,7 +302,7 @@ class Cache {
   // longer needed.
   // If stats is not nullptr, relative tickers could be used inside the
   // function.
-  virtual Handle* Lookup(const Slice& key, Statistics* stats = nullptr) = 0;
+  virtual Handle* Lookup(const Slice& key, Statistics* stats = nullptr, int threadnum = -1) = 0;
 
   // Increments the reference count for the handle if it refers to an entry in
   // the cache. Returns true if refcount was incremented; otherwise, returns
@@ -460,8 +493,8 @@ class Cache {
   virtual Handle* Lookup(const Slice& key, const CacheItemHelper* /*helper_cb*/,
                          const CreateCallback& /*create_cb*/,
                          Priority /*priority*/, bool /*wait*/,
-                         Statistics* stats = nullptr) {
-    return Lookup(key, stats);
+                         Statistics* stats = nullptr, int threadnum = -1) {
+    return Lookup(key, stats, threadnum);
   }
 
   // Release a mapping returned by a previous Lookup(). The "useful"
